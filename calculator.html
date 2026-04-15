@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura AI — Revenue Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F4F0E8;--cream2:#F8F5EE;--white:#FFFFFF;
+  --espresso:#2C1A0E;--walnut:#3A2416;
+  --sage:#5A9470;--sage-d:#2E6B48;--sage-l:#E8F4EC;--sage-m:#8FC4A2;--sage-b:rgba(90,148,112,.2);
+  --gold:#B8843A;--gold-l:#FBF4E6;--gold-d:#7A5618;--gold-w:#D4A860;--gold-b:rgba(184,132,58,.2);
+  --blush:#B87070;--blush-l:#FAECEC;--blush-b:rgba(184,112,112,.2);
+  --ink:#0F0D0A;--ink2:#1C1814;--text:#3A3530;--muted:#7A7570;--muted2:#ABA8A4;
+  --bdr:rgba(0,0,0,.07);--bdr2:rgba(0,0,0,.04);
+  --sh:0 2px 12px rgba(0,0,0,.06),0 6px 24px rgba(0,0,0,.04);
+  --sh2:0 8px 40px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--cream);
+  color:var(--ink2);
+  min-height:100vh;
+  padding:0;
+}
+
+/* ── HEADER ── */
+.header{
+  background:var(--espresso);
+  padding:28px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0);
+  background-size:28px 28px;pointer-events:none;
+}
+.h-logo{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+.h-logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:5px;color:#fff;text-transform:uppercase;}
+.h-logo-text em{color:#8FC4A2;font-style:normal;}
+.h-title{position:relative;z-index:1;text-align:right;}
+.h-title-main{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#fff;letter-spacing:-.3px;}
+.h-title-sub{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+/* ── LAYOUT ── */
+.layout{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:0;
+  min-height:calc(100vh - 92px);
+}
+
+/* ── LEFT: INPUTS ── */
+.inputs-col{
+  padding:40px 48px;
+  border-right:1px solid var(--bdr);
+  overflow-y:auto;
+}
+
+.section-label{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  font-weight:700;color:var(--sage);
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:20px;
+}
+.section-label::after{content:'';flex:1;height:1px;background:var(--sage-b);}
+
+.formula-block{
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:var(--sh);
+  transition:box-shadow .2s;
+}
+.formula-block:hover{box-shadow:var(--sh2);}
+
+.fb-header{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  margin-bottom:18px;
+}
+.fb-icon{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:19px;flex-shrink:0;
+}
+.fb-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--ink);line-height:1.1;}
+.fb-subtitle{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;}
+
+/* Formula display */
+.formula-display{
+  background:var(--cream2);
+  border:1px solid var(--bdr2);
+  border-radius:10px;
+  padding:14px 16px;
+  margin-bottom:18px;
+  font-size:12px;color:var(--muted);line-height:1.8;
+}
+.formula-display strong{color:var(--ink2);font-weight:600;}
+.formula-eq{
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;color:var(--ink);
+  margin-top:6px;
+  padding-top:8px;
+  border-top:1px solid var(--bdr2);
+  line-height:1.6;
+}
+.formula-eq em{color:var(--sage-d);font-style:normal;font-weight:600;}
+
+/* Sliders */
+.slider-row{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:14px;
+}
+.slider-label{font-size:12px;color:var(--text);flex:1;font-weight:500;}
+.slider-hint{font-size:10px;color:var(--muted);font-weight:400;display:block;margin-top:1px;}
+.slider-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;color:var(--ink);
+  min-width:72px;text-align:right;line-height:1;
+  font-weight:300;
+}
+.slider-wrap{flex:1.5;}
+input[type=range]{
+  width:100%;height:4px;
+  -webkit-appearance:none;appearance:none;
+  background:var(--bdr);
+  border-radius:2px;cursor:pointer;
+  outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:18px;height:18px;
+  border-radius:50%;
+  background:var(--sage);
+  border:3px solid var(--white);
+  box-shadow:0 1px 4px rgba(0,0,0,.2);
+  transition:transform .15s;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
+input[type=range]:focus::-webkit-slider-thumb{transform:scale(1.2);}
+
+.fb-result{
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(135deg,var(--espresso),var(--walnut));
+  border-radius:11px;
+  padding:14px 18px;
+  margin-top:6px;
+}
+.fb-result-label{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;font-weight:600;}
+.fb-result-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;
+  line-height:1;
+}
+
+/* ── RIGHT: RESULTS PANEL ── */
+.results-col{
+  background:var(--white);
+  padding:40px 36px;
+  position:sticky;
+  top:0;height:calc(100vh - 92px);
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+
+.results-header{
+  margin-bottom:28px;
+}
+.rh-eyebrow{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:8px;}
+.rh-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1.1;}
+.rh-sub{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6;}
+
+/* Big number */
+.big-number-card{
+  background:linear-gradient(135deg,var(--espresso),var(--walnut));
+  border-radius:16px;
+  padding:28px 24px;
+  margin-bottom:16px;
+  position:relative;overflow:hidden;
+}
+.big-number-card::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0);
+  background-size:20px 20px;pointer-events:none;
+}
+.bnc-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:8px;position:relative;z-index:1;}
+.bnc-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:64px;font-weight:300;color:#D4A860;
+  line-height:1;position:relative;z-index:1;
+  transition:all .3s ease;
+}
+.bnc-val.bump{animation:bump .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes bump{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+.bnc-sub{font-size:12px;color:rgba(255,255,255,.35);margin-top:6px;position:relative;z-index:1;}
+
+/* Result breakdown */
+.result-breakdown{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.rb-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;
+  border-radius:10px;
+  border:1px solid var(--bdr2);
+  background:var(--cream2);
+  transition:all .2s;
+}
+.rb-row:hover{background:var(--sage-l);border-color:var(--sage-b);}
+.rb-icon{font-size:16px;margin-right:10px;}
+.rb-label{font-size:12px;color:var(--text);flex:1;font-weight:500;}
+.rb-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;
+  transition:all .3s ease;
+}
+.rb-val.positive{color:var(--sage-d);}
+.rb-val.warning{color:var(--blush);}
+.rb-val.gold{color:var(--gold-d);}
+
+/* Aura ROI card */
+.aura-roi{
+  background:var(--sage-l);
+  border:1px solid var(--sage-b);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:16px;
+}
+.ar-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sage-d);margin-bottom:12px;}
+.ar-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--sage-b);}
+.ar-row:last-child{border-bottom:none;}
+.ar-label{font-size:12px;color:var(--sage-d);}
+.ar-val{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage-d);font-weight:400;}
+.ar-val.big{font-size:28px;}
+
+/* Verdict */
+.verdict{
+  border-radius:12px;
+  padding:18px;
+  border-left:3px solid var(--sage);
+  background:var(--cream2);
+  margin-top:auto;
+}
+.verdict-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage-d);margin-bottom:8px;}
+.verdict-text{font-size:13px;color:var(--text);line-height:1.7;}
+.verdict-text strong{color:var(--ink);}
+
+/* Divider */
+.divider{height:1px;background:var(--bdr);margin:24px 0;}
+
+/* CTA button */
+.cta-row{display:flex;gap:10px;margin-top:16px;}
+.btn{
+  padding:11px 22px;border-radius:9px;
+  font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;border:none;transition:all .2s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:7px;
+}
+.btn-espresso{background:var(--espresso);color:#fff;flex:1;justify-content:center;}
+.btn-espresso:hover{background:var(--walnut);transform:translateY(-1px);}
+.btn-outline{background:transparent;border:1.5px solid var(--bdr);color:var(--muted);}
+.btn-outline:hover{border-color:var(--sage);color:var(--sage-d);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .header{padding:20px 24px;}
+  .layout{grid-template-columns:1fr;}
+  .results-col{position:static;height:auto;border-top:1px solid var(--bdr);}
+  .inputs-col{padding:24px;}
+  .results-col{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="h-logo">
+    <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+      <line x1="18" y1="30" x2="18" y2="14" stroke="#5A9470" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M18 22 C14 20 10 21 8 18" stroke="#5A9470" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <path d="M18 19 C22 17 25 18 27 15" stroke="#5A9470" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <ellipse cx="18" cy="11" rx="4" ry="6" fill="#5A9470" opacity=".9" transform="rotate(-8 18 11)"/>
+      <ellipse cx="21" cy="10" rx="3" ry="5" fill="#8FC4A2" opacity=".7" transform="rotate(15 21 10)"/>
+      <ellipse cx="8.5" cy="17" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(30 8.5 17)"/>
+      <ellipse cx="27" cy="14" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(-25 27 14)"/>
+      <path d="M12 30 Q18 27 24 30" stroke="#8FC4A2" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".5"/>
+    </svg>
+    <span class="h-logo-text">Aura <em>AI</em></span>
+  </div>
+  <div class="h-title">
+    <div class="h-title-main">Revenue Recovery Calculator</div>
+    <div class="h-title-sub">Fill in their numbers during the call · Show them what they're losing in real time</div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- ═══ LEFT: INPUTS ═══ -->
+  <div class="inputs-col">
+
+    <!-- FORMULA 1: NO-SHOW LOSS -->
+    <div class="section-label">Formula 1 — No-Show Revenue Loss</div>
+    <div class="formula-block">
+      <div class="fb-header">
+        <div>
+          <div class="fb-title">Revenue Walking Out the Door</div>
+          <div class="fb-subtitle">Every no-show is money that is gone permanently — the slot can never be resold</div>
+        </div>
+        <div class="fb-icon" style="background:var(--blush-l);color:var(--blush)">📭</div>
+      </div>
+
+      <div class="formula-display">
+        <strong>Monthly No-Show Loss</strong> = Appointments/week × No-Show Rate × Avg Service Value × 4 weeks
+        <div class="formula-eq">
+          <em>L = A × r × V × 4</em><br>
+          <span style="font-size:12px;font-family:'Jost',sans-serif;color:var(--muted)">Where A = weekly appts, r = no-show rate, V = avg service value</span>
+        </div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">Weekly Appointments
+            <span class="slider-hint">Ask them: "How many appointments on a typical week?"</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-appts" min="10" max="200" value="60" oninput="calc()"></div>
+        <div class="slider-val" id="v-appts">60</div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">No-Show Rate
+            <span class="slider-hint">Industry avg is 18%. They will guess low. Ask: "How many did you have this week?"</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-nsrate" min="1" max="35" value="15" oninput="calc()"></div>
+        <div class="slider-val" id="v-nsrate">15%</div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">Avg Service Value ($)
+            <span class="slider-hint">Ask them: "What does the average client spend per visit?"</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-svcval" min="50" max="600" value="220" step="10" oninput="calc()"></div>
+        <div class="slider-val" id="v-svcval">$220</div>
+      </div>
+
+      <div class="fb-result">
+        <div>
+          <div class="fb-result-label">Lost every month with no deposit system</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:2px">This number resets to zero the day deposits activate</div>
+        </div>
+        <div class="fb-result-val" id="r-nsloss" style="color:#FFB8A8">$0</div>
+      </div>
+    </div>
+
+    <!-- FORMULA 2: CLIENT LIFETIME VALUE -->
+    <div class="section-label">Formula 2 — Client Lifetime Value</div>
+    <div class="formula-block">
+      <div class="fb-header">
+        <div>
+          <div class="fb-title">The True Cost of Losing One Client</div>
+          <div class="fb-subtitle">Most owners see a missed visit. This shows what they're actually losing over 3 years.</div>
+        </div>
+        <div class="fb-icon" style="background:var(--gold-l);color:var(--gold-d)">◎</div>
+      </div>
+
+      <div class="formula-display">
+        <strong>Annual Client Value</strong> = Avg Service Value × Visits Per Year
+        <br>
+        <strong>Lifetime Value (3yr)</strong> = Annual Value × 3 + Referrals × Annual Value
+        <div class="formula-eq">
+          <em>ACV = V × f</em>  ·  <em>LTV = ACV × 3 + (ref × ACV)</em>
+          <br>
+          <span style="font-size:12px;font-family:'Jost',sans-serif;color:var(--muted)">Where f = visits/year, ref = avg referrals per retained client</span>
+        </div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">Avg Visits Per Year
+            <span class="slider-hint">Ask them: "How often do your regulars typically come in?"</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-visits" min="1" max="24" value="6" oninput="calc()"></div>
+        <div class="slider-val" id="v-visits">6×</div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">Referrals per Retained Client
+            <span class="slider-hint">Conservative is 0.5 — most owners refer 1–2 per year once retained</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-ref" min="0" max="3" value="1" step="0.1" oninput="calc()"></div>
+        <div class="slider-val" id="v-ref">1.0</div>
+      </div>
+
+      <div class="fb-result">
+        <div>
+          <div class="fb-result-label">What one retained client is worth over 3 years</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:2px">Every lapsed client that comes back is this much value recovered</div>
+        </div>
+        <div class="fb-result-val" id="r-ltv" style="color:var(--gold-w)">$0</div>
+      </div>
+    </div>
+
+    <!-- FORMULA 3: RETENTION REVENUE OPPORTUNITY -->
+    <div class="section-label">Formula 3 — Lapsed Client Revenue Opportunity</div>
+    <div class="formula-block">
+      <div class="fb-header">
+        <div>
+          <div class="fb-title">Revenue Already Sitting in Their Client List</div>
+          <div class="fb-subtitle">They already have the clients. They just need a system to reach them.</div>
+        </div>
+        <div class="fb-icon" style="background:var(--sage-l);color:var(--sage-d)">↻</div>
+      </div>
+
+      <div class="formula-display">
+        <strong>Recoverable Revenue</strong> = Lapsed Clients × Recovery Rate × Avg Service Value
+        <br>
+        <strong>Annual MRR Potential</strong> = Convertible Clients × Avg Membership Price × 12
+        <div class="formula-eq">
+          <em>RR = C<sub>lapsed</sub> × r<sub>rec</sub> × V</em>
+          <br>
+          <span style="font-size:12px;font-family:'Jost',sans-serif;color:var(--muted)">Aura AI recovers avg 28% of lapsed clients within 90 days</span>
+        </div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">Total Active Clients in Database
+            <span class="slider-hint">Ask them: "How many total clients are in your system?"</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-clients" min="50" max="2000" value="400" step="50" oninput="calc()"></div>
+        <div class="slider-val" id="v-clients">400</div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">% Who Haven't Been In 60+ Days
+            <span class="slider-hint">Industry avg is 62% — they likely don't know this number exactly</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-lapsed" min="10" max="80" value="55" oninput="calc()"></div>
+        <div class="slider-val" id="v-lapsed">55%</div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">% of Clients Good Fit for Membership
+            <span class="slider-hint">Clients already spending $150+/mo. Offer this as your estimate if they're unsure.</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-memfit" min="5" max="50" value="25" oninput="calc()"></div>
+        <div class="slider-val" id="v-memfit">25%</div>
+      </div>
+
+      <div class="slider-row">
+        <div style="flex:1.2">
+          <div class="slider-label">Avg Membership Price ($/mo)
+            <span class="slider-hint">Middle tier converts best — use $149–$199 as your starting anchor</span>
+          </div>
+        </div>
+        <div class="slider-wrap"><input type="range" id="s-memprice" min="99" max="499" value="199" step="10" oninput="calc()"></div>
+        <div class="slider-val" id="v-memprice">$199</div>
+      </div>
+
+      <div class="fb-result">
+        <div>
+          <div class="fb-result-label">Annual membership revenue sitting unclaimed</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:2px">Based on their existing clients who already spend at membership level</div>
+        </div>
+        <div class="fb-result-val" id="r-mrrpot" style="color:#B8E4C8">$0</div>
+      </div>
+    </div>
+
+  </div><!-- end inputs-col -->
+
+  <!-- ═══ RIGHT: RESULTS ═══ -->
+  <div class="results-col">
+
+    <div class="results-header">
+      <div class="rh-eyebrow">Live Results</div>
+      <div class="rh-title">Your Practice<br>Revenue Picture</div>
+      <div class="rh-sub">Updates in real time as you adjust the inputs. Share your screen during the onboarding call.</div>
+    </div>
+
+    <!-- BIG NUMBER: Total annual opportunity -->
+    <div class="big-number-card">
+      <div class="bnc-label">Total Recoverable Revenue — Annual</div>
+      <div class="bnc-val" id="r-total">$0</div>
+      <div class="bnc-sub" id="r-total-sub">Across no-shows recovered + retention + memberships</div>
+    </div>
+
+    <!-- BREAKDOWN -->
+    <div class="result-breakdown">
+      <div class="rb-row">
+        <span class="rb-icon">📭</span>
+        <div class="rb-label">
+          No-show revenue lost/yr
+          <div style="font-size:10px;color:var(--muted);margin-top:1px">Currently walking out the door</div>
+        </div>
+        <div class="rb-val warning" id="r-ns-annual">$0</div>
+      </div>
+      <div class="rb-row">
+        <span class="rb-icon">💰</span>
+        <div class="rb-label">
+          Recoverable with deposits
+          <div style="font-size:10px;color:var(--muted);margin-top:1px">Aura AI captures ~85% of this</div>
+        </div>
+        <div class="rb-val positive" id="r-ns-recoverable">$0</div>
+      </div>
+      <div class="rb-row">
+        <span class="rb-icon">◎</span>
+        <div class="rb-label">
+          Each client's annual value
+          <div style="font-size:10px;color:var(--muted);margin-top:1px">What you lose when one drifts away</div>
+        </div>
+        <div class="rb-val gold" id="r-acv">$0</div>
+      </div>
+      <div class="rb-row">
+        <span class="rb-icon">👥</span>
+        <div class="rb-label">
+          Lapsed clients right now
+          <div style="font-size:10px;color:var(--muted);margin-top:1px">Haven't visited in 60+ days</div>
+        </div>
+        <div class="rb-val warning" id="r-lapsed-count">0</div>
+      </div>
+      <div class="rb-row">
+        <span class="rb-icon">↻</span>
+        <div class="rb-label">
+          Revenue from 28% recovery
+          <div style="font-size:10px;color:var(--muted);margin-top:1px">Aura AI's avg retention result</div>
+        </div>
+        <div class="rb-val positive" id="r-retention-rev">$0</div>
+      </div>
+      <div class="rb-row">
+        <span class="rb-icon">◉</span>
+        <div class="rb-label">
+          Membership MRR potential
+          <div style="font-size:10px;color:var(--muted);margin-top:1px">High-fit clients × avg plan price</div>
+        </div>
+        <div class="rb-val gold" id="r-mrr">$0/mo</div>
+      </div>
+    </div>
+
+    <!-- AURA ROI -->
+    <div class="aura-roi">
+      <div class="ar-title">Aura AI ROI at Growth Plan ($1,500/mo)</div>
+      <div class="ar-row">
+        <span class="ar-label">Your investment</span>
+        <span class="ar-val">$18,000/yr</span>
+      </div>
+      <div class="ar-row">
+        <span class="ar-label">Conservative return</span>
+        <span class="ar-val" id="r-aura-return">$0</span>
+      </div>
+      <div class="ar-row" style="padding-top:10px">
+        <span class="ar-label" style="font-weight:700;color:var(--sage-d)">Net gain</span>
+        <span class="ar-val big" id="r-aura-net">$0</span>
+      </div>
+      <div class="ar-row">
+        <span class="ar-label">ROI multiple</span>
+        <span class="ar-val" id="r-roi-mult" style="font-weight:700">0×</span>
+      </div>
+    </div>
+
+    <!-- VERDICT -->
+    <div class="verdict" id="verdict-box">
+      <div class="verdict-label">Diagnosis</div>
+      <div class="verdict-text" id="verdict-text">
+        Adjust the sliders to see a personalized diagnosis for this practice.
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <button class="btn btn-espresso" onclick="window.print()">🖨 Print Summary</button>
+      <button class="btn btn-outline" onclick="resetAll()">↺ Reset</button>
+    </div>
+
+  </div><!-- end results-col -->
+
+</div><!-- end layout -->
+
+<script>
+function fmt(n,prefix='$',suffix=''){
+  if(n>=1000000) return prefix+Math.round(n/1000)/10+'M'+suffix;
+  if(n>=10000) return prefix+Math.round(n/1000)+'k'+suffix;
+  return prefix+Math.round(n).toLocaleString()+suffix;
+}
+function fmtX(n){return n.toFixed(1)+'×';}
+
+function calc(){
+  // ── INPUTS ──
+  const A  = +document.getElementById('s-appts').value;      // weekly appts
+  const r  = +document.getElementById('s-nsrate').value/100; // no-show rate
+  const V  = +document.getElementById('s-svcval').value;      // avg service value
+  const f  = +document.getElementById('s-visits').value;      // visits/yr
+  const ref= +document.getElementById('s-ref').value;         // referrals
+  const C  = +document.getElementById('s-clients').value;     // total clients
+  const lp = +document.getElementById('s-lapsed').value/100;  // lapsed %
+  const mf = +document.getElementById('s-memfit').value/100;  // membership fit %
+  const mp = +document.getElementById('s-memprice').value;    // membership price
+
+  // ── UPDATE DISPLAY VALUES ──
+  document.getElementById('v-appts').textContent   = A;
+  document.getElementById('v-nsrate').textContent  = Math.round(r*100)+'%';
+  document.getElementById('v-svcval').textContent  = '$'+V;
+  document.getElementById('v-visits').textContent  = f+'×';
+  document.getElementById('v-ref').textContent     = ref.toFixed(1);
+  document.getElementById('v-clients').textContent = C;
+  document.getElementById('v-lapsed').textContent  = Math.round(lp*100)+'%';
+  document.getElementById('v-memfit').textContent  = Math.round(mf*100)+'%';
+  document.getElementById('v-memprice').textContent= '$'+mp;
+
+  // ── FORMULA 1: NO-SHOW LOSS ──
+  const nsPerMonth   = A * r * V * 4;          // monthly loss
+  const nsPerYear    = nsPerMonth * 12;          // annual loss
+  const nsRecoverable= nsPerYear * 0.85;         // Aura recovers ~85%
+
+  document.getElementById('r-nsloss').textContent   = fmt(nsPerMonth);
+  document.getElementById('r-ns-annual').textContent = fmt(nsPerYear);
+  document.getElementById('r-ns-recoverable').textContent = fmt(nsRecoverable);
+
+  // ── FORMULA 2: CLIENT VALUE ──
+  const ACV = V * f;                             // annual client value
+  const LTV = ACV * 3 + (ref * ACV);            // 3yr LTV with referrals
+
+  document.getElementById('r-ltv').textContent = fmt(LTV);
+  document.getElementById('r-acv').textContent = fmt(ACV)+'/yr';
+
+  // ── FORMULA 3: RETENTION + MEMBERSHIP ──
+  const lapsedCount    = Math.round(C * lp);                          // lapsed clients
+  const recoveredCount = Math.round(lapsedCount * 0.28);              // 28% recovery
+  const retentionRev   = recoveredCount * V * (f/12) * 3;            // rev over 3 months
+  const memConvert     = Math.round(C * mf * 0.38);                  // 38% conversion rate
+  const mrrPotential   = memConvert * mp;                             // monthly MRR
+  const mrrAnnual      = mrrPotential * 12;                           // annual MRR value
+
+  document.getElementById('r-lapsed-count').textContent   = lapsedCount.toLocaleString()+' clients';
+  document.getElementById('r-retention-rev').textContent  = fmt(retentionRev)+'/90 days';
+  document.getElementById('r-mrr').textContent            = fmt(mrrPotential)+'/mo';
+  document.getElementById('r-mrrpot').textContent         = fmt(mrrAnnual);
+
+  // ── TOTAL OPPORTUNITY ──
+  const totalAnnual = nsRecoverable + retentionRev*4 + mrrAnnual;
+  document.getElementById('r-total').textContent = fmt(totalAnnual);
+  document.getElementById('r-total-sub').textContent =
+    fmt(nsRecoverable)+' recovered · '+fmt(retentionRev*4)+' retention · '+fmt(mrrAnnual)+' memberships';
+
+  // ── AURA ROI ──
+  const auraInvestment = 18000; // $1,500/mo × 12
+  const conservReturn  = nsRecoverable * 0.7 + retentionRev * 3 + mrrAnnual * 0.5;
+  const netGain        = conservReturn - auraInvestment;
+  const roiMult        = conservReturn / auraInvestment;
+
+  document.getElementById('r-aura-return').textContent = fmt(conservReturn);
+  document.getElementById('r-aura-net').textContent    = (netGain > 0 ? '+' : '') + fmt(netGain);
+  document.getElementById('r-roi-mult').textContent    = fmtX(roiMult);
+
+  // Color net gain
+  const netEl = document.getElementById('r-aura-net');
+  netEl.style.color = netGain > 0 ? 'var(--sage-d)' : 'var(--blush)';
+
+  // ── VERDICT ──
+  let verdict = '';
+  const urgency = nsPerMonth > 1500 ? 'high' : nsPerMonth > 600 ? 'medium' : 'low';
+
+  if(urgency === 'high'){
+    verdict = `<strong>Urgent case.</strong> This practice is losing <strong>${fmt(nsPerMonth)}/month</strong> to no-shows alone — that's <strong>${fmt(nsPerYear)}/year</strong> walking out the door with nothing to show for it. Every single month without deposits is a month of real revenue permanently gone. With their ${lapsedCount.toLocaleString()} lapsed clients and ${memConvert} membership-ready regulars, the total recoverable opportunity is <strong>${fmt(totalAnnual)}/year</strong> — more than ${fmtX(roiMult)} return on Aura AI's cost.`;
+  } else if(urgency === 'medium'){
+    verdict = `<strong>Strong opportunity.</strong> At <strong>${fmt(nsPerMonth)}/month</strong> in no-show losses and ${lapsedCount.toLocaleString()} clients who haven't been in 60+ days, this practice has meaningful untapped revenue. The bigger story is memberships — ${memConvert} clients are already spending enough to convert, worth <strong>${fmt(mrrPotential)}/month</strong> in predictable MRR. Aura AI pays for itself in the first ${Math.max(1,Math.round(auraInvestment/conservReturn*12))} months.`;
+  } else {
+    verdict = `<strong>Growth play.</strong> No-show losses are moderate at <strong>${fmt(nsPerMonth)}/month</strong>, but the real opportunity is building a membership base. With ${memConvert} clients already spending at membership-level, converting them adds <strong>${fmt(mrrPotential)}/mo</strong> in predictable recurring revenue — transforming feast-or-famine months into a reliable baseline.`;
+  }
+  document.getElementById('verdict-text').innerHTML = verdict;
+
+  // Animate big number
+  const el = document.getElementById('r-total');
+  el.classList.remove('bump');
+  void el.offsetWidth;
+  el.classList.add('bump');
+}
+
+function resetAll(){
+  document.getElementById('s-appts').value = 60;
+  document.getElementById('s-nsrate').value = 15;
+  document.getElementById('s-svcval').value = 220;
+  document.getElementById('s-visits').value = 6;
+  document.getElementById('s-ref').value = 1;
+  document.getElementById('s-clients').value = 400;
+  document.getElementById('s-lapsed').value = 55;
+  document.getElementById('s-memfit').value = 25;
+  document.getElementById('s-memprice').value = 199;
+  calc();
+}
+
+// Init
+calc();
+</script>
+</body>
+</html>

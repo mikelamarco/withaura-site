@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura AI — The AI Growth Platform for Med Spas</title>
+<meta name="description" content="Aura AI automatically recovers no-show revenue, brings lapsed clients back, and converts regulars into monthly members. The AI growth platform built exclusively for med spas.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   AURA AI — PREMIUM MARKETING SITE
+   Warm Cream · Espresso · Sage Green
+═══════════════════════════════════════════════════ */
+:root{
+  /* ── THEME VARIABLES (controlled by theme switcher) ── */
+  --page-bg:#F4F0E8;--page-bg2:#F8F5EE;--white:#FFFFFF;
+  --espresso:#2C1A0E;--walnut:#3A2416;--espresso2:#1E1208;
+  --ink:#0F0D0A;--ink2:#1C1814;--text:#3A3530;--text2:#5A5450;--muted:#7A7570;--muted2:#ABA8A4;
+  --sage:#5A9470;--sage-d:#2E6B48;--sage-l:#E8F4EC;--sage-m:#8FC4A2;--sage-b:rgba(90,148,112,.2);
+  --gold:#B8843A;--gold-l:#FBF4E6;--gold-d:#7A5618;--gold-w:#D4A860;--gold-b:rgba(184,132,58,.2);
+  --bdr:rgba(0,0,0,.07);--bdr2:rgba(0,0,0,.04);
+  --nav-bg:rgba(244,240,232,.92);
+  --btn-dark:#2C1A0E;--btn-dark-text:#FFFFFF;
+  --sb-bg:#2C1A0E;--sb-text:#FFFFFF;
+  /* ── ALIASES (existing CSS uses these names) ── */
+  --cream:var(--page-bg);--cream2:var(--page-bg2);
+  --sh:0 2px 16px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.05);
+  --sh2:0 16px 64px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.06);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--page-bg);color:var(--ink2);overflow-x:hidden;}
+::selection{background:var(--sage-l);color:var(--sage-d);}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--page-bg);}::-webkit-scrollbar-thumb{background:var(--sage-m);border-radius:2px;}
+
+img{display:block;max-width:100%;object-fit:cover;}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 48px;height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--nav-bg);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  transition:all .3s;
+}
+
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;letter-spacing:4px;color:var(--ink);
+  text-transform:uppercase;font-weight:400;
+}
+.nav-logo-text em{color:var(--sage-d);font-style:normal;}
+
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{
+  font-size:13px;font-weight:500;color:var(--muted);
+  text-decoration:none;letter-spacing:.3px;transition:color .18s;
+}
+.nav-links a:hover{color:var(--sage-d);}
+
+.nav-cta{display:flex;align-items:center;gap:12px;}
+.btn{
+  padding:10px 22px;border-radius:9px;
+  font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;border:none;transition:all .2s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:7px;
+  letter-spacing:.3px;
+}
+.btn-outline-dark{background:transparent;border:1.5px solid var(--bdr);color:var(--ink2);}
+.btn-outline-dark:hover{border-color:var(--sage);color:var(--sage-d);}
+.btn-espresso{background:var(--btn-dark);color:var(--btn-dark-text);}
+.btn-espresso:hover{background:var(--walnut);transform:translateY(-1px);box-shadow:0 6px 20px rgba(44,26,14,.3);}
+.btn-sage{background:var(--sage);color:#fff;}
+.btn-sage:hover{background:var(--sage-d);transform:translateY(-1px);box-shadow:0 6px 20px rgba(90,148,112,.3);}
+.btn-sage-outline{background:transparent;border:1.5px solid var(--sage);color:var(--sage-d);}
+.btn-sage-outline:hover{background:var(--sage-l);}
+.btn-lg{padding:14px 32px;font-size:15px;border-radius:11px;}
+.btn-xl{padding:17px 42px;font-size:16px;border-radius:12px;}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+  padding-top:70px;
+}
+
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 64px 80px 80px;
+  position:relative;z-index:2;
+}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--sage-l);border:1px solid var(--sage-b);
+  border-radius:50px;padding:5px 14px;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--sage-d);margin-bottom:24px;
+  width:fit-content;
+}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,5.5vw,78px);
+  font-weight:300;line-height:1.02;
+  letter-spacing:-1px;color:var(--ink);
+  margin-bottom:20px;
+}
+.hero h1 em{color:var(--sage-d);font-style:italic;}
+
+.hero-sub{
+  font-size:17px;color:var(--text2);font-weight:300;
+  line-height:1.75;max-width:480px;margin-bottom:40px;
+}
+
+.hero-actions{display:flex;align-items:center;gap:14px;margin-bottom:56px;flex-wrap:wrap;}
+
+.hero-stats{
+  display:flex;gap:36px;
+  padding-top:36px;
+  border-top:1px solid var(--bdr);
+}
+.hs-item{display:flex;flex-direction:column;gap:4px;}
+.hs-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;font-weight:300;color:var(--ink);line-height:1;
+}
+.hs-val em{color:var(--sage-d);font-style:normal;}
+.hs-lbl{font-size:11px;color:var(--muted);line-height:1.4;}
+
+/* HERO RIGHT — image mosaic */
+.hero-right{
+  position:relative;overflow:visible;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.hero-svg-scene{
+  position:absolute;inset:0;
+  overflow:hidden;
+}
+
+.hero-img-overlay{display:none;}
+
+.hero-img-card{
+  position:absolute;
+  bottom:60px;left:24px;
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:16px;padding:18px 22px;
+  box-shadow:var(--sh2);
+  width:220px;
+  z-index:10;
+  animation:floatCard 5s ease-in-out infinite;
+}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hic-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-weight:600;}
+.hic-val{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--sage-d);line-height:1;margin-bottom:3px;}
+.hic-sub{font-size:11px;color:var(--muted);}
+.hic-trend{font-size:11px;color:var(--sage-d);font-weight:600;margin-top:5px;}
+
+/* ═══ SECTION SHARED ═══ */
+section{position:relative;}
+.section-eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--sage);font-weight:700;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-eyebrow::before{content:'';width:20px;height:1px;background:var(--sage);}
+
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:300;color:var(--ink);line-height:1.05;
+  letter-spacing:-.3px;margin-bottom:14px;
+}
+.section-title em{color:var(--sage-d);font-style:italic;}
+
+.section-sub{
+  font-size:16px;color:var(--text2);line-height:1.75;
+  font-weight:300;max-width:580px;margin-bottom:56px;
+}
+
+/* ═══ PROBLEM SECTION ═══ */
+.problem{
+  background:var(--espresso);
+  padding:100px 80px;
+  position:relative;overflow:hidden;
+}
+
+.problem-pattern{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0);
+  background-size:32px 32px;pointer-events:none;
+}
+
+.problem-inner{max-width:1200px;margin:0 auto;}
+
+.problem-header{text-align:center;margin-bottom:64px;}
+.problem-eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold-w);font-weight:700;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.problem-eyebrow::before,.problem-eyebrow::after{content:'';width:20px;height:1px;background:var(--gold-w);}
+.problem-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,58px);font-weight:300;color:#fff;
+  line-height:1.05;letter-spacing:-.3px;margin-bottom:16px;
+}
+.problem-title em{color:var(--gold-w);font-style:italic;}
+.problem-sub{font-size:16px;color:rgba(255,255,255,.45);font-weight:300;line-height:1.7;}
+
+.pain-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  border-radius:16px;overflow:hidden;
+}
+.pain-card{
+  background:rgba(255,255,255,.04);
+  padding:36px;
+  position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.pain-card:hover{background:rgba(255,255,255,.07);}
+.pain-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-w),transparent);
+  opacity:.4;
+}
+.pc-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:56px;font-weight:300;color:var(--gold-w);
+  opacity:.25;line-height:1;margin-bottom:12px;
+}
+.pc-icon{font-size:28px;margin-bottom:16px;}
+.pc-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:10px;}
+.pc-body{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;}
+
+/* ═══ SOLUTION SECTION ═══ */
+.solution{padding:100px 80px;background:var(--page-bg2);}
+.solution-inner{max-width:1200px;margin:0 auto;}
+
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.tool-card{
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:20px;overflow:hidden;
+  box-shadow:var(--sh);
+  transition:all .25s;
+}
+.tool-card:hover{box-shadow:var(--sh2);transform:translateY(-4px);}
+
+.tool-img{
+  height:220px;position:relative;overflow:hidden;
+}
+.tool-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.tool-card:hover .tool-img img{transform:scale(1.04);}
+.tool-img-overlay{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;padding:20px;
+}
+.tool-badge{
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);
+  border-radius:10px;padding:10px 15px;
+  display:flex;align-items:center;gap:9px;
+}
+.tb-icon{font-size:18px;}
+.tb-name{font-size:13px;font-weight:700;color:var(--ink2);}
+.tb-result{font-size:11px;color:var(--sage-d);font-weight:600;margin-top:1px;}
+
+.tool-body{padding:26px;}
+.tool-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:10px;}
+.tool-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:18px;}
+.tool-features{display:flex;flex-direction:column;gap:7px;}
+.tf{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--text);}
+.tf::before{content:'✦';color:var(--sage);font-size:9px;margin-top:3px;flex-shrink:0;}
+
+/* ═══ HOW IT WORKS ═══ */
+.how{padding:100px 80px;background:var(--page-bg);}
+.how-inner{max-width:1200px;margin:0 auto;}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+
+.how-visual{position:relative;}
+.how-img{
+  width:100%;height:500px;
+  border-radius:20px;overflow:hidden;
+  box-shadow:var(--sh2);
+}
+.how-img img{width:100%;height:100%;object-fit:cover;}
+.how-stat-card{
+  position:absolute;
+  top:-24px;right:-28px;
+  background:var(--white);
+  border:1px solid var(--bdr);border-radius:14px;
+  padding:18px 22px;box-shadow:var(--sh2);
+  min-width:180px;
+}
+.how-stat-card2{
+  position:absolute;
+  bottom:-24px;left:-28px;
+  background:var(--espresso);
+  border-radius:14px;padding:18px 22px;
+  box-shadow:0 8px 32px rgba(44,26,14,.35);
+  min-width:180px;
+}
+.hsc-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:600;}
+.hsc-val{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--sage-d);line-height:1;}
+.hsc-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+.hsc-lbl2{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px;font-weight:600;}
+.hsc-val2{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold-w);line-height:1;}
+.hsc-sub2{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px;}
+
+.how-content{}
+.how-steps{display:flex;flex-direction:column;gap:0;margin-top:36px;}
+.step{
+  display:flex;gap:20px;
+  padding-left:20px;border-left:2px solid var(--sage-b);
+  padding-bottom:32px;position:relative;margin-left:12px;
+}
+.step::before{
+  content:'';position:absolute;left:-9px;top:4px;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--sage);border:3px solid var(--cream);
+  box-shadow:0 0 0 3px var(--sage-b);
+}
+.step:last-child{border-left-color:transparent;padding-bottom:0;}
+.step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;color:var(--sage-m);font-weight:400;
+  min-width:20px;padding-top:2px;
+}
+.step-content{}
+.step-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.step-desc{font-size:13px;color:var(--text2);line-height:1.65;}
+
+/* ═══ SOCIAL PROOF / RESULTS ═══ */
+.results{
+  padding:100px 80px;
+  background:linear-gradient(160deg,var(--espresso) 0%,var(--walnut) 50%,#1E1208 100%);
+  position:relative;overflow:hidden;
+}
+.results-pattern{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0);
+  background-size:28px 28px;pointer-events:none;
+}
+.results-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.results-header{text-align:center;margin-bottom:64px;}
+.results-eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--sage-m);font-weight:700;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.results-eyebrow::before,.results-eyebrow::after{content:'';width:20px;height:1px;background:var(--sage-m);}
+.results-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,58px);font-weight:300;color:#fff;
+  line-height:1.05;margin-bottom:14px;
+}
+.results-title em{color:var(--sage-m);font-style:italic;}
+.results-sub{font-size:16px;color:rgba(255,255,255,.4);font-weight:300;line-height:1.7;}
+
+.metrics-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;
+  margin-bottom:56px;
+}
+.metric{
+  padding:36px 28px;
+  background:rgba(255,255,255,.04);
+  text-align:center;
+  border-right:1px solid rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+  transition:background .2s;
+}
+.metric:last-child{border-right:none;}
+.metric:hover{background:rgba(255,255,255,.07);}
+.metric-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:300;color:#fff;line-height:1;margin-bottom:6px;
+}
+.metric-val em{color:var(--sage-m);font-style:normal;}
+.metric-lbl{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;}
+.metric-sub{font-size:10px;color:rgba(255,255,255,.25);margin-top:6px;letter-spacing:1px;text-transform:uppercase;}
+
+.testimonials{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+.testimonial{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:28px;
+  transition:all .2s;
+}
+.testimonial:hover{background:rgba(255,255,255,.09);transform:translateY(-3px);}
+.test-stars{display:flex;gap:3px;margin-bottom:14px;}
+.star{font-size:13px;color:var(--gold-w);}
+.test-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;color:rgba(255,255,255,.8);
+  line-height:1.6;font-style:italic;margin-bottom:20px;
+}
+.test-author{display:flex;align-items:center;gap:12px;}
+.test-av{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.test-name{font-size:13px;font-weight:600;color:#fff;}
+.test-role{font-size:11px;color:rgba(255,255,255,.35);margin-top:1px;}
+
+/* ═══ PRICING ═══ */
+.pricing{padding:100px 80px;background:var(--page-bg2);}
+.pricing-inner{max-width:1100px;margin:0 auto;}
+.pricing-header{text-align:center;margin-bottom:56px;}
+
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:start;}
+.pricing-card{
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:20px;padding:36px;
+  box-shadow:var(--sh);
+  position:relative;
+  transition:all .25s;
+}
+.pricing-card:hover{box-shadow:var(--sh2);transform:translateY(-3px);}
+.pricing-card.featured{
+  background:var(--espresso);
+  border-color:transparent;
+  box-shadow:0 20px 60px rgba(44,26,14,.35);
+  transform:scale(1.03);
+}
+.pricing-card.featured:hover{transform:scale(1.03) translateY(-3px);}
+.pricing-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--sage);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;white-space:nowrap;
+}
+.pricing-tier{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px;}
+.pricing-tier-f{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:12px;}
+.pricing-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:300;color:var(--ink);line-height:1;margin-bottom:4px;
+}
+.pricing-price-f{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:300;color:#fff;line-height:1;margin-bottom:4px;
+}
+.pricing-per{font-size:13px;color:var(--muted);margin-bottom:20px;}
+.pricing-per-f{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:20px;}
+.pricing-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--bdr);}
+.pricing-desc-f{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1);}
+.pricing-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.pf{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text);}
+.pf-f{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:rgba(255,255,255,.65);}
+.pf-check{font-size:12px;color:var(--sage);flex-shrink:0;margin-top:2px;}
+.pf-check-f{font-size:12px;color:var(--sage-m);flex-shrink:0;margin-top:2px;}
+.pricing-trial{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
+.pricing-trial-f{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:10px;}
+.btn-pricing-f{
+  width:100%;padding:13px;background:var(--sage);color:#fff;border:none;
+  border-radius:9px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .18s;text-align:center;display:block;text-decoration:none;
+}
+.btn-pricing-f:hover{background:var(--sage-d);}
+.btn-pricing{
+  width:100%;padding:13px;background:var(--page-bg);color:var(--ink2);border:1.5px solid var(--bdr);
+  border-radius:9px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;transition:all .18s;text-align:center;display:block;text-decoration:none;
+}
+.btn-pricing:hover{background:var(--sage-l);border-color:var(--sage-b);color:var(--sage-d);}
+
+/* ═══ DEMO CTA SECTION ═══ */
+.demo-cta{
+  padding:120px 80px;
+  background:var(--page-bg);
+  position:relative;overflow:hidden;
+}
+.demo-cta::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px, rgba(44,26,14,0.08) 1px, transparent 0);background-size:28px 28px;
+  opacity:.07;
+}
+.demo-cta-inner{
+  max-width:860px;margin:0 auto;
+  text-align:center;position:relative;z-index:1;
+}
+.demo-cta-eyebrow{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--sage);font-weight:700;margin-bottom:16px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.demo-cta-eyebrow::before,.demo-cta-eyebrow::after{content:'';width:20px;height:1px;background:var(--sage);}
+.demo-cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,5vw,68px);font-weight:300;color:var(--ink);
+  line-height:1.05;letter-spacing:-.5px;margin-bottom:18px;
+}
+.demo-cta-title em{color:var(--sage-d);font-style:italic;}
+.demo-cta-sub{font-size:17px;color:var(--text2);font-weight:300;line-height:1.7;max-width:560px;margin:0 auto 44px;}
+.demo-cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
+.demo-cta-trust{
+  font-size:12px;color:var(--muted);margin-top:20px;
+  display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;
+}
+.dct{display:flex;align-items:center;gap:5px;}
+.dct::before{content:'✓';color:var(--sage);font-size:11px;font-weight:700;}
+
+/* ═══ INTEGRATIONS STRIP ═══ */
+.integrations{
+  padding:48px 80px;
+  background:var(--white);
+  border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);
+}
+.integrations-inner{max-width:1100px;margin:0 auto;}
+.int-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:center;margin-bottom:24px;}
+.int-logos{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;}
+.int-logo{
+  font-size:14px;font-weight:600;color:var(--muted2);
+  letter-spacing:1px;text-transform:uppercase;
+  padding:8px 20px;border:1px solid var(--bdr);border-radius:8px;
+  background:var(--page-bg2);
+}
+
+/* ═══ FAQ ═══ */
+.faq{padding:80px 80px;background:var(--page-bg2);}
+.faq-inner{max-width:760px;margin:0 auto;}
+.faq-header{text-align:center;margin-bottom:48px;}
+.faq-item{
+  border-bottom:1px solid var(--bdr);padding:0;
+  overflow:hidden;
+}
+.faq-q{
+  padding:20px 0;display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;gap:16px;
+}
+.faq-q-text{font-size:15px;font-weight:500;color:var(--ink);}
+.faq-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--page-bg);border:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--muted);flex-shrink:0;
+  transition:all .2s;
+}
+.faq-item.open .faq-icon{background:var(--sage-l);color:var(--sage-d);border-color:var(--sage-b);transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);}
+.faq-item.open .faq-a{max-height:400px;}
+.faq-a-inner{padding:0 0 20px;font-size:14px;color:var(--text2);line-height:1.75;}
+.faq-a-inner strong{color:var(--ink);}
+
+/* ═══ FOOTER ═══ */
+footer{
+  background:var(--espresso2);
+  padding:64px 80px 40px;
+}
+.footer-top{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:60px;
+  padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07);
+  margin-bottom:32px;
+}
+.footer-brand{}
+.footer-logo{display:flex;align-items:center;gap:11px;margin-bottom:16px;}
+.footer-logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;letter-spacing:4px;color:#fff;text-transform:uppercase;font-weight:300;
+}
+.footer-logo-text em{color:var(--sage-m);font-style:normal;}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(255,255,255,.5);font-style:italic;margin-bottom:20px;}
+.footer-email{font-size:13px;color:var(--sage-m);text-decoration:none;}
+.footer-email:hover{text-decoration:underline;}
+.footer-col-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);font-weight:700;margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s;}
+.footer-links a:hover{color:rgba(255,255,255,.8);}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:10px;
+}
+.footer-bottom a{color:rgba(255,255,255,.3);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,.6);}
+
+/* ═══ ANIMATIONS ═══ */
+.fade-in{opacity:1;transform:translateY(0);transition:all .7s cubic-bezier(.4,0,.2,1);}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ═══ RESPONSIVE — TABLET ═══ */
+@media(max-width:1100px){
+  nav{padding:0 32px;}
+  .nav-links{gap:22px;}
+
+  .hero{grid-template-columns:1fr 1fr;}
+  .hero-left{padding:80px 40px 80px 48px;}
+  .hero h1{font-size:clamp(38px,5vw,58px);}
+
+  .problem,.solution,.how,.results,.pricing,.demo-cta,.faq{padding-left:48px;padding-right:48px;}
+  footer{padding:56px 48px 36px;}
+
+  .pain-cards{grid-template-columns:1fr 1fr;}
+  .pain-card:last-child{grid-column:span 2;}
+
+  .tools-grid{grid-template-columns:1fr 1fr;}
+  .tool-card:last-child{grid-column:span 2;}
+
+  .how-grid{grid-template-columns:1fr 1.1fr;gap:48px;}
+
+  .metrics-grid{grid-template-columns:1fr 1fr;}
+  .testimonials{grid-template-columns:1fr 1fr;}
+  .testimonial:last-child{grid-column:span 2;}
+
+  .pricing-grid{gap:14px;}
+
+  .footer-top{grid-template-columns:1.5fr 1fr 1fr;gap:40px;}
+  .footer-top > div:last-child{grid-column:span 3;}
+}
+
+/* ═══ RESPONSIVE — MOBILE ═══ */
+@media(max-width:768px){
+  /* NAV */
+  nav{
+    padding:0 20px;
+    height:60px;
+  }
+  .nav-links{display:none;}
+  .nav-cta .btn-outline-dark{display:none;}
+  .btn-espresso{padding:8px 16px;font-size:12px;}
+
+  /* HERO */
+  .hero{
+    grid-template-columns:1fr;
+    min-height:auto;
+    padding-top:60px;
+  }
+  .hero-left{
+    padding:48px 20px 40px;
+    text-align:center;
+  }
+  .hero-eyebrow{margin:0 auto 18px;}
+  .hero h1{font-size:42px;letter-spacing:-.5px;}
+  .hero-sub{font-size:15px;margin:0 auto 32px;}
+  .hero-actions{justify-content:center;flex-wrap:wrap;gap:12px;}
+  .hero-stats{
+    justify-content:center;
+    gap:20px;flex-wrap:wrap;
+    padding-top:28px;
+  }
+  .hs-item{text-align:center;}
+  .hs-val{font-size:30px;}
+
+  /* Show a simplified hero image on mobile */
+  .hero-right{
+    display:block;
+    height:280px;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-img-main{
+    position:absolute;inset:0;
+  }
+  .hero-img-overlay{
+    background:linear-gradient(to bottom,var(--cream) 0%,transparent 30%,rgba(0,0,0,.2) 100%);
+  }
+  .hero-img-card{
+    bottom:16px;right:16px;left:auto;
+    width:180px;padding:14px 16px;
+    animation:none;
+  }
+  .hic-val{font-size:26px;}
+
+  /* INTEGRATIONS */
+  .integrations{padding:36px 20px;}
+  .int-logos{gap:10px;}
+  .int-logo{font-size:12px;padding:6px 12px;}
+
+  /* SECTIONS */
+  .problem{padding:64px 20px;}
+  .problem-title{font-size:34px;}
+  .pain-cards{grid-template-columns:1fr;gap:1px;}
+  .pain-card:last-child{grid-column:span 1;}
+  .pain-card{padding:28px 24px;}
+  .pc-num{font-size:40px;}
+
+  .solution{padding:64px 20px;}
+  .section-title{font-size:34px;}
+  .section-sub{font-size:14px;margin-bottom:36px;}
+  .tools-grid{grid-template-columns:1fr;gap:16px;}
+  .tool-card:last-child{grid-column:span 1;}
+  .tool-img{height:200px;}
+
+  .how{padding:64px 20px;}
+  .how-grid{grid-template-columns:1fr;gap:0;}
+  .how-visual{display:none;}
+  .how-steps{margin-top:28px;}
+  .step{padding-bottom:24px;}
+
+  .results{padding:64px 20px;}
+  .results-title{font-size:34px;}
+  .metrics-grid{
+    grid-template-columns:1fr 1fr;
+    border:none;
+    border-radius:0;
+    gap:2px;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .metric{padding:24px 18px;}
+  .metric-val{font-size:38px;}
+  .metric:last-child{border-right:none;}
+  .testimonials{grid-template-columns:1fr;gap:14px;}
+  .testimonial:last-child{grid-column:span 1;}
+  .testimonial{padding:22px;}
+
+  .pricing{padding:64px 20px;}
+  .pricing-grid{grid-template-columns:1fr;gap:16px;}
+  .pricing-card.featured{transform:none;order:-1;}
+  .pricing-card.featured:hover{transform:translateY(-3px);}
+  .pricing-badge{display:none;}
+  .pricing-tier-f::before{
+    content:'★ Most Popular · ';
+    color:var(--sage-m);
+  }
+
+  .demo-cta{padding:72px 20px;}
+  .demo-cta-title{font-size:36px;}
+  .demo-cta-sub{font-size:15px;}
+  .demo-cta-actions{flex-direction:column;align-items:stretch;}
+  .demo-cta-actions .btn{text-align:center;justify-content:center;}
+  .demo-cta-trust{flex-direction:column;gap:10px;align-items:center;}
+
+  .faq{padding:56px 20px;}
+  .section-title{font-size:34px;}
+  .faq-q-text{font-size:14px;}
+
+  footer{padding:48px 20px 32px;}
+  .footer-top{grid-template-columns:1fr;gap:32px;}
+  .footer-top > div:last-child{grid-column:span 1;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px;}
+
+  /* Mobile nav hamburger hint */
+  .mobile-menu-btn{
+    display:flex;
+    flex-direction:column;gap:4px;
+    cursor:pointer;padding:4px;
+  }
+  .mobile-menu-btn span{
+    width:22px;height:2px;
+    background:var(--ink);border-radius:2px;
+    transition:all .2s;
+  }
+}
+
+/* ═══ MOBILE NAV DRAWER ═══ */
+.mobile-nav{
+  display:none;
+  position:fixed;
+  top:60px;left:0;right:0;
+  background:rgba(244,240,232,.98);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--bdr);
+  padding:20px;
+  z-index:99;
+  flex-direction:column;
+  gap:4px;
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{
+  padding:12px 16px;
+  border-radius:9px;
+  font-size:15px;font-weight:500;
+  color:var(--ink2);text-decoration:none;
+  transition:background .15s;
+}
+.mobile-nav a:hover{background:var(--sage-l);}
+.mobile-nav .mobile-nav-cta{
+  margin-top:8px;
+  background:var(--espresso);color:#fff;
+  text-align:center;font-weight:700;
+  border-radius:10px;padding:14px;
+}
+/* How stat cards — prevent overflow on smaller screens */
+@media(max-width:960px){
+  .how-stat-card{top:-12px;right:-12px;min-width:160px;}
+  .how-stat-card2{bottom:-12px;left:-12px;min-width:160px;}
+  .hsc-val,.hsc-val2{font-size:24px;}
+}
+
+/* Smooth scroll offset for fixed nav */
+html{scroll-padding-top:80px;}
+
+
+/* ══════════════════════════════════════════
+   THEME SWITCHER
+══════════════════════════════════════════ */
+.theme-switcher{
+  position:fixed;
+  bottom:24px;right:24px;
+  z-index:9999;
+  display:flex;flex-direction:column;align-items:flex-end;gap:8px;
+}
+.theme-toggle-btn{
+  width:42px;height:42px;
+  border-radius:50%;
+  background:var(--espresso);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+  box-shadow:0 4px 20px rgba(0,0,0,.25);
+  transition:all .2s;
+  color:#fff;
+}
+.theme-toggle-btn:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(0,0,0,.35);}
+.theme-panel{
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:0 8px 40px rgba(0,0,0,.15),0 2px 8px rgba(0,0,0,.08);
+  display:none;
+  min-width:200px;
+}
+.theme-panel.open{display:block;}
+.theme-panel-label{
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);font-weight:700;margin-bottom:10px;
+  font-family:'Jost',sans-serif;
+}
+.theme-btns{display:flex;flex-direction:column;gap:4px;}
+.aura-theme-btn{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;border-radius:9px;
+  border:1px solid transparent;
+  background:transparent;cursor:pointer;
+  font-family:'Jost',sans-serif;
+  font-size:12px;font-weight:500;
+  color:var(--text);
+  transition:all .15s;
+  text-align:left;
+  width:100%;
+}
+.aura-theme-btn:hover{background:var(--page-bg2);border-color:var(--bdr);}
+.aura-theme-btn.active{
+  background:var(--sage-l);
+  border-color:var(--sage-b);
+  color:var(--sage-d);
+  font-weight:600;
+}
+.aura-theme-btn.active .theme-btn-icon{background:var(--sage);}
+.theme-btn-icon{
+  width:24px;height:24px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;flex-shrink:0;
+}
+.theme-swatch-row{
+  display:flex;gap:3px;margin-top:2px;
+}
+.theme-swatch-dot{
+  width:8px;height:8px;border-radius:50%;
+  flex-shrink:0;
+}
+
+
+/* Hide hamburger on desktop */
+@media(min-width:769px){
+  .mobile-menu-btn{display:none!important;}
+}
+
+
+/* ═══ HONEST SOCIAL PROOF ═══ */
+.sp-honest{margin-top:48px;}
+.sp-statement{
+  display:flex;align-items:flex-start;gap:16px;
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:14px;
+  padding:22px 26px;
+  margin-bottom:32px;
+  box-shadow:var(--sh);
+}
+.sp-icon{
+  font-size:20px;color:var(--sage-d);
+  flex-shrink:0;margin-top:2px;
+}
+.sp-text{
+  font-size:14px;color:var(--text2);
+  line-height:1.75;font-weight:300;
+}
+.sp-text strong{color:var(--ink);font-weight:600;}
+.sp-numbers{
+  display:flex;align-items:center;justify-content:center;
+  gap:0;
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--sh);
+}
+.sp-num-item{
+  flex:1;padding:28px 20px;text-align:center;
+}
+.sp-num-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:44px;font-weight:300;color:var(--ink);
+  line-height:1;margin-bottom:8px;
+}
+.sp-num-lbl{
+  font-size:10px;color:var(--muted);
+  letter-spacing:1.5px;text-transform:uppercase;
+  font-weight:600;line-height:1.4;
+}
+.sp-num-divider{
+  width:1px;height:60px;
+  background:var(--bdr);
+  flex-shrink:0;
+}
+@media(max-width:768px){
+  .sp-numbers{flex-wrap:wrap;}
+  .sp-num-item{min-width:50%;}
+  .sp-num-divider{display:none;}
+  .sp-statement{flex-direction:column;gap:12px;}
+}
+
+/* ═══ FOUNDING MEMBERS ═══ */
+.founding-wrap{
+  max-width:1100px;margin:48px auto 0;
+  padding:0 0 8px;
+}
+.founding-card{
+  background:linear-gradient(135deg,var(--espresso),var(--walnut));
+  border-radius:20px;
+  padding:44px 48px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:56px;
+  align-items:start;
+  position:relative;
+  overflow:hidden;
+}
+.founding-card::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0);
+  background-size:24px 24px;pointer-events:none;
+}
+.founding-card::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold-w),rgba(212,168,96,.3),transparent);
+}
+.founding-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(212,168,96,.15);
+  border:1px solid rgba(212,168,96,.3);
+  border-radius:50px;
+  padding:5px 14px;
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold-w);margin-bottom:16px;
+  width:fit-content;position:relative;z-index:1;
+}
+.founding-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;color:#fff;
+  line-height:1.1;margin-bottom:14px;
+  position:relative;z-index:1;
+}
+.founding-title em{color:var(--gold-w);font-style:italic;}
+.founding-desc{
+  font-size:14px;color:rgba(255,255,255,.5);
+  line-height:1.75;margin-bottom:24px;
+  position:relative;z-index:1;
+}
+.founding-spots{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  position:relative;z-index:1;
+}
+.founding-spot{
+  width:22px;height:8px;border-radius:4px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
+}
+.founding-spot.filled{
+  background:var(--gold-w);
+  border-color:var(--gold-w);
+}
+.founding-spots-label{
+  font-size:12px;color:rgba(255,255,255,.4);
+  width:100%;margin-top:6px;
+}
+.founding-spots-label strong{color:var(--gold-w);}
+
+.founding-right{position:relative;z-index:1;}
+.founding-includes{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:22px;
+  margin-bottom:20px;
+}
+.founding-inc-title{
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.3);font-weight:700;
+  margin-bottom:14px;
+}
+.founding-inc-row{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(255,255,255,.65);
+  padding:6px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.founding-inc-row:last-child{border-bottom:none;}
+.founding-inc-row.founding-no{color:rgba(255,255,255,.8);font-weight:600;}
+.founding-check{color:var(--sage-m);font-size:12px;flex-shrink:0;}
+.founding-cta{
+  display:block;width:100%;
+  padding:15px;text-align:center;
+  background:var(--gold-w);color:var(--espresso);
+  border-radius:10px;
+  font-family:'Jost',sans-serif;font-size:15px;font-weight:700;
+  text-decoration:none;letter-spacing:.3px;
+  transition:all .2s;
+  margin-bottom:10px;
+}
+.founding-cta:hover{
+  background:#E8B96A;
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(212,168,96,.35);
+}
+.founding-fine{
+  font-size:11px;color:rgba(255,255,255,.25);
+  text-align:center;
+}
+@media(max-width:900px){
+  .founding-card{grid-template-columns:1fr;gap:32px;padding:32px 28px;}
+  .founding-title{font-size:26px;}
+}
+@media(max-width:768px){
+  .founding-wrap{margin:36px auto 0;padding:0;}
+  .founding-card{padding:28px 22px;}
+}
+
+/* ═══ CALCULATOR TEASER ═══ */
+
+.calc-teaser{
+  padding:100px 80px;
+  background:var(--page-bg);
+  border-top:1px solid var(--bdr);
+  border-bottom:1px solid var(--bdr);
+}
+.calc-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;
+}
+.calc-desc{font-size:15px;color:var(--text2);line-height:1.75;font-weight:300;margin-bottom:28px;}
+
+/* Slider block */
+.calc-slider-block{
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:13px;
+  padding:18px 22px;
+  box-shadow:var(--sh);
+}
+.csb-label{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;font-weight:500;color:var(--ink2);
+  margin-bottom:12px;
+}
+.csb-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;color:var(--sage-d);font-weight:300;
+}
+input[type=range]{
+  width:100%;height:4px;
+  -webkit-appearance:none;appearance:none;
+  background:var(--bdr);border-radius:2px;
+  cursor:pointer;outline:none;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--sage);
+  border:3px solid var(--white);
+  box-shadow:0 1px 4px rgba(0,0,0,.2);
+  transition:transform .15s;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
+.csb-sublabel{font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:.5px;}
+
+/* Reveal result */
+.calc-reveal{
+  background:linear-gradient(135deg,var(--espresso),var(--walnut));
+  border-radius:14px;
+  padding:24px;
+  margin-top:18px;
+  position:relative;overflow:hidden;
+}
+.calc-reveal::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.04) 1px,transparent 0);
+  background-size:20px 20px;pointer-events:none;
+}
+.cr-loss{position:relative;z-index:1;}
+.cr-loss-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:6px;}
+.cr-loss-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:56px;font-weight:300;color:#FFB8A8;
+  line-height:1;margin-bottom:4px;
+  transition:all .3s ease;
+}
+.cr-loss-sub{font-size:12px;color:rgba(255,255,255,.35);margin-bottom:14px;}
+.cr-note{font-size:11px;color:rgba(255,255,255,.2);line-height:1.6;border-top:1px solid rgba(255,255,255,.06);padding-top:12px;position:relative;z-index:1;}
+.cr-formula{
+  font-size:12px;color:rgba(255,255,255,.35);
+  margin-bottom:14px;line-height:1.7;
+  padding:10px 14px;
+  background:rgba(255,255,255,.05);
+  border-radius:8px;
+  font-family:'Jost',sans-serif;
+  position:relative;z-index:1;
+}
+.cr-formula span{color:rgba(255,255,255,.7);font-weight:600;}
+
+/* Right gate */
+.calc-right{}
+.calc-gate{
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:20px;
+  padding:36px;
+  box-shadow:var(--sh2);
+  position:sticky;top:90px;
+}
+.cg-eyebrow{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sage);font-weight:700;margin-bottom:10px;}
+.cg-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:10px;}
+.cg-sub{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:22px;}
+
+/* Preview rows */
+.cg-preview{
+  background:var(--page-bg2);
+  border:1px solid var(--bdr2);
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:22px;
+}
+.cgp-row{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid var(--bdr2);
+  transition:all .3s;
+}
+.cgp-row:last-of-type{border-bottom:none;}
+.cgp-icon{font-size:14px;flex-shrink:0;}
+.cgp-label{font-size:12px;color:var(--text);flex:1;}
+.cgp-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;}
+.cgp-red{color:var(--blush);}
+.cgp-gold{color:var(--gold-d);}
+.cgp-green{color:var(--sage-d);}
+.cgp-blur{filter:blur(5px);user-select:none;pointer-events:none;transition:filter .4s;}
+.cgp-total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--bdr);
+  font-size:13px;font-weight:600;color:var(--ink);
+}
+.cgp-total-val{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sage-d);}
+
+/* Form */
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.cf-input{
+  width:100%;padding:11px 14px;
+  background:var(--page-bg2);
+  border:1.5px solid var(--bdr);
+  border-radius:9px;
+  font-family:'Jost',sans-serif;font-size:13px;
+  color:var(--ink);outline:none;
+  transition:border-color .15s;
+}
+.cf-input:focus{border-color:var(--sage-m);background:var(--white);}
+.cf-input::placeholder{color:var(--muted2);}
+.cf-full{width:100%;margin-bottom:10px;display:block;}
+.cf-btn{
+  width:100%;padding:14px;
+  background:var(--espresso);color:#fff;
+  border:none;border-radius:10px;
+  font-family:'Jost',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;margin-top:4px;
+  transition:all .2s;
+  letter-spacing:.3px;
+}
+.cf-btn:hover{background:var(--walnut);transform:translateY(-1px);box-shadow:0 6px 20px rgba(44,26,14,.25);}
+.cf-trust{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
+
+/* Success state */
+.cg-success{text-align:center;padding:20px 0;}
+.cgs-icon{font-size:36px;margin-bottom:12px;color:var(--sage);}
+.cgs-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--ink);margin-bottom:8px;}
+.cgs-sub{font-size:13px;color:var(--muted);line-height:1.65;}
+
+/* Mobile */
+@media(max-width:900px){
+  .calc-inner{grid-template-columns:1fr;gap:32px;}
+  .calc-gate{position:static;}
+  .cf-row{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .calc-teaser{padding:64px 20px;}
+  .cr-loss-val{font-size:42px;}
+}
+
+
+/* ═══ ANIMATED PLANT LOGO ═══ */
+.plant-logo{overflow:visible;}
+
+/* Roots grow out first */
+.plant-root-l{
+  stroke-dasharray:18;stroke-dashoffset:18;
+  animation:grow-line 0.5s ease 0.1s forwards;
+}
+.plant-root-r{
+  stroke-dasharray:18;stroke-dashoffset:18;
+  animation:grow-line 0.5s ease 0.2s forwards;
+}
+.plant-root-c{
+  stroke-dasharray:24;stroke-dashoffset:24;
+  animation:grow-line 0.6s ease 0s forwards;
+}
+
+/* Stem grows up */
+.plant-stem{
+  stroke-dasharray:20;stroke-dashoffset:20;
+  animation:grow-line 0.6s ease 0.4s forwards;
+}
+
+/* Left branch */
+.plant-branch-l{
+  stroke-dasharray:16;stroke-dashoffset:16;
+  animation:grow-line 0.5s ease 0.8s forwards;
+}
+/* Right branch */
+.plant-branch-r{
+  stroke-dasharray:16;stroke-dashoffset:16;
+  animation:grow-line 0.5s ease 1.0s forwards;
+}
+
+/* Main leaf unfurls */
+.plant-leaf-main{
+  transform-origin:18px 18px;
+  transform:scale(0);opacity:0;
+  animation:unfurl 0.6s cubic-bezier(.34,1.56,.64,1) 0.9s forwards;
+}
+/* Side leaf left */
+.plant-leaf-side-l{
+  transform-origin:8.5px 17px;
+  transform:scale(0);opacity:0;
+  animation:unfurl 0.5s cubic-bezier(.34,1.56,.64,1) 1.2s forwards;
+}
+/* Side leaf right */
+.plant-leaf-side-r{
+  transform-origin:27px 14px;
+  transform:scale(0);opacity:0;
+  animation:unfurl 0.5s cubic-bezier(.34,1.56,.64,1) 1.4s forwards;
+}
+/* Secondary leaf */
+.plant-leaf-sec{
+  transform-origin:21px 10px;
+  transform:scale(0);opacity:0;
+  animation:unfurl 0.5s cubic-bezier(.34,1.56,.64,1) 1.1s forwards;
+}
+
+/* After fully grown: gentle sway */
+.plant-logo .swayable{
+  transform-origin:18px 28px;
+  animation:grow-line 0.6s ease 0.4s forwards, sway 4s ease-in-out 2.5s infinite;
+}
+
+@keyframes grow-line{
+  to{stroke-dashoffset:0;}
+}
+@keyframes unfurl{
+  to{transform:scale(1);opacity:1;}
+}
+@keyframes sway{
+  0%,100%{transform:rotate(0deg);}
+  25%{transform:rotate(1.5deg);}
+  75%{transform:rotate(-1.5deg);}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <svg class="plant-logo" width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Roots (animate first) -->
+      <path class="plant-root-c" d="M12 30 Q18 27 24 30" stroke="#8FC4A2" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".5"/>
+      <line class="plant-root-l" x1="14" y1="31" x2="11" y2="35" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+      <line class="plant-root-r" x1="22" y1="31" x2="25" y2="35" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+      <!-- Stem (grows up after roots) -->
+      <g class="swayable">
+        <line class="plant-stem" x1="18" y1="30" x2="18" y2="14" stroke="#5A9470" stroke-width="1.8" stroke-linecap="round"/>
+        <!-- Left branch -->
+        <path class="plant-branch-l" d="M18 22 C14 20 10 21 8 18" stroke="#5A9470" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <!-- Right branch -->
+        <path class="plant-branch-r" d="M18 19 C22 17 25 18 27 15" stroke="#5A9470" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <!-- Leaves unfurl last -->
+        <ellipse class="plant-leaf-main" cx="18" cy="11" rx="4" ry="6" fill="#5A9470" opacity=".9" transform="rotate(-8 18 11)"/>
+        <ellipse class="plant-leaf-sec" cx="21" cy="10" rx="3" ry="5" fill="#8FC4A2" opacity=".7" transform="rotate(15 21 10)"/>
+        <ellipse class="plant-leaf-side-l" cx="8.5" cy="17" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(30 8.5 17)"/>
+        <ellipse class="plant-leaf-side-r" cx="27" cy="14" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(-25 27 14)"/>
+      </g>
+    </svg>
+    <span class="nav-logo-text">Aura <em>AI</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="#solution">Platform</a>
+    <a href="#how">The setup</a>
+    <a href="#results">Results</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#calculator">Calculator</a>
+    <a href="demo.html">Demo</a>
+  </div>
+  <div class="nav-cta">
+    <a href="mailto:hello@withaura.io" class="btn btn-outline-dark">Contact</a>
+    <a href="demo.html" class="btn btn-espresso">Try Demo →</a>
+    <div class="mobile-menu-btn" onclick="toggleMobileNav()" id="menu-btn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#solution" onclick="closeMobileNav()">Platform</a>
+  <a href="#how" onclick="closeMobileNav()">The setup</a>
+  <a href="#results" onclick="closeMobileNav()">Results</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#calculator" onclick="closeMobileNav()">Calculator</a>
+  <a href="demo.html" onclick="closeMobileNav()">Demo</a>
+  <a href="demo.html" class="mobile-nav-cta">Try Live Demo →</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      AI-Powered · Med Spas Only
+    </div>
+    <h1>That no-show just cost<br>you <em>$450.</em><br>Again.</h1>
+    <p class="hero-sub">Aura AI collects deposits before clients ghost you. Texts lapsed clients before they forget you exist. Converts your regulars into monthly members. It runs overnight. Your front desk does nothing differently.</p>
+    <div class="hero-actions">
+      <a href="demo.html" class="btn btn-espresso btn-lg">See Live Demo →</a>
+      <a href="https://calendly.com/contact-belmarconsulting" target="_blank" class="btn btn-sage-outline btn-lg">Claim Founding Spot →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs-item">
+        <div class="hs-val"><em>$840</em></div>
+        <div class="hs-lbl">Avg recovered<br>from no-shows / mo</div>
+      </div>
+      <div style="width:1px;background:var(--bdr);align-self:stretch;margin:4px 0"></div>
+      <div class="hs-item">
+        <div class="hs-val">28<em>%</em></div>
+        <div class="hs-lbl">More returning<br>clients in 90 days</div>
+      </div>
+      <div style="width:1px;background:var(--bdr);align-self:stretch;margin:4px 0"></div>
+      <div class="hs-item">
+        <div class="hs-val"><em>$3.2k</em></div>
+        <div class="hs-lbl">New MRR added<br>in first 90 days</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;font-size:12px;color:var(--muted);letter-spacing:0.5px;">⚡ Founding member offer — $497/month, rate locked forever. 10 spots only. 0 claimed.</div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-svg-scene">
+      <svg viewBox="0 0 620 720" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2C1A0E"/>
+            <stop offset="100%" stop-color="#1A1008"/>
+          </linearGradient>
+          <linearGradient id="hfade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#F4F0E8"/>
+            <stop offset="40%" stop-color="rgba(244,240,232,0)"/>
+          </linearGradient>
+          <filter id="hglow">
+            <feGaussianBlur stdDeviation="10" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="hshadow">
+            <feDropShadow dx="0" dy="6" stdDeviation="18" flood-color="rgba(0,0,0,0.35)"/>
+          </filter>
+          <filter id="hcardshadow">
+            <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="rgba(0,0,0,0.25)"/>
+          </filter>
+        </defs>
+
+        <!-- Dark background -->
+        <rect width="620" height="720" fill="url(#hbg)"/>
+        <!-- Dot grid texture -->
+        <pattern id="hdots" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="11" cy="11" r="0.7" fill="rgba(255,255,255,0.04)"/>
+        </pattern>
+        <rect width="620" height="720" fill="url(#hdots)"/>
+        <!-- Ambient glow -->
+        <circle cx="480" cy="300" r="140" fill="rgba(90,148,112,0.07)" filter="url(#hglow)"/>
+        <circle cx="200" cy="500" r="100" fill="rgba(184,132,58,0.05)" filter="url(#hglow)"/>
+        <!-- Left cream fade -->
+        <rect width="620" height="720" fill="url(#hfade)"/>
+
+        <!-- ══ PHONE MOCKUP — center right ══ -->
+        <g transform="translate(240, 60)" filter="url(#hshadow)">
+          <!-- Phone body -->
+          <rect width="200" height="390" rx="24" fill="#1C1C1E"/>
+          <!-- Screen -->
+          <rect x="6" y="14" width="188" height="362" rx="20" fill="#000"/>
+          <!-- Notch -->
+          <rect x="70" y="14" width="60" height="14" rx="7" fill="#1C1C1E"/>
+          <!-- Status bar -->
+          <text x="20" y="36" font-size="8" fill="rgba(255,255,255,.5)" font-family="sans-serif">9:41</text>
+          <text x="168" y="36" text-anchor="end" font-size="8" fill="rgba(255,255,255,.5)" font-family="sans-serif">●●●</text>
+
+          <!-- ── NOTIFICATION: Deposit Collected ── -->
+          <rect x="10" y="44" width="168" height="58" rx="12" fill="#1C1C1E"/>
+          <!-- Aura icon in notification -->
+          <rect x="18" y="52" width="28" height="28" rx="8" fill="#2C1A0E"/>
+          <text x="32" y="70" text-anchor="middle" font-size="12" fill="#8FC4A2">✦</text>
+          <text x="52" y="62" font-size="8.5" fill="rgba(255,255,255,.85)" font-family="sans-serif" font-weight="600">Aura AI</text>
+          <text x="52" y="73" font-size="8" fill="rgba(255,255,255,.55)" font-family="sans-serif">Deposit collected</text>
+          <rect x="10" y="102" width="168" height="1" fill="rgba(255,255,255,.06)"/>
+          <text x="18" y="115" font-size="9" fill="rgba(255,255,255,.9)" font-family="sans-serif" font-weight="500">Rebecca Chen · $75.00</text>
+          <text x="18" y="127" font-size="8" fill="rgba(255,255,255,.4)" font-family="sans-serif">Botox deposit secured · 10:00 AM Tuesday</text>
+          <text x="18" y="139" font-size="8" fill="rgba(255,255,255,.4)" font-family="sans-serif">Card stored for auto-charge if no-show</text>
+
+          <!-- ── SMS THREAD ── -->
+          <text x="100" y="165" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.3)" font-family="sans-serif" letter-spacing=".5px">MESSAGES</text>
+          <text x="100" y="178" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.7)" font-family="sans-serif">Amanda F.</text>
+
+          <!-- Outbound msg (Aura AI → client) -->
+          <rect x="30" y="186" width="130" height="44" rx="10" fill="#2C2C2E"/>
+          <text x="40" y="200" font-size="8" fill="rgba(255,255,255,.8)" font-family="sans-serif">Hi Amanda! It's been a</text>
+          <text x="40" y="212" font-size="8" fill="rgba(255,255,255,.8)" font-family="sans-serif">while since your last</text>
+          <text x="40" y="224" font-size="8" fill="rgba(255,255,255,.8)" font-family="sans-serif">Hydrafacial. Miss you! 💛</text>
+
+          <!-- Timestamp -->
+          <text x="100" y="238" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.25)" font-family="sans-serif">Tue 11:42 AM · Delivered</text>
+
+          <!-- Inbound reply (client → spa) -->
+          <rect x="20" y="244" width="120" height="32" rx="10" fill="#5A9470"/>
+          <text x="30" y="258" font-size="8" fill="#fff" font-family="sans-serif" font-weight="500">Oh yes! I've been meaning</text>
+          <text x="30" y="270" font-size="8" fill="#fff" font-family="sans-serif" font-weight="500">to book — when can I come?</text>
+
+          <!-- Timestamp -->
+          <text x="100" y="284" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.25)" font-family="sans-serif">Tue 11:58 AM</text>
+
+          <!-- Outbound follow up -->
+          <rect x="30" y="290" width="128" height="30" rx="10" fill="#2C2C2E"/>
+          <text x="40" y="304" font-size="8" fill="rgba(255,255,255,.8)" font-family="sans-serif">Thursday at 2pm works</text>
+          <text x="40" y="316" font-size="8" fill="rgba(255,255,255,.8)" font-family="sans-serif">perfectly! Booked ✓</text>
+
+          <!-- iMessage input bar -->
+          <rect x="10" y="336" width="168" height="30" rx="15" fill="rgba(255,255,255,.07)"/>
+          <text x="28" y="354" font-size="8" fill="rgba(255,255,255,.25)" font-family="sans-serif">iMessage</text>
+          <circle cx="168" cy="351" r="9" fill="#5A9470"/>
+          <text x="168" y="355" text-anchor="middle" font-size="9" fill="#fff">↑</text>
+        </g>
+
+        <!-- ══ FLOATING CARD: No-Show Blocked ══ -->
+        <g transform="translate(72, 90)" filter="url(#hcardshadow)">
+          <animateTransform attributeName="transform" type="translate" values="72,90;72,82;72,90" dur="5s" repeatCount="indefinite"/>
+          <rect width="150" height="72" rx="14" fill="rgba(255,255,255,.97)"/>
+          <rect width="150" height="3" rx="2" fill="#5A9470"/>
+          <text x="12" y="19" font-size="7" fill="#2E6B48" font-family="sans-serif" font-weight="700" letter-spacing="1">✓ NO-SHOW BLOCKED</text>
+          <rect x="12" y="23" width="126" height=".5" fill="rgba(0,0,0,.06)"/>
+          <text x="12" y="37" font-size="11" fill="#0F0D0A" font-family="sans-serif" font-weight="600">$75 deposit held</text>
+          <text x="12" y="50" font-size="8.5" fill="#5A5450" font-family="sans-serif">Rebecca Chen · Tuesday 10am</text>
+          <text x="12" y="63" font-size="8" fill="#2E6B48" font-family="sans-serif" font-weight="600">Chair rebooked at 10:15 AM</text>
+        </g>
+
+        <!-- ══ FLOATING CARD: MRR ══ -->
+        <g transform="translate(68, 430)" filter="url(#hcardshadow)">
+          <animateTransform attributeName="transform" type="translate" values="68,430;68,422;68,430" dur="7s" repeatCount="indefinite"/>
+          <rect width="155" height="68" rx="14" fill="#2C1A0E"/>
+          <rect width="155" height="3" rx="2" fill="#D4A860"/>
+          <text x="12" y="19" font-size="7" fill="rgba(255,255,255,.4)" font-family="sans-serif" font-weight="600" letter-spacing="1.5">MONTHLY RECURRING</text>
+          <text x="12" y="44" font-size="26" fill="#D4A860" font-family="Georgia,serif" font-weight="300">$9,400</text>
+          <text x="12" y="58" font-size="8" fill="rgba(255,255,255,.35)" font-family="sans-serif">47 members · ↑ $600 this month</text>
+        </g>
+
+        <!-- ══ FLOATING CARD: Lapsed Client Recovery ══ -->
+        <g transform="translate(460, 430)" filter="url(#hcardshadow)">
+          <animateTransform attributeName="transform" type="translate" values="460,430;460,440;460,430" dur="6s" repeatCount="indefinite"/>
+          <rect width="132" height="80" rx="14" fill="rgba(255,255,255,.97)"/>
+          <rect width="132" height="3" rx="2" fill="#B8843A"/>
+          <text x="10" y="19" font-size="7" fill="#B8843A" font-family="sans-serif" font-weight="700" letter-spacing="1">↻ CAME BACK</text>
+          <rect x="10" y="23" width="112" height=".5" fill="rgba(0,0,0,.06)"/>
+          <circle cx="22" cy="40" r="10" fill="rgba(90,148,112,.15)" stroke="rgba(90,148,112,.3)" stroke-width=".8"/>
+          <text x="22" y="44" text-anchor="middle" font-size="8" fill="#2E6B48" font-weight="700">AF</text>
+          <text x="38" y="38" font-size="9" fill="#0F0D0A" font-family="sans-serif" font-weight="600">Amanda F.</text>
+          <text x="38" y="49" font-size="7.5" fill="#7A7570" font-family="sans-serif">95 days → booked Thu</text>
+          <rect x="10" y="57" width="112" height="16" rx="8" fill="rgba(90,148,112,.15)"/>
+          <text x="66" y="68" text-anchor="middle" font-size="7.5" fill="#2E6B48" font-family="sans-serif" font-weight="600">$180 Hydrafacial booked</text>
+        </g>
+
+        <!-- Decorative particles -->
+        <circle cx="100" cy="340" r="2.5" fill="rgba(90,148,112,0.4)">
+          <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="520" cy="200" r="2" fill="rgba(212,168,96,0.5)">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="4.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="80" cy="580" r="2" fill="rgba(90,148,112,0.3)">
+          <animate attributeName="opacity" values="0.3;0.7;0.3" dur="5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="540" cy="580" r="1.5" fill="rgba(212,168,96,0.4)">
+          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+    <!-- Floating revenue card overlay -->
+    <div class="hero-img-card">
+      <div class="hic-label">Revenue Recovered</div>
+      <div class="hic-val">$1,240</div>
+      <div class="hic-sub">This month from no-shows</div>
+      <div class="hic-trend">↑ $340 this week</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTEGRATIONS STRIP ═══ -->
+<div class="integrations">
+  <div class="integrations-inner">
+    <div class="int-label">Connects to your existing booking system — nothing changes for your clients</div>
+    <div class="int-logos">
+      <span class="int-logo">Vagaro</span>
+      <span class="int-logo">Mindbody</span>
+      <span class="int-logo">Boulevard</span>
+      <span class="int-logo">Jane App</span>
+      <span class="int-logo">Square</span>
+      <span class="int-logo">Calendly</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROBLEM ═══ -->
+<section class="problem">
+  <div class="problem-pattern"></div>
+  <div class="problem-inner">
+    <div class="problem-header fade-in">
+      <div class="problem-eyebrow">The Reality</div>
+      <h2 class="problem-title">Three silent drains<br>that cost the average med spa<br><em>$3,800 every month.</em></h2>
+      <p class="problem-sub" style="max-width:540px;margin:0 auto">No-shows, lapsed clients, and inconsistent revenue are draining your business while you're focused on doing treatments.</p>
+    </div>
+    <div class="pain-cards fade-in">
+      <div class="pain-card">
+        <div class="pc-num">01</div>
+        <div class="pc-icon">📭</div>
+        <div class="pc-title">No-shows cost the average med spa $1,200/month</div>
+        <div class="pc-body">An appointment slot left empty is revenue you can never recover — and without deposits, there's nothing to show for it. Industry no-show rates average 18%.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pc-num">02</div>
+        <div class="pc-icon">👻</div>
+        <div class="pc-title">62% of clients don't return within 60 days</div>
+        <div class="pc-body">Life gets busy. Clients who love you simply forget to rebook. Without a proactive system to reach them, they quietly drift to a competitor.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pc-num">03</div>
+        <div class="pc-icon">📈</div>
+        <div class="pc-title">Most spas are sitting on untapped MRR</div>
+        <div class="pc-body">Your regulars are already spending $200/month with you — but without a membership system identifying and converting them, that revenue stays unpredictable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SOLUTION ═══ -->
+<section class="solution" id="solution">
+  <div class="solution-inner">
+    <div class="fade-in">
+      <div class="section-eyebrow">How Aura AI stops it</div>
+      <h2 class="section-title">Three tools that run<br>while you do <em>treatments.</em></h2>
+      <p class="section-sub">No new software to learn. No tasks for your front desk. Each tool connects to your existing booking system and runs silently — the only thing you'll notice is the difference in your revenue.</p>
+    </div>
+    <div class="tools-grid">
+
+      <!-- TOOL 1 -->
+      <div class="tool-card fade-in">
+        <div class="tool-img">
+          <svg viewBox="0 0 400 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg" style="display:block">
+            <defs>
+              <linearGradient id="shield-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2C1A0E"/>
+                <stop offset="100%" stop-color="#1A0F08"/>
+              </linearGradient>
+              <linearGradient id="shield-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5A9470"/>
+                <stop offset="100%" stop-color="#2E6B48"/>
+              </linearGradient>
+              <filter id="sh-glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="400" height="220" fill="url(#shield-bg)"/>
+            <!-- Grid -->
+            <pattern id="sh-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/></pattern>
+            <rect width="400" height="220" fill="url(#sh-grid)"/>
+            <!-- Glow -->
+            <circle cx="200" cy="110" r="80" fill="rgba(90,148,112,0.08)" filter="url(#sh-glow)"/>
+
+            <!-- BIG SHIELD -->
+            <path d="M200 28 L248 50 L248 105 Q248 145 200 168 Q152 145 152 105 L152 50 Z" fill="url(#shield-fill)" opacity="0.15" stroke="#5A9470" stroke-width="1.5"/>
+            <path d="M200 38 L240 57 L240 107 Q240 140 200 158 Q160 140 160 107 L160 57 Z" fill="url(#shield-fill)" opacity="0.25"/>
+            <!-- Shield checkmark -->
+            <path d="M182 103 L193 115 L220 88" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+            <!-- Calendar card floating left -->
+            <g transform="translate(30, 55)">
+              <rect width="110" height="90" rx="10" fill="rgba(255,255,255,0.95)" filter="url(#sh-glow)"/>
+              <rect width="110" height="24" rx="10" fill="#2C1A0E"/>
+              <rect y="14" width="110" height="10" fill="#2C1A0E"/>
+              <text x="55" y="14" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)" font-family="sans-serif" font-weight="600" letter-spacing="1">APRIL 2026</text>
+              <!-- Calendar grid -->
+              <g font-size="7.5" font-family="sans-serif" fill="#3A3530">
+                <text x="12" y="36">M</text><text x="28" y="36">T</text><text x="44" y="36">W</text><text x="60" y="36">T</text><text x="76" y="36">F</text>
+                <text x="12" y="49">1</text><text x="28" y="49">2</text><text x="44" y="49">3</text><text x="60" y="49">4</text><text x="76" y="49">5</text>
+                <text x="12" y="62">7</text><text x="28" y="62">8</text><text x="44" y="62">9</text><text x="60" y="62">10</text><text x="76" y="62">11</text>
+                <!-- X mark on 9 -->
+                <circle cx="63" cy="59" r="7" fill="rgba(184,112,112,0.2)" stroke="rgba(184,112,112,0.5)" stroke-width="0.8"/>
+                <text x="63" y="62" text-anchor="middle" font-size="8" fill="#B87070" font-weight="700">✕</text>
+                <text x="12" y="75">14</text><text x="28" y="75">15</text><text x="44" y="75">16</text>
+                <!-- Protected mark -->
+                <circle cx="47" cy="72" r="7" fill="rgba(90,148,112,0.2)" stroke="rgba(90,148,112,0.5)" stroke-width="0.8"/>
+                <text x="47" y="75" text-anchor="middle" font-size="8" fill="#2E6B48" font-weight="700">✓</text>
+              </g>
+            </g>
+
+            <!-- Deposit card floating right -->
+            <g transform="translate(258, 70)">
+              <animateTransform attributeName="transform" type="translate" values="258,70; 258,62; 258,70" dur="5s" repeatCount="indefinite"/>
+              <rect width="115" height="70" rx="10" fill="rgba(255,248,230,0.97)" filter="url(#sh-glow)"/>
+              <rect width="115" height="3" rx="2" fill="#B8843A"/>
+              <text x="10" y="18" font-size="7" fill="#B8843A" font-family="sans-serif" font-weight="700" letter-spacing="1">DEPOSIT COLLECTED</text>
+              <text x="10" y="38" font-size="20" fill="#7A5618" font-family="Georgia,serif">$75.00</text>
+              <text x="10" y="52" font-size="7" fill="#7A7570" font-family="sans-serif">Rebecca Chen · Auto</text>
+              <rect x="10" y="57" width="55" height="8" rx="4" fill="rgba(90,148,112,0.2)"/>
+              <text x="37" y="63.5" text-anchor="middle" font-size="6.5" fill="#2E6B48">✓ Charged</text>
+            </g>
+
+            <!-- Bottom label -->
+            <text x="200" y="198" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.3)" font-family="sans-serif" letter-spacing="2" font-weight="600">NEVER LOSE A DOLLAR TO NO-SHOWS</text>
+          </svg>
+          <div class="tool-img-overlay">
+            <div class="tool-badge">
+              <span class="tb-icon">🛡</span>
+              <div>
+                <div class="tb-name">No-Show Shield</div>
+                <div class="tb-result">Avg $840/mo recovered</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-title">No-Show Shield</div>
+          <p class="tool-desc">The moment a client books, Aura AI automatically collects a deposit and stores their card. If they no-show, the charge fires instantly — no awkward calls needed.</p>
+          <div class="tool-features">
+            <div class="tf">Automatic deposit collection at booking</div>
+            <div class="tf">Instant charge on no-show — fully automated</div>
+            <div class="tf">24-hour reminder texts reduce cancellations 60%</div>
+            <div class="tf">Deposits go straight to your Stripe account</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 2 -->
+      <div class="tool-card fade-in">
+        <div class="tool-img">
+          <svg viewBox="0 0 400 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg" style="display:block">
+            <defs>
+              <linearGradient id="ret-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1A2818"/>
+                <stop offset="100%" stop-color="#0F1D0E"/>
+              </linearGradient>
+              <filter id="ret-glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="400" height="220" fill="url(#ret-bg)"/>
+            <pattern id="ret-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="0.8" fill="rgba(90,148,112,0.2)"/>
+            </pattern>
+            <rect width="400" height="220" fill="url(#ret-dots)"/>
+
+            <!-- Central hub: Aura AI -->
+            <circle cx="200" cy="110" r="36" fill="rgba(90,148,112,0.15)" stroke="#5A9470" stroke-width="1.5" filter="url(#ret-glow)"/>
+            <circle cx="200" cy="110" r="24" fill="rgba(90,148,112,0.25)"/>
+            <!-- Plant icon in center -->
+            <line x1="200" y1="122" x2="200" y2="108" stroke="#8FC4A2" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M200 116 C197 115 194 116 192 113" stroke="#8FC4A2" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <path d="M200 113 C203 112 205 113 207 110" stroke="#8FC4A2" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+            <ellipse cx="200" cy="105" rx="4" ry="6" fill="#5A9470" opacity="0.9" transform="rotate(-8 200 105)"/>
+            <text x="200" y="136" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.6)" font-family="sans-serif" font-weight="700" letter-spacing="1.5">AURA AI</text>
+
+            <!-- Client nodes orbiting - LAPSED (red) pulling back -->
+            <!-- Client 1: upper left - being pulled back -->
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0,0;2,-1;0,0" dur="4s" repeatCount="indefinite"/>
+              <line x1="130" y1="55" x2="180" y2="90" stroke="rgba(184,112,112,0.4)" stroke-width="1" stroke-dasharray="4,3">
+                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.5s" repeatCount="indefinite"/>
+              </line>
+              <circle cx="118" cy="48" r="18" fill="rgba(184,112,112,0.15)" stroke="rgba(184,112,112,0.5)" stroke-width="1"/>
+              <text x="118" y="45" text-anchor="middle" font-size="8" fill="#FFB8A8" font-weight="600">SC</text>
+              <text x="118" y="57" text-anchor="middle" font-size="6" fill="rgba(255,184,168,0.7)">95d</text>
+            </g>
+
+            <!-- Client 2: upper right -->
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0,0;-2,-1;0,0" dur="5s" repeatCount="indefinite"/>
+              <line x1="270" y1="55" x2="222" y2="90" stroke="rgba(184,132,58,0.4)" stroke-width="1" stroke-dasharray="4,3">
+                <animate attributeName="stroke-dashoffset" values="0;-14" dur="1.8s" repeatCount="indefinite"/>
+              </line>
+              <circle cx="282" cy="48" r="18" fill="rgba(184,132,58,0.15)" stroke="rgba(184,132,58,0.5)" stroke-width="1"/>
+              <text x="282" y="45" text-anchor="middle" font-size="8" fill="#FFD494" font-weight="600">RH</text>
+              <text x="282" y="57" text-anchor="middle" font-size="6" fill="rgba(255,212,148,0.7)">67d</text>
+            </g>
+
+            <!-- Client 3: left - RETURNING (green) -->
+            <g>
+              <animateTransform attributeName="transform" type="translate" values="0,0;3,0;0,0" dur="6s" repeatCount="indefinite"/>
+              <line x1="128" y1="110" x2="172" y2="110" stroke="rgba(90,148,112,0.6)" stroke-width="1.5">
+                <animate attributeName="stroke-dashoffset" values="0;-10" dur="1.2s" repeatCount="indefinite"/>
+              </line>
+              <!-- Arrow head -->
+              <polygon points="172,106 180,110 172,114" fill="#5A9470" opacity="0.8"/>
+              <circle cx="110" cy="110" r="18" fill="rgba(90,148,112,0.2)" stroke="#5A9470" stroke-width="1.5"/>
+              <text x="110" y="107" text-anchor="middle" font-size="8" fill="#8FC4A2" font-weight="600">AF</text>
+              <text x="110" y="119" text-anchor="middle" font-size="6" fill="rgba(143,196,162,0.8)">Booked ✓</text>
+            </g>
+
+            <!-- Client 4: right -->
+            <g>
+              <line x1="272" y1="110" x2="228" y2="110" stroke="rgba(184,112,112,0.4)" stroke-width="1" stroke-dasharray="4,3">
+                <animate attributeName="stroke-dashoffset" values="0;-14" dur="2s" repeatCount="indefinite"/>
+              </line>
+              <circle cx="290" cy="110" r="18" fill="rgba(184,112,112,0.15)" stroke="rgba(184,112,112,0.5)" stroke-width="1"/>
+              <text x="290" y="107" text-anchor="middle" font-size="8" fill="#FFB8A8" font-weight="600">DM</text>
+              <text x="290" y="119" text-anchor="middle" font-size="6" fill="rgba(255,184,168,0.7)">61d</text>
+            </g>
+
+            <!-- Client 5: bottom left -->
+            <g>
+              <line x1="148" y1="175" x2="182" y2="138" stroke="rgba(90,148,112,0.5)" stroke-width="1.5">
+                <animate attributeName="stroke-dashoffset" values="0;-10" dur="1.5s" repeatCount="indefinite"/>
+              </line>
+              <polygon points="182,138 178,130 186,132" fill="#5A9470" opacity="0.8"/>
+              <circle cx="136" cy="184" r="18" fill="rgba(90,148,112,0.2)" stroke="#5A9470" stroke-width="1.5"/>
+              <text x="136" y="181" text-anchor="middle" font-size="8" fill="#8FC4A2" font-weight="600">PS</text>
+              <text x="136" y="193" text-anchor="middle" font-size="6" fill="rgba(143,196,162,0.8)">Rebooked ✓</text>
+            </g>
+
+            <!-- Client 6: bottom right -->
+            <g>
+              <line x1="252" y1="175" x2="218" y2="138" stroke="rgba(184,132,58,0.4)" stroke-width="1" stroke-dasharray="4,3">
+                <animate attributeName="stroke-dashoffset" values="0;-14" dur="2.2s" repeatCount="indefinite"/>
+              </line>
+              <circle cx="264" cy="184" r="18" fill="rgba(184,132,58,0.15)" stroke="rgba(184,132,58,0.5)" stroke-width="1"/>
+              <text x="264" y="181" text-anchor="middle" font-size="8" fill="#FFD494" font-weight="600">TW</text>
+              <text x="264" y="193" text-anchor="middle" font-size="6" fill="rgba(255,212,148,0.7)">44d</text>
+            </g>
+
+            <!-- Message bubble floating -->
+            <g transform="translate(308, 30)">
+              <animateTransform attributeName="transform" type="translate" values="308,30;308,24;308,30" dur="4.5s" repeatCount="indefinite"/>
+              <rect width="80" height="36" rx="8" fill="rgba(255,255,255,0.9)"/>
+              <polygon points="16,36 24,36 20,44" fill="rgba(255,255,255,0.9)"/>
+              <text x="8" y="15" font-size="6.5" fill="#2E6B48" font-weight="700">Hi Sarah! 👋</text>
+              <text x="8" y="26" font-size="6" fill="#7A7570">Time to rebook</text>
+              <text x="8" y="34" font-size="6" fill="#7A7570">your Botox →</text>
+            </g>
+
+            <!-- Stats bottom -->
+            <rect x="0" y="196" width="400" height="24" fill="rgba(0,0,0,0.3)"/>
+            <text x="200" y="212" text-anchor="middle" font-size="7.5" fill="rgba(143,196,162,0.9)" font-family="sans-serif" letter-spacing="2" font-weight="600">92% OPEN RATE · 64% RESPONSE · +28% RETURNING CLIENTS</text>
+          </svg>
+          <div class="tool-img-overlay">
+            <div class="tool-badge">
+              <span class="tb-icon">↻</span>
+              <div>
+                <div class="tb-name">Retention Engine</div>
+                <div class="tb-result">+28% returning clients</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-title">Retention Engine</div>
+          <p class="tool-desc">Every morning at 9am, Aura AI scans your full client list and sends personalized rebook texts to anyone who's gone quiet — before they forget you exist.</p>
+          <div class="tool-features">
+            <div class="tf">Daily automatic outreach to lapsed clients</div>
+            <div class="tf">Personalized texts with name + last service</div>
+            <div class="tf">92% open rate · 64% response rate</div>
+            <div class="tf">Urgency queue: critical, overdue, due soon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 3 -->
+      <div class="tool-card fade-in">
+        <div class="tool-img">
+          <svg viewBox="0 0 400 220" width="100%" height="220" xmlns="http://www.w3.org/2000/svg" style="display:block">
+            <defs>
+              <linearGradient id="mem-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1A1228"/>
+                <stop offset="100%" stop-color="#0F0A1E"/>
+              </linearGradient>
+              <linearGradient id="funnel-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(107,94,168,0.6)"/>
+                <stop offset="100%" stop-color="rgba(90,148,112,0.8)"/>
+              </linearGradient>
+              <linearGradient id="mrr-grad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#D4A860"/>
+                <stop offset="100%" stop-color="#B8843A"/>
+              </linearGradient>
+              <filter id="mem-glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="400" height="220" fill="url(#mem-bg)"/>
+            <pattern id="mem-hex" width="30" height="26" patternUnits="userSpaceOnUse">
+              <path d="M15 0 L30 8.5 L30 17.5 L15 26 L0 17.5 L0 8.5 Z" fill="none" stroke="rgba(107,94,168,0.08)" stroke-width="0.5"/>
+            </pattern>
+            <rect width="400" height="220" fill="url(#mem-hex)"/>
+
+            <!-- Glow -->
+            <circle cx="200" cy="110" r="90" fill="rgba(107,94,168,0.06)" filter="url(#mem-glow)"/>
+
+            <!-- FUNNEL -->
+            <!-- Top: wide (one-time visitors) -->
+            <path d="M80 28 L320 28 L280 75 L120 75 Z" fill="rgba(107,94,168,0.25)" stroke="rgba(107,94,168,0.5)" stroke-width="1"/>
+            <!-- Middle: narrower (repeat visitors) -->
+            <path d="M120 80 L280 80 L252 122 L148 122 Z" fill="rgba(90,148,112,0.25)" stroke="rgba(90,148,112,0.5)" stroke-width="1"/>
+            <!-- Bottom: narrow (members) -->
+            <path d="M148 127 L252 127 L232 165 L168 165 Z" fill="rgba(212,168,96,0.35)" stroke="rgba(212,168,96,0.6)" stroke-width="1"/>
+
+            <!-- Funnel labels -->
+            <text x="200" y="55" text-anchor="middle" font-size="8" fill="rgba(180,160,220,0.9)" font-family="sans-serif" font-weight="600" letter-spacing="1">ONE-TIME VISITORS</text>
+            <text x="200" y="104" text-anchor="middle" font-size="8" fill="rgba(143,196,162,0.9)" font-family="sans-serif" font-weight="600" letter-spacing="1">REPEAT CLIENTS</text>
+            <text x="200" y="148" text-anchor="middle" font-size="8" fill="rgba(212,168,96,1)" font-family="sans-serif" font-weight="700" letter-spacing="1">✦ MEMBERS</text>
+
+            <!-- Right side: MRR stack -->
+            <g transform="translate(296, 35)">
+              <!-- Stack of MRR cards growing -->
+              <rect x="4" y="40" width="88" height="22" rx="5" fill="rgba(184,132,58,0.2)" stroke="rgba(184,132,58,0.3)" stroke-width="0.8"/>
+              <rect x="2" y="26" width="88" height="22" rx="5" fill="rgba(184,132,58,0.3)" stroke="rgba(184,132,58,0.4)" stroke-width="0.8"/>
+              <rect x="0" y="12" width="88" height="22" rx="5" fill="rgba(184,132,58,0.5)" stroke="rgba(184,132,58,0.6)" stroke-width="0.8"/>
+              <rect x="0" y="0" width="88" height="22" rx="5" fill="url(#mrr-grad)"/>
+              <text x="44" y="14" text-anchor="middle" font-size="8" fill="#fff" font-weight="700">$9,400 MRR</text>
+              <text x="44" y="37" text-anchor="middle" font-size="7" fill="rgba(212,168,96,0.8)">+ $600/mo</text>
+              <!-- arrow pointing down from funnel -->
+              <line x1="44" y1="-14" x2="44" y2="-2" stroke="rgba(212,168,96,0.5)" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <polygon points="40,-2 44,6 48,-2" fill="rgba(212,168,96,0.6)"/>
+            </g>
+
+            <!-- Left side: client avatars entering top of funnel -->
+            <g transform="translate(10, 18)">
+              <circle cx="16" cy="16" r="12" fill="rgba(107,94,168,0.3)" stroke="rgba(180,160,220,0.5)" stroke-width="1"/>
+              <text x="16" y="20" text-anchor="middle" font-size="8" fill="rgba(220,200,255,0.9)" font-weight="600">AF</text>
+              <circle cx="40" cy="8" r="12" fill="rgba(107,94,168,0.25)" stroke="rgba(180,160,220,0.4)" stroke-width="1"/>
+              <text x="40" y="12" text-anchor="middle" font-size="8" fill="rgba(220,200,255,0.8)" font-weight="600">LN</text>
+              <circle cx="64" cy="20" r="12" fill="rgba(107,94,168,0.2)" stroke="rgba(180,160,220,0.3)" stroke-width="1"/>
+              <text x="64" y="24" text-anchor="middle" font-size="8" fill="rgba(220,200,255,0.7)" font-weight="600">PS</text>
+            </g>
+
+            <!-- Fit score badge -->
+            <g transform="translate(20, 100)">
+              <animateTransform attributeName="transform" type="translate" values="20,100;20,93;20,100" dur="5s" repeatCount="indefinite"/>
+              <rect width="70" height="40" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(107,94,168,0.3)" stroke-width="0.8"/>
+              <text x="35" y="16" text-anchor="middle" font-size="7" fill="rgba(180,160,220,0.7)" letter-spacing="1">FIT SCORE</text>
+              <text x="35" y="32" text-anchor="middle" font-size="18" fill="rgba(107,94,168,1)" font-family="Georgia,serif" font-weight="300">98%</text>
+            </g>
+
+            <!-- Conversion arrow and checkmark at bottom -->
+            <path d="M168 170 L200 188 L232 170" fill="none" stroke="rgba(212,168,96,0.4)" stroke-width="1.5"/>
+            <circle cx="200" cy="194" r="10" fill="rgba(212,168,96,0.2)" stroke="rgba(212,168,96,0.5)" stroke-width="1"/>
+            <text x="200" y="198" text-anchor="middle" font-size="9" fill="#D4A860">✓</text>
+
+            <!-- Bottom stat bar -->
+            <rect x="0" y="206" width="400" height="14" fill="rgba(0,0,0,0.3)"/>
+            <text x="200" y="216" text-anchor="middle" font-size="7" fill="rgba(212,168,96,0.8)" font-family="sans-serif" letter-spacing="2" font-weight="600">$3,200 NEW MRR IN FIRST 90 DAYS · 38% CONVERSION RATE</text>
+          </svg>
+          <div class="tool-img-overlay">
+            <div class="tool-badge">
+              <span class="tb-icon">◉</span>
+              <div>
+                <div class="tb-name">Membership Converter</div>
+                <div class="tb-result">+$3,200 new MRR / 90 days</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-body">
+          <div class="tool-title">Membership Converter</div>
+          <p class="tool-desc">Aura AI scores every client in your database for membership fit, then sends perfectly-timed offers to hot prospects automatically. You never have to pitch anyone.</p>
+          <div class="tool-features">
+            <div class="tf">AI membership fit scoring on every client</div>
+            <div class="tf">Automated offers sent at the right moment</div>
+            <div class="tf">Live MRR dashboard · plan management</div>
+            <div class="tf">Avg $3,200 new MRR added in 90 days</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-grid">
+      <div class="how-visual fade-in">
+        <div class="how-img" style="background:#2C1A0E;overflow:hidden;position:relative;">
+          <svg viewBox="0 0 580 500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="how-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2C1A0E"/>
+                <stop offset="100%" stop-color="#1A1208"/>
+              </linearGradient>
+              <linearGradient id="how-sage" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5A9470"/>
+                <stop offset="100%" stop-color="#2E6B48"/>
+              </linearGradient>
+              <filter id="how-glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="580" height="500" fill="url(#how-bg)"/>
+            <!-- dot grid -->
+            <pattern id="how-dots" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="12" cy="12" r="0.8" fill="rgba(255,255,255,0.04)"/>
+            </pattern>
+            <rect width="580" height="500" fill="url(#how-dots)"/>
+
+            <!-- Ambient glow -->
+            <circle cx="290" cy="250" r="160" fill="rgba(90,148,112,0.06)" filter="url(#how-glow)"/>
+
+            <!-- ── STEP FLOW DIAGRAM ── -->
+            <!-- Step 1: Connect -->
+            <g transform="translate(60,80)">
+              <circle cx="40" cy="40" r="38" fill="rgba(90,148,112,0.12)" stroke="#5A9470" stroke-width="1.5"/>
+              <circle cx="40" cy="40" r="28" fill="rgba(90,148,112,0.2)"/>
+              <text x="40" y="37" text-anchor="middle" font-size="18" fill="#8FC4A2">⚡</text>
+              <text x="40" y="53" text-anchor="middle" font-size="8" fill="rgba(143,196,162,0.8)" font-weight="600">CONNECT</text>
+              <!-- label -->
+              <text x="40" y="92" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-weight="600">01. Connect</text>
+              <text x="40" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.3)">Your booking system</text>
+            </g>
+            <!-- Arrow 1→2 -->
+            <line x1="178" y1="120" x2="218" y2="120" stroke="rgba(90,148,112,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <polygon points="218,116 226,120 218,124" fill="rgba(90,148,112,0.5)"/>
+
+            <!-- Step 2: Import -->
+            <g transform="translate(230,80)">
+              <circle cx="40" cy="40" r="38" fill="rgba(184,132,58,0.12)" stroke="#B8843A" stroke-width="1.5"/>
+              <circle cx="40" cy="40" r="28" fill="rgba(184,132,58,0.2)"/>
+              <text x="40" y="37" text-anchor="middle" font-size="18" fill="#D4A860">◎</text>
+              <text x="40" y="53" text-anchor="middle" font-size="8" fill="rgba(212,168,96,0.8)" font-weight="600">IMPORT</text>
+              <text x="40" y="92" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-weight="600">02. Import</text>
+              <text x="40" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.3)">All your clients</text>
+            </g>
+            <!-- Arrow 2→3 -->
+            <line x1="348" y1="120" x2="388" y2="120" stroke="rgba(90,148,112,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <polygon points="388,116 396,120 388,124" fill="rgba(90,148,112,0.5)"/>
+
+            <!-- Step 3: Activate -->
+            <g transform="translate(400,80)">
+              <circle cx="40" cy="40" r="38" fill="rgba(107,94,168,0.15)" stroke="rgba(107,94,168,0.7)" stroke-width="1.5"/>
+              <circle cx="40" cy="40" r="28" fill="rgba(107,94,168,0.2)"/>
+              <text x="40" y="37" text-anchor="middle" font-size="18" fill="rgba(180,160,220,0.9)">✦</text>
+              <text x="40" y="53" text-anchor="middle" font-size="8" fill="rgba(180,160,220,0.8)" font-weight="600">ACTIVATE</text>
+              <text x="40" y="92" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-weight="600">03. Activate</text>
+              <text x="40" y="107" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.3)">All 3 tools live</text>
+            </g>
+
+            <!-- Vertical arrow down from step 3 -->
+            <line x1="440" y1="198" x2="440" y2="228" stroke="rgba(90,148,112,0.4)" stroke-width="1.5" stroke-dasharray="5,3"/>
+            <polygon points="436,228 440,236 444,228" fill="rgba(90,148,112,0.5)"/>
+
+            <!-- Step 4: Results - full-width card -->
+            <g transform="translate(60, 250)">
+              <rect width="460" height="110" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(90,148,112,0.3)" stroke-width="1"/>
+              <rect width="460" height="4" rx="2" fill="url(#how-sage)"/>
+              <text x="230" y="28" text-anchor="middle" font-size="9" fill="rgba(143,196,162,0.8)" font-weight="700" letter-spacing="2">04. LOG IN EVERY MORNING</text>
+              <!-- Mini stats inside result card -->
+              <rect x="16" y="36" width="130" height="60" rx="9" fill="rgba(90,148,112,0.1)" stroke="rgba(90,148,112,0.2)" stroke-width="0.8"/>
+              <text x="81" y="60" text-anchor="middle" font-size="22" fill="#5A9470" font-family="Georgia,serif">$840</text>
+              <text x="81" y="75" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.35)">Recovered</text>
+              <text x="81" y="88" text-anchor="middle" font-size="7" fill="rgba(143,196,162,0.6)">↑ from no-shows</text>
+
+              <rect x="162" y="36" width="130" height="60" rx="9" fill="rgba(184,132,58,0.1)" stroke="rgba(184,132,58,0.2)" stroke-width="0.8"/>
+              <text x="227" y="60" text-anchor="middle" font-size="22" fill="#D4A860" font-family="Georgia,serif">28%</text>
+              <text x="227" y="75" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.35)">More clients</text>
+              <text x="227" y="88" text-anchor="middle" font-size="7" fill="rgba(212,168,96,0.6)">↑ returning</text>
+
+              <rect x="308" y="36" width="136" height="60" rx="9" fill="rgba(107,94,168,0.1)" stroke="rgba(107,94,168,0.2)" stroke-width="0.8"/>
+              <text x="376" y="60" text-anchor="middle" font-size="22" fill="rgba(180,160,220,0.9)" font-family="Georgia,serif">$3.2k</text>
+              <text x="376" y="75" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.35)">New MRR</text>
+              <text x="376" y="88" text-anchor="middle" font-size="7" fill="rgba(180,160,220,0.6)">↑ added</text>
+            </g>
+
+            <!-- Bottom tagline -->
+            <text x="290" y="400" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.2)" font-family="sans-serif" letter-spacing="3" font-weight="600">ZERO EXTRA WORK FOR YOUR TEAM</text>
+
+            <!-- Decorative growing plant bottom right -->
+            <g transform="translate(490,390)" opacity="0.25">
+              <line x1="18" y1="60" x2="18" y2="28" stroke="#5A9470" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 44 C14 42 10 43 8 40" stroke="#5A9470" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+              <path d="M18 38 C22 36 25 37 27 34" stroke="#5A9470" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+              <ellipse cx="18" cy="22" rx="5" ry="8" fill="#5A9470" transform="rotate(-8 18 22)"/>
+              <ellipse cx="22" cy="20" rx="4" ry="6" fill="#8FC4A2" transform="rotate(15 22 20)"/>
+            </g>
+          </svg>
+        </div>
+        <div class="how-stat-card">
+          <div class="hsc-lbl">No-Show Rate</div>
+          <div class="hsc-val" style="color:var(--sage-d)">8.2%</div>
+          <div class="hsc-sub">Industry avg: 18%</div>
+        </div>
+        <div class="how-stat-card2">
+          <div class="hsc-lbl2">Monthly Recurring</div>
+          <div class="hsc-val2">$9,400</div>
+          <div class="hsc-sub2">↑ $600 this month</div>
+        </div>
+      </div>
+      <div class="how-content fade-in">
+        <div class="section-eyebrow">The setup</div>
+        <h2 class="section-title">One call to set up.<br><em>Runs itself after that.</em></h2>
+        <p class="section-sub" style="margin-bottom:0">One 45-minute onboarding call. After that, Aura AI runs 24/7 in the background — your team does nothing differently.</p>
+        <div class="how-steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <div class="step-title">We connect to your booking system</div>
+              <div class="step-desc">Vagaro, Mindbody, Boulevard, Jane App, Square — 20 minutes, we handle it. Your booking flow stays exactly as it is. Clients book the same way they always have.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <div class="step-title">We import your entire client history</div>
+              <div class="step-desc">Every client, every past appointment, every service preference — pulled in automatically. By the time the call ends, Aura AI already knows who's lapsed, who's membership-ready, and who's a flight risk.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <div class="step-title">All three tools go live simultaneously</div>
+              <div class="step-desc">Deposits start collecting on every new booking. Your lapsed clients start getting personalized outreach. Your best regulars start getting membership offers. All of it running before you walk out of the onboarding call.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <div class="step-title">Open your dashboard each morning</div>
+              <div class="step-desc">Revenue recovered overnight. Clients who came back this week. MRR ticking up. You didn't do any of it. That's the point.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section class="results" id="results">
+  <div class="results-pattern"></div>
+  <div class="results-inner">
+    <div class="results-header fade-in">
+      <div class="results-eyebrow">What to expect</div>
+      <h2 class="results-title">What the first<br><em>90 days look like.</em></h2>
+      <p class="results-sub" style="max-width:520px;margin:0 auto">These are projections built from real industry data — no-show rates, SMS open rates, and membership conversion benchmarks from practices running similar tools. We'll replace them with real numbers as founding members go live.</p>
+    </div>
+    <div class="metrics-grid fade-in">
+      <div class="metric">
+        <div class="metric-val"><em>$840</em></div>
+        <div class="metric-lbl">Average no-show revenue recovered per month</div>
+        <div class="metric-sub">First 30 days</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">28<em>%</em></div>
+        <div class="metric-lbl">Increase in returning clients in first 90 days</div>
+        <div class="metric-sub">Retention Engine</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val"><em>$3.2k</em></div>
+        <div class="metric-lbl">Average new MRR added from membership conversions</div>
+        <div class="metric-sub">Membership Converter</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">8<em>%</em></div>
+        <div class="metric-lbl">Average no-show rate (industry avg: 18%)</div>
+        <div class="metric-sub">With Deposits</div>
+      </div>
+    </div>
+    <div class="sp-honest fade-in">
+      <div class="sp-statement">
+        <div class="sp-icon">✦</div>
+        <div class="sp-text">
+          <strong>Currently accepting founding members.</strong> We're working directly with the first 10 practices in the New Jersey area to build and refine the platform together. The projections above are based on validated industry data — ASAPS benchmarks, PatientNow retention studies, and BoomCloud membership conversion rates. Real client numbers replace them as founding members go live.
+        </div>
+      </div>
+      <div class="sp-numbers">
+        <div class="sp-num-item">
+          <div class="sp-num-val">10</div>
+          <div class="sp-num-lbl">Founding spots total</div>
+        </div>
+        <div class="sp-num-divider"></div>
+        <div class="sp-num-item">
+          <div class="sp-num-val" style="color:var(--sage-d)">10</div>
+          <div class="sp-num-lbl">Spots remaining</div>
+        </div>
+        <div class="sp-num-divider"></div>
+        <div class="sp-num-item">
+          <div class="sp-num-val">45<span style="font-size:20px">min</span></div>
+          <div class="sp-num-lbl">To be fully set up</div>
+        </div>
+        <div class="sp-num-divider"></div>
+        <div class="sp-num-item">
+          <div class="sp-num-val" style="color:var(--gold-d)">60</div>
+          <div class="sp-num-lbl">Days free to start</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header fade-in">
+      <div class="section-eyebrow" style="justify-content:center">Pricing</div>
+      <h2 class="section-title">Pricing that pays<br><em>for itself in week one.</em></h2>
+      <p class="section-sub" style="text-align:center;margin:0 auto 0">60-day free trial — no credit card required. Cancel anytime with 30 days notice. Founding members lock in their rate forever.</p>
+    </div>
+    <div class="pricing-grid fade-in">
+
+      <!-- STARTER -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price">$799</div>
+        <div class="pricing-per">/month</div>
+        <p class="pricing-desc">For newer med spas getting started with deposit protection and basic retention.</p>
+        <div class="pricing-features">
+          <div class="pf"><span class="pf-check">✓</span>No-Show Shield</div>
+          <div class="pf"><span class="pf-check">✓</span>Retention Engine</div>
+          <div class="pf"><span class="pf-check">✓</span>Up to 100 appointments/mo</div>
+          <div class="pf"><span class="pf-check">✓</span>500 SMS messages/mo</div>
+          <div class="pf"><span class="pf-check">✓</span>Email support</div>
+        </div>
+        <a href="https://calendly.com/contact-belmarconsulting" target="_blank" class="btn-pricing">Book Onboarding Call</a>
+        <div class="pricing-trial">30 days free · No credit card</div>
+      </div>
+
+      <!-- GROWTH (FEATURED) -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier-f">Growth</div>
+        <div class="pricing-price-f">$1,500</div>
+        <div class="pricing-per-f">/month</div>
+        <p class="pricing-desc-f">For established med spas ready to maximize every revenue channel.</p>
+        <div class="pricing-features">
+          <div class="pf-f"><span class="pf-check-f">✓</span>All 3 AI Tools Included</div>
+          <div class="pf-f"><span class="pf-check-f">✓</span>Unlimited SMS messages</div>
+          <div class="pf-f"><span class="pf-check-f">✓</span>Unlimited appointments</div>
+          <div class="pf-f"><span class="pf-check-f">✓</span>Priority support</div>
+          <div class="pf-f"><span class="pf-check-f">✓</span>Monthly 30-min strategy call</div>
+          <div class="pf-f"><span class="pf-check-f">✓</span>Custom booking link</div>
+        </div>
+        <a href="https://calendly.com/contact-belmarconsulting" target="_blank" class="btn-pricing-f">Book Onboarding Call</a>
+        <div class="pricing-trial-f">30 days free · No credit card</div>
+      </div>
+
+      <!-- ELITE -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Elite</div>
+        <div class="pricing-price">$2,500</div>
+        <div class="pricing-per">/month</div>
+        <p class="pricing-desc">For multi-location or high-volume practices that need white-glove service.</p>
+        <div class="pricing-features">
+          <div class="pf"><span class="pf-check">✓</span>Everything in Growth</div>
+          <div class="pf"><span class="pf-check">✓</span>AI phone receptionist</div>
+          <div class="pf"><span class="pf-check">✓</span>Multi-location support</div>
+          <div class="pf"><span class="pf-check">✓</span>Google Reviews automation</div>
+          <div class="pf"><span class="pf-check">✓</span>Weekly strategy calls</div>
+          <div class="pf"><span class="pf-check">✓</span>Dedicated account manager</div>
+        </div>
+        <a href="https://calendly.com/contact-belmarconsulting" target="_blank" class="btn-pricing">Book Onboarding Call</a>
+        <div class="pricing-trial">30 days free · No credit card</div>
+      </div>
+    </div>
+
+    <!-- FOUNDING MEMBERS -->
+    <div class="founding-wrap fade-in">
+      <div class="founding-card">
+        <div class="founding-left">
+          <div class="founding-badge">⚡ Founding Member Offer</div>
+          <div class="founding-title">Lock in <em>$497/month</em> — forever.</div>
+          <div class="founding-desc">New customers pay $1,500/month for the Growth plan. Founding members get the same platform at $497/month — and that rate never changes, ever. We're accepting 10 practices only. When these spots are gone, this offer is gone.</div>
+          <div class="founding-spots">
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spot"></div>
+            <div class="founding-spots-label"><strong>0 of 10 spots filled.</strong> Be the first founding member.</div>
+          </div>
+        </div>
+        <div class="founding-right">
+          <div class="founding-includes">
+            <div class="founding-inc-title">What's included</div>
+            <div class="founding-inc-row"><span class="founding-check">✓</span>All 3 AI tools</div>
+            <div class="founding-inc-row"><span class="founding-check">✓</span>Unlimited SMS messages</div>
+            <div class="founding-inc-row"><span class="founding-check">✓</span>Unlimited appointments</div>
+            <div class="founding-inc-row"><span class="founding-check">✓</span>Personal setup call with Mike</div>
+            <div class="founding-inc-row"><span class="founding-check">✓</span>60-day free trial</div>
+            <div class="founding-inc-row founding-no"><span style="color:var(--blush)">✕</span>Rate locked forever — never increases.</div>
+          </div>
+          <a href="https://calendly.com/contact-belmarconsulting" target="_blank" class="founding-cta">Claim Your Spot →</a>
+          <div class="founding-fine">$497/month · Rate locked for life · Closes at 10 members</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CALCULATOR TEASER ═══ -->
+<section class="calc-teaser" id="calculator">
+  <div class="calc-inner">
+
+    <!-- LEFT: Copy + single slider -->
+    <div class="calc-left fade-in">
+      <div class="section-eyebrow">No-Show Calculator</div>
+      <h2 class="section-title">Three numbers.<br><em>One uncomfortable answer.</em></h2>
+      <p class="calc-desc">Most owners underestimate this by half. Enter your appointment volume, average ticket, and no-show rate — the formula below shows exactly what that empty chair is costing you every month, permanently and irrecoverably.</p>
+
+      <div class="calc-slider-block">
+        <div class="csb-label">
+          <span>Weekly appointments</span>
+          <span class="csb-val" id="ct-appts-lbl">60</span>
+        </div>
+        <input type="range" id="ct-appts" min="10" max="200" value="60" oninput="calcTeaser()">
+        <div class="csb-sublabel">Total bookings per week across all providers</div>
+      </div>
+
+      <div class="calc-slider-block" style="margin-top:14px">
+        <div class="csb-label">
+          <span>Average service value</span>
+          <span class="csb-val" id="ct-val-lbl">$220</span>
+        </div>
+        <input type="range" id="ct-val" min="50" max="600" value="220" step="10" oninput="calcTeaser()">
+        <div class="csb-sublabel">What a typical appointment earns you (before tip)</div>
+      </div>
+
+      <div class="calc-slider-block" style="margin-top:14px">
+        <div class="csb-label">
+          <span>No-show / last-minute cancel rate</span>
+          <span class="csb-val" id="ct-nsrate-lbl">15%</span>
+        </div>
+        <input type="range" id="ct-nsrate" min="1" max="40" value="15" oninput="calcTeaser()">
+        <div class="csb-sublabel">Industry average is 18% — most owners underestimate this</div>
+      </div>
+
+      <div class="calc-reveal" id="ct-reveal">
+        <div class="cr-loss">
+          <div class="cr-loss-label">Empty slots costing you every month</div>
+          <div class="cr-loss-val" id="ct-loss">$0</div>
+          <div class="cr-loss-sub" id="ct-loss-sub">per month · $0/year</div>
+        </div>
+        <div class="cr-formula" id="ct-formula">
+          <span id="ct-appts-lbl2">60</span> appts/wk × <span id="ct-nsrate-lbl2">15%</span> no-show rate × <span id="ct-val-lbl2">$220</span>/appt × 4 weeks
+        </div>
+        <div class="cr-note">This is revenue that's permanently gone — the appointment slot can't be resold after a no-show. Deposits eliminate this entirely.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Gate form -->
+    <div class="calc-right fade-in">
+      <div class="calc-gate" id="calc-gate">
+        <div class="cg-eyebrow">Full Revenue Picture</div>
+        <div class="cg-title">Your no-show number is<br>just the beginning.</div>
+        <div class="cg-sub">Enter your info and we'll calculate your total recoverable revenue across all three tools — no-shows, lapsed clients, and untapped membership potential. Takes 30 seconds.</div>
+
+        <div class="cg-preview">
+          <div class="cgp-row"><span class="cgp-icon">📭</span><span class="cgp-label">Monthly no-show loss</span><span class="cgp-val cgp-red" id="cg-ns">$0</span></div>
+          <div class="cgp-row cgp-blur" id="cgp-row2"><span class="cgp-icon">◎</span><span class="cgp-label">3-year client lifetime value</span><span class="cgp-val cgp-gold">••••</span></div>
+          <div class="cgp-row cgp-blur" id="cgp-row3"><span class="cgp-icon">↻</span><span class="cgp-label">Lapsed client recovery value</span><span class="cgp-val cgp-green">••••</span></div>
+          <div class="cgp-row cgp-blur" id="cgp-row4"><span class="cgp-icon">◉</span><span class="cgp-label">Membership MRR potential</span><span class="cgp-val cgp-gold">••••</span></div>
+          <div class="cgp-total cgp-blur" id="cgp-total">
+            <span>Total annual opportunity</span>
+            <span class="cgp-total-val">••••••</span>
+          </div>
+        </div>
+
+        <!-- Netlify Form -->
+        <form name="calculator-leads" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="calc-form" onsubmit="handleCalcSubmit(event)">
+          <input type="hidden" name="form-name" value="calculator-leads"/>
+          <p style="display:none"><input name="bot-field"/></p>
+          <input type="hidden" name="monthly-loss" id="f-loss" value=""/>
+          <input type="hidden" name="weekly-appts" id="f-appts" value=""/>
+          <input type="hidden" name="avg-value" id="f-avgval" value=""/>
+
+          <div class="cf-row">
+            <input class="cf-input" type="text" name="name" placeholder="Your name" required autocomplete="name"/>
+            <input class="cf-input" type="email" name="email" placeholder="Email address" required autocomplete="email"/>
+          </div>
+          <input class="cf-input cf-full" type="tel" name="phone" placeholder="Phone number" required autocomplete="tel"/>
+          <input class="cf-input cf-full" type="text" name="spa-name" placeholder="Spa / practice name" required/>
+
+          <button class="cf-btn" type="submit">
+            <span id="cf-btn-text">Unlock My Full Revenue Report →</span>
+          </button>
+          <div class="cf-trust">No spam · No credit card · Takes 30 seconds</div>
+        </form>
+
+        <!-- Success state (hidden) -->
+        <div class="cg-success" id="cg-success" style="display:none">
+          <div class="cgs-icon">✦</div>
+          <div class="cgs-title">Your report is ready.</div>
+          <div class="cgs-sub">We're also sending you a personal follow-up from Mike within 24 hours.</div>
+          <a href="calculator.html" class="cf-btn" style="display:block;text-align:center;text-decoration:none;margin-top:20px">
+            Open Full Calculator →
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ DEMO CTA ═══ -->
+<section class="demo-cta" id="demo">
+  <div class="demo-cta-inner fade-in">
+    <div class="demo-cta-eyebrow">Live Platform Demo</div>
+    <h2 class="demo-cta-title">Walk through a live practice.<br>Every feature. Real numbers.<br><em>Two minutes.</em></h2>
+    <p class="demo-cta-sub">The demo runs on a real practice — Radiance Med Spa, Summit NJ. Every number is illustrative but the functionality is live. Click through every tab. Open every modal. See exactly what your team would be working with from day one.</p>
+    <div class="demo-cta-actions">
+      <a href="demo.html" class="btn btn-espresso btn-xl">Open Live Demo →</a>
+      <a href="https://calendly.com/contact-belmarconsulting" target="_blank" class="btn btn-sage-outline btn-lg">Talk to Mike</a>
+    </div>
+    <div class="demo-cta-trust">
+      <span class="dct">No signup required</span>
+      <span class="dct">Real features, real data</span>
+      <span class="dct">30-day free trial after</span>
+      <span class="dct">No contracts</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-header fade-in">
+      <div class="section-eyebrow" style="justify-content:center">FAQ</div>
+      <h2 class="section-title" style="text-align:center">Common <em>questions.</em></h2>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">Does this work with my existing booking system?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Your booking system stays exactly as it is. <strong>Aura AI connects on top of it</strong> — we integrate with Vagaro, Mindbody, Boulevard, Jane App, and Square. Your clients book the same way they always have. We set the integration up during your onboarding call.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">Will my clients be annoyed by the automated texts?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">The opposite happens. Our open rate is <strong>92%</strong> and response rate is <strong>64%</strong> because messages only go to clients who haven't visited in 30+ days, and every message references their name and their last actual service. It reads like a personal note, not a blast. Unsubscribe rates average under 2%. Clients tell owners they appreciate the outreach.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">Where does the deposit money go?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Straight to your Stripe account — Aura AI never holds your money. Deposits go directly from the client's card to your bank. We're just the mechanism that collects it. You can see every transaction in your Stripe dashboard in real time.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">How long does setup take?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><strong>One call, typically 45 minutes.</strong> We handle your service list, deposit policy, message templates, staff access, and client import. You don't need to know anything technical — most owners describe it as surprisingly fast. Everything is live before the call ends.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">Is there a contract? Can I cancel?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner"><strong>No contracts. Month to month.</strong> Cancel anytime with 30 days notice. We keep clients because the system delivers results — not because they're locked in. Your first 60 days are completely free, no credit card required.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">What if I don't have an online booking system yet?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Even easier to set up. We'll configure <strong>Square Appointments</strong> (free) and connect it to Aura AI in the same call. You leave with a complete booking and automation stack running — often in under an hour total.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">How is this different from Podium?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Podium is a broad customer communications platform. It handles messaging across channels, but it doesn't run revenue recovery automatically — you still need staff to manage the inbox, respond to leads, and manually push membership offers. <strong>Aura AI is built for one thing: recovering and growing revenue at med spas, with no ongoing work from your team.</strong> No-show deposits collect automatically. Lapsed client texts go out every morning without anyone touching a keyboard. Membership offers fire to the right clients at the right time. Podium also runs $1,000–$2,000+/month for a comparable feature set. Founding members get Aura AI at $497/month, locked forever.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">Is my clients' payment data secure?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Aura AI never stores card numbers. All payment processing runs through <strong>Stripe</strong>, which is PCI DSS Level 1 certified — the highest level of payment security available. Your clients' card data goes directly to Stripe. We never see it, never touch it, never store it.</div></div>
+    </div>
+    <div class="faq-item fade-in" onclick="toggleFaq(this)">
+      <div class="faq-q"><span class="faq-q-text">What if I don't see results?</span><div class="faq-icon">+</div></div>
+      <div class="faq-a"><div class="faq-a-inner">You have 60 days free to find out — no card required. If you activate all three tools and don't recover more in no-show revenue than you pay us in month three, email Mike directly at hello@withaura.io and we'll make it right. We're a founding-stage company. Your results are our reputation.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <svg class="plant-logo" width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="plant-root-c" d="M12 30 Q18 27 24 30" stroke="#8FC4A2" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".5"/>
+          <line class="plant-root-l" x1="14" y1="31" x2="11" y2="35" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+          <line class="plant-root-r" x1="22" y1="31" x2="25" y2="35" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+          <g class="swayable">
+            <line class="plant-stem" x1="18" y1="30" x2="18" y2="14" stroke="#8FC4A2" stroke-width="1.8" stroke-linecap="round"/>
+            <path class="plant-branch-l" d="M18 22 C14 20 10 21 8 18" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path class="plant-branch-r" d="M18 19 C22 17 25 18 27 15" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <ellipse class="plant-leaf-main" cx="18" cy="11" rx="4" ry="6" fill="#5A9470" opacity=".9" transform="rotate(-8 18 11)"/>
+            <ellipse class="plant-leaf-sec" cx="21" cy="10" rx="3" ry="5" fill="#8FC4A2" opacity=".7" transform="rotate(15 21 10)"/>
+            <ellipse class="plant-leaf-side-l" cx="8.5" cy="17" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(30 8.5 17)"/>
+            <ellipse class="plant-leaf-side-r" cx="27" cy="14" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(-25 27 14)"/>
+          </g>
+        </svg>
+        <span class="footer-logo-text">Aura <em>AI</em></span>
+      </div>
+      <p class="footer-tagline">"Glow smarter."</p>
+      <a href="mailto:hello@withaura.io" class="footer-email">hello@withaura.io</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Platform</div>
+      <div class="footer-links">
+        <a href="#solution">No-Show Shield</a>
+        <a href="#solution">Retention Engine</a>
+        <a href="#solution">Membership Converter</a>
+        <a href="demo.html">Live Demo</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a href="#results">Results</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="mailto:hello@withaura.io">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Get Started</div>
+      <div class="footer-links">
+        <a href="demo.html">Try the Demo</a>
+        <a href="https://calendly.com/contact-belmarconsulting" target="_blank">Start Free Trial</a>
+        <a href="https://calendly.com/contact-belmarconsulting" target="_blank">Book Onboarding Call</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Aura AI · withaura.io · All rights reserved</span>
+    <span style="display:flex;gap:20px">
+      <a href="mailto:hello@withaura.io?subject=Privacy Policy">Privacy</a>
+      <a href="mailto:hello@withaura.io?subject=Terms of Service">Terms</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+// ── MOBILE NAV ──
+function toggleMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  const btn = document.getElementById('menu-btn');
+  const isOpen = nav.classList.contains('open');
+  nav.classList.toggle('open');
+  // Animate hamburger to X
+  const spans = btn.querySelectorAll('span');
+  if(!isOpen) {
+    spans[0].style.transform = 'rotate(45deg) translate(4px,4px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(4px,-4px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+}
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  const spans = document.getElementById('menu-btn').querySelectorAll('span');
+  spans[0].style.transform = '';
+  spans[1].style.opacity = '';
+  spans[2].style.transform = '';
+}
+// Close mobile nav on outside click
+document.addEventListener('click', (e) => {
+  const nav = document.getElementById('mobile-nav');
+  const btn = document.getElementById('menu-btn');
+  if(nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) {
+    closeMobileNav();
+  }
+});
+
+// ── CALCULATOR TEASER ──
+function calcTeaser(){
+  const A   = +document.getElementById('ct-appts').value;
+  const V   = +document.getElementById('ct-val').value;
+  const NSR = +document.getElementById('ct-nsrate').value / 100;
+
+  const monthly = Math.round(A * NSR * V * 4);
+  const annual  = monthly * 12;
+
+  // Format helpers
+  const fmtM = monthly >= 10000 ? '$' + Math.round(monthly/1000) + 'k' : '$' + monthly.toLocaleString();
+  const fmtA = annual  >= 10000 ? '$' + Math.round(annual/1000)  + 'k' : '$' + annual.toLocaleString();
+
+  // Update slider display labels
+  document.getElementById('ct-appts-lbl').textContent   = A;
+  document.getElementById('ct-val-lbl').textContent     = '$' + V;
+  document.getElementById('ct-nsrate-lbl').textContent  = Math.round(NSR * 100) + '%';
+
+  // Update result
+  document.getElementById('ct-loss').textContent     = fmtM;
+  document.getElementById('ct-loss-sub').textContent = 'per month · ' + fmtA + '/year';
+
+  // Update formula breakdown
+  document.getElementById('ct-appts-lbl2').textContent  = A;
+  document.getElementById('ct-nsrate-lbl2').textContent = Math.round(NSR * 100) + '%';
+  document.getElementById('ct-val-lbl2').textContent    = '$' + V;
+
+  // Store for form hidden fields
+  const fi = document.getElementById('f-loss');
+  const fa = document.getElementById('f-appts');
+  const fv = document.getElementById('f-avgval');
+  if(fi) fi.value = fmtM + '/mo';
+  if(fa) fa.value = A;
+  if(fv) fv.value = '$' + V;
+
+  // Also update the gate preview first row
+  const cgns = document.getElementById('cg-ns');
+  if(cgns) cgns.textContent = fmtM;
+}
+
+function handleCalcSubmit(e){
+  e.preventDefault();
+  const form = document.getElementById('calc-form');
+  const btn = document.getElementById('cf-btn-text');
+  btn.textContent = 'Sending…';
+
+  const data = new FormData(form);
+
+  fetch('/', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(data).toString()
+  })
+  .then(() => {
+    document.getElementById('calc-form').style.display = 'none';
+    document.getElementById('cg-success').style.display = 'block';
+    // Unblur preview rows
+    ['cgp-row2','cgp-row3','cgp-row4','cgp-total'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.classList.remove('cgp-blur');
+    });
+  })
+  .catch(() => {
+    // Still show success + redirect on error (form may have submitted)
+    document.getElementById('calc-form').style.display = 'none';
+    document.getElementById('cg-success').style.display = 'block';
+  });
+}
+
+// Init calculator teaser
+calcTeaser();
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── NAV SCROLL EFFECT ──
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 20) {
+    navbar.style.boxShadow = '0 4px 24px rgba(0,0,0,.08)';
+  } else {
+    navbar.style.boxShadow = 'none';
+  }
+});
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(f => f.classList.remove('open'));
+  if(!isOpen) el.classList.add('open');
+}
+</script>
+
+<!-- ═══ THEME SWITCHER ═══ -->
+<div class="theme-switcher" id="theme-switcher">
+  <div class="theme-panel" id="theme-panel">
+    <div class="theme-panel-label">Color Theme</div>
+    <div class="theme-btns">
+      <button class="aura-theme-btn" data-theme="cream" onclick="auraApplyTheme('cream')">
+        <div class="theme-btn-icon" style="background:#2C1A0E;color:#D4A860">☀</div>
+        <div>
+          <div>Warm Cream</div>
+          <div class="theme-swatch-row">
+            <div class="theme-swatch-dot" style="background:#F4F0E8;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="theme-swatch-dot" style="background:#2C1A0E"></div>
+            <div class="theme-swatch-dot" style="background:#5A9470"></div>
+            <div class="theme-swatch-dot" style="background:#D4A860"></div>
+          </div>
+        </div>
+      </button>
+      <button class="aura-theme-btn" data-theme="noir" onclick="auraApplyTheme('noir')">
+        <div class="theme-btn-icon" style="background:#111;color:#9ECFB8">◆</div>
+        <div>
+          <div>Dark Noir</div>
+          <div class="theme-swatch-row">
+            <div class="theme-swatch-dot" style="background:#0E0E0E"></div>
+            <div class="theme-swatch-dot" style="background:#1A1A1A;border:1px solid rgba(255,255,255,.1)"></div>
+            <div class="theme-swatch-dot" style="background:#9ECFB8"></div>
+            <div class="theme-swatch-dot" style="background:#C8A060"></div>
+          </div>
+        </div>
+      </button>
+      <button class="aura-theme-btn" data-theme="slate" onclick="auraApplyTheme('slate')">
+        <div class="theme-btn-icon" style="background:#1A2332;color:#7BAFD4">◈</div>
+        <div>
+          <div>Cool Slate</div>
+          <div class="theme-swatch-row">
+            <div class="theme-swatch-dot" style="background:#F0F2F5;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="theme-swatch-dot" style="background:#1A2332"></div>
+            <div class="theme-swatch-dot" style="background:#4A7FD4"></div>
+            <div class="theme-swatch-dot" style="background:#C8943A"></div>
+          </div>
+        </div>
+      </button>
+      <button class="aura-theme-btn" data-theme="forest" onclick="auraApplyTheme('forest')">
+        <div class="theme-btn-icon" style="background:#0D1F0E;color:#80C080">✦</div>
+        <div>
+          <div>Deep Forest</div>
+          <div class="theme-swatch-row">
+            <div class="theme-swatch-dot" style="background:#EEF2EC;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="theme-swatch-dot" style="background:#0D1F0E"></div>
+            <div class="theme-swatch-dot" style="background:#3A7A3A"></div>
+            <div class="theme-swatch-dot" style="background:#A08040"></div>
+          </div>
+        </div>
+      </button>
+      <button class="aura-theme-btn" data-theme="champagne" onclick="auraApplyTheme('champagne')">
+        <div class="theme-btn-icon" style="background:#1A1008;color:#E8C060">◉</div>
+        <div>
+          <div>Champagne</div>
+          <div class="theme-swatch-row">
+            <div class="theme-swatch-dot" style="background:#F8F4EC;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="theme-swatch-dot" style="background:#1A1008"></div>
+            <div class="theme-swatch-dot" style="background:#C89A40"></div>
+            <div class="theme-swatch-dot" style="background:#E8C060"></div>
+          </div>
+        </div>
+      </button>
+      <button class="aura-theme-btn" data-theme="ivory" onclick="auraApplyTheme('ivory')">
+        <div class="theme-btn-icon" style="background:#111;color:#A0A870">○</div>
+        <div>
+          <div>Pure Ivory</div>
+          <div class="theme-swatch-row">
+            <div class="theme-swatch-dot" style="background:#FAFAF7;border:1px solid rgba(0,0,0,.1)"></div>
+            <div class="theme-swatch-dot" style="background:#111"></div>
+            <div class="theme-swatch-dot" style="background:#8A9060"></div>
+            <div class="theme-swatch-dot" style="background:#C8A060"></div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+  <button class="theme-toggle-btn" onclick="document.getElementById('theme-panel').classList.toggle('open')" title="Change theme">
+    🎨
+  </button>
+</div>
+
+<script>
+
+// ══════════════════════════════════════════
+// AURA AI THEME SWITCHER
+// ══════════════════════════════════════════
+const AURA_THEMES = {
+  cream: {
+    label: 'Warm Cream',
+    icon: '☀',
+    vars: {
+      '--page-bg': '#F4F0E8',
+      '--page-bg2': '#F8F5EE',
+      '--white': '#FFFFFF',
+      '--espresso': '#2C1A0E',
+      '--walnut': '#3A2416',
+      '--espresso2': '#1E1208',
+      '--ink': '#0F0D0A',
+      '--ink2': '#1C1814',
+      '--text': '#3A3530',
+      '--text2': '#5A5450',
+      '--muted': '#7A7570',
+      '--muted2': '#ABA8A4',
+      '--sage': '#5A9470',
+      '--sage-d': '#2E6B48',
+      '--sage-l': '#E8F4EC',
+      '--sage-m': '#8FC4A2',
+      '--sage-b': 'rgba(90,148,112,.2)',
+      '--gold': '#B8843A',
+      '--gold-l': '#FBF4E6',
+      '--gold-d': '#7A5618',
+      '--gold-w': '#D4A860',
+      '--gold-b': 'rgba(184,132,58,.2)',
+      '--bdr': 'rgba(0,0,0,.07)',
+      '--bdr2': 'rgba(0,0,0,.04)',
+      '--nav-bg': 'rgba(244,240,232,.92)',
+      '--sb-bg': '#2C1A0E',
+      '--sb-text': '#FFFFFF',
+      '--btn-dark': '#2C1A0E',
+      '--btn-dark-text': '#FFFFFF',
+    }
+  },
+  noir: {
+    label: 'Dark Noir',
+    icon: '◆',
+    vars: {
+      '--page-bg': '#0E0E0E',
+      '--page-bg2': '#1A1A1A',
+      '--white': '#1A1A1A',
+      '--espresso': '#111111',
+      '--walnut': '#1A1A1A',
+      '--espresso2': '#0A0A0A',
+      '--ink': '#F5F5F5',
+      '--ink2': '#E8E8E8',
+      '--text': '#C8C8C8',
+      '--text2': '#999999',
+      '--muted': '#666666',
+      '--muted2': '#444444',
+      '--sage': '#9ECFB8',
+      '--sage-d': '#6EB898',
+      '--sage-l': 'rgba(158,207,184,.12)',
+      '--sage-m': '#9ECFB8',
+      '--sage-b': 'rgba(158,207,184,.2)',
+      '--gold': '#C8A060',
+      '--gold-l': 'rgba(200,160,96,.12)',
+      '--gold-d': '#A88040',
+      '--gold-w': '#C8A060',
+      '--gold-b': 'rgba(200,160,96,.2)',
+      '--bdr': 'rgba(255,255,255,.07)',
+      '--bdr2': 'rgba(255,255,255,.04)',
+      '--nav-bg': 'rgba(14,14,14,.95)',
+      '--sb-bg': '#111111',
+      '--sb-text': '#F5F5F5',
+      '--btn-dark': '#F5F5F5',
+      '--btn-dark-text': '#0E0E0E',
+    }
+  },
+  slate: {
+    label: 'Cool Slate',
+    icon: '◈',
+    vars: {
+      '--page-bg': '#F0F2F5',
+      '--page-bg2': '#E8ECF2',
+      '--white': '#FFFFFF',
+      '--espresso': '#1A2332',
+      '--walnut': '#243040',
+      '--espresso2': '#101828',
+      '--ink': '#1A2332',
+      '--ink2': '#243040',
+      '--text': '#3A4A5A',
+      '--text2': '#4A5A6A',
+      '--muted': '#6A7A8A',
+      '--muted2': '#8A9AA8',
+      '--sage': '#4A7FD4',
+      '--sage-d': '#2A5298',
+      '--sage-l': '#E8EEF8',
+      '--sage-m': '#7BAFD4',
+      '--sage-b': 'rgba(74,127,212,.2)',
+      '--gold': '#C8943A',
+      '--gold-l': '#FBF0E0',
+      '--gold-d': '#A87020',
+      '--gold-w': '#D4A850',
+      '--gold-b': 'rgba(200,148,58,.2)',
+      '--bdr': 'rgba(0,0,0,.07)',
+      '--bdr2': 'rgba(0,0,0,.04)',
+      '--nav-bg': 'rgba(240,242,245,.95)',
+      '--sb-bg': '#1A2332',
+      '--sb-text': '#E8EEF8',
+      '--btn-dark': '#1A2332',
+      '--btn-dark-text': '#FFFFFF',
+    }
+  },
+  forest: {
+    label: 'Deep Forest',
+    icon: '✦',
+    vars: {
+      '--page-bg': '#EEF2EC',
+      '--page-bg2': '#E4EDE2',
+      '--white': '#FFFFFF',
+      '--espresso': '#0D1F0E',
+      '--walnut': '#162A17',
+      '--espresso2': '#081208',
+      '--ink': '#0D1F0E',
+      '--ink2': '#1A3A1C',
+      '--text': '#2A4A2C',
+      '--text2': '#3A6040',
+      '--muted': '#5A7A5A',
+      '--muted2': '#7A9A7A',
+      '--sage': '#3A7A3A',
+      '--sage-d': '#1A4A1A',
+      '--sage-l': '#D8EDD8',
+      '--sage-m': '#80C080',
+      '--sage-b': 'rgba(58,122,58,.2)',
+      '--gold': '#7A6030',
+      '--gold-l': '#F0E8CC',
+      '--gold-d': '#5A4010',
+      '--gold-w': '#A08040',
+      '--gold-b': 'rgba(122,96,48,.2)',
+      '--bdr': 'rgba(0,0,0,.07)',
+      '--bdr2': 'rgba(0,0,0,.04)',
+      '--nav-bg': 'rgba(238,242,236,.96)',
+      '--sb-bg': '#0D1F0E',
+      '--sb-text': '#D8EDD8',
+      '--btn-dark': '#0D1F0E',
+      '--btn-dark-text': '#EEF2EC',
+    }
+  },
+  champagne: {
+    label: 'Champagne',
+    icon: '◉',
+    vars: {
+      '--page-bg': '#F8F4EC',
+      '--page-bg2': '#F4EEE0',
+      '--white': '#FFFFFF',
+      '--espresso': '#1A1008',
+      '--walnut': '#261808',
+      '--espresso2': '#100A04',
+      '--ink': '#1A1008',
+      '--ink2': '#2A1C0C',
+      '--text': '#3A2C18',
+      '--text2': '#5A4830',
+      '--muted': '#7A6848',
+      '--muted2': '#9A8868',
+      '--sage': '#C89A40',
+      '--sage-d': '#9A6820',
+      '--sage-l': '#F4E8CC',
+      '--sage-m': '#E8C060',
+      '--sage-b': 'rgba(200,154,64,.2)',
+      '--gold': '#C89A40',
+      '--gold-l': '#F4E8CC',
+      '--gold-d': '#9A6820',
+      '--gold-w': '#E8C060',
+      '--gold-b': 'rgba(200,154,64,.2)',
+      '--bdr': 'rgba(0,0,0,.07)',
+      '--bdr2': 'rgba(0,0,0,.04)',
+      '--nav-bg': 'rgba(248,244,236,.96)',
+      '--sb-bg': '#1A1008',
+      '--sb-text': '#F4E8CC',
+      '--btn-dark': '#1A1008',
+      '--btn-dark-text': '#F8F4EC',
+    }
+  },
+  ivory: {
+    label: 'Pure Ivory',
+    icon: '○',
+    vars: {
+      '--page-bg': '#FAFAF7',
+      '--page-bg2': '#F4F4F0',
+      '--white': '#FFFFFF',
+      '--espresso': '#111111',
+      '--walnut': '#1A1A1A',
+      '--espresso2': '#0A0A0A',
+      '--ink': '#111111',
+      '--ink2': '#222222',
+      '--text': '#444444',
+      '--text2': '#666666',
+      '--muted': '#888888',
+      '--muted2': '#AAAAAA',
+      '--sage': '#8A9060',
+      '--sage-d': '#5A6040',
+      '--sage-l': '#F0F0E8',
+      '--sage-m': '#A0A870',
+      '--sage-b': 'rgba(138,144,96,.2)',
+      '--gold': '#A08040',
+      '--gold-l': '#F8F0E0',
+      '--gold-d': '#806020',
+      '--gold-w': '#C8A060',
+      '--gold-b': 'rgba(160,128,64,.2)',
+      '--bdr': 'rgba(0,0,0,.06)',
+      '--bdr2': 'rgba(0,0,0,.03)',
+      '--nav-bg': 'rgba(250,250,247,.97)',
+      '--sb-bg': '#1A1A16',
+      '--sb-text': '#F5F5EE',
+      '--btn-dark': '#111111',
+      '--btn-dark-text': '#FAFAF7',
+    }
+  }
+};
+
+function auraApplyTheme(key) {
+  const t = AURA_THEMES[key];
+  if (!t) return;
+  const root = document.documentElement;
+  Object.entries(t.vars).forEach(([k, v]) => root.style.setProperty(k, v));
+  // Store preference — shared across both pages
+  try { localStorage.setItem('aura-theme', key); } catch(e) {}
+  // Update switcher UI if present
+  document.querySelectorAll('.aura-theme-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.theme === key);
+  });
+  // Update body class for any theme-specific overrides
+  document.body.className = document.body.className.replace(/theme-\w+/, '');
+  document.body.classList.add('theme-' + key);
+}
+
+function auraLoadTheme() {
+  let saved = 'cream';
+  try { saved = localStorage.getItem('aura-theme') || 'cream'; } catch(e) {}
+  auraApplyTheme(saved);
+}
+
+// Load on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', auraLoadTheme);
+} else {
+  auraLoadTheme();
+}
+
+</script>
+</body>
+</html>
