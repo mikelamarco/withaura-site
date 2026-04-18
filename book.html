@@ -6,8 +6,6 @@
 <title>Book a Strategy Call — Aura AI</title>
 <meta name="description" content="Book a 45-minute strategy call with Mike. We'll review your numbers, show you the platform live, and see if Aura AI is the right fit for your med spa.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-<!-- Calendly widget CSS -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════
    AURA AI — BOOK PAGE
@@ -66,7 +64,8 @@ nav{
   min-height:100vh;
   padding-top:70px;
   display:grid;
-  grid-template-columns:420px 1fr;
+  grid-template-columns:400px 1fr;
+  align-items:start;
 }
 
 @media(max-width:900px){
@@ -77,9 +76,11 @@ nav{
 /* ═══ LEFT PANEL ═══ */
 .book-left{
   background:linear-gradient(160deg, var(--espresso) 0%, var(--walnut) 60%, #1E1208 100%);
-  padding:60px 48px 60px;
-  position:relative;
-  overflow:hidden;
+  padding:60px 48px;
+  position:sticky;
+  top:70px;
+  height:calc(100vh - 70px);
+  overflow-y:auto;
 }
 
 .book-left-pattern{
@@ -212,13 +213,13 @@ nav{
 
 .calendly-wrap{
   flex:1;
-  min-height:650px;
 }
 
-/* Override Calendly iframe background to match */
-.calendly-inline-widget{
-  min-width:100% !important;
-  height:650px !important;
+.calendly-wrap iframe{
+  width:100%;
+  height:700px;
+  border:none;
+  border-radius:12px;
 }
 
 /* ═══ FOOTER ═══ */
@@ -354,7 +355,12 @@ footer.book-footer{
       <p>Times shown in your local timezone.</p>
     </div>
     <div class="calendly-wrap">
-      <div id="calendly-embed" class="calendly-inline-widget"></div>
+      <iframe
+        id="calendly-embed"
+        src="https://calendly.com/contact-belmarconsulting?embed_type=Inline&embed_domain=withaura.io&primary_color=5A9470&hide_gdpr_banner=1"
+        title="Book a Strategy Call with Aura AI"
+        loading="lazy"
+      ></iframe>
     </div>
   </div>
 
@@ -370,58 +376,28 @@ footer.book-footer{
   </div>
 </footer>
 
-<!-- Calendly embed script -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
+// Respect saved theme from main site
 (function() {
-  // Respect saved theme from main site
-  var AURA_THEMES = {
-    cream: {
-      vars: {
-        '--page-bg':'#F4F0E8','--page-bg2':'#F8F5EE',
-        '--espresso':'#2C1A0E','--walnut':'#3A2416',
-        '--sage':'#5A9470','--sage-d':'#2E6B48','--sage-l':'#E8F4EC','--sage-m':'#8FC4A2',
-        '--gold-w':'#D4A860',
-        '--nav-bg':'rgba(244,240,232,.92)',
-      }
-    },
+  var THEMES = {
     obsidian: {
-      vars: {
-        '--page-bg':'#111110','--page-bg2':'#18171A',
-        '--espresso':'#1A1A16','--walnut':'#222220',
-        '--sage':'#5A9470','--sage-d':'#6BAD82','--sage-l':'rgba(90,148,112,.12)','--sage-m':'#8FC4A2',
-        '--gold-w':'#C8A060',
-        '--nav-bg':'rgba(17,17,16,.97)',
-        '--ink':'#F5F5EE','--ink2':'#E8E5DE','--text':'#C8C4BC','--text2':'#9A9590',
-        '--white':'#1C1C18',
-        '--btn-dark':'#111111','--btn-dark-text':'#FAFAF7',
-      }
+      '--page-bg':'#111110','--page-bg2':'#18171A',
+      '--espresso':'#1A1A16','--walnut':'#222220',
+      '--nav-bg':'rgba(17,17,16,.97)',
+      '--ink':'#F5F5EE','--ink2':'#E8E5DE',
+      '--text':'#C8C4BC','--text2':'#9A9590',
+      '--white':'#1C1C18',
+      '--btn-dark':'#111111','--btn-dark-text':'#FAFAF7',
     }
   };
-
-  function applyTheme(key) {
-    var t = AURA_THEMES[key];
-    if (!t) return;
-    Object.entries(t.vars).forEach(function([k, v]) {
-      document.documentElement.style.setProperty(k, v);
+  var saved = '';
+  try { saved = localStorage.getItem('aura-theme') || ''; } catch(e) {}
+  if (THEMES[saved]) {
+    var root = document.documentElement;
+    Object.entries(THEMES[saved]).forEach(function(entry) {
+      root.style.setProperty(entry[0], entry[1]);
     });
   }
-
-  var saved = 'cream';
-  try { saved = localStorage.getItem('aura-theme') || 'cream'; } catch(e) {}
-  applyTheme(saved);
-
-  // Init Calendly once script loads
-  function initCalendly() {
-    if (!window.Calendly) { setTimeout(initCalendly, 150); return; }
-    window.Calendly.initInlineWidget({
-      url: 'https://calendly.com/contact-belmarconsulting',
-      parentElement: document.getElementById('calendly-embed'),
-      prefill: {},
-      utm: {}
-    });
-  }
-  initCalendly();
 })();
 </script>
 
