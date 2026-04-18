@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Strategy Call — Aura AI</title>
+<meta name="description" content="Book a 45-minute strategy call with Mike. We'll review your numbers, show you the platform live, and see if Aura AI is the right fit for your med spa.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Calendly widget CSS -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   AURA AI — BOOK PAGE
+   Matches withaura.io design system exactly
+═══════════════════════════════════════════════════ */
+:root{
+  --page-bg:#F4F0E8;--page-bg2:#F8F5EE;--white:#FFFFFF;
+  --espresso:#2C1A0E;--walnut:#3A2416;--espresso2:#1E1208;
+  --ink:#0F0D0A;--ink2:#1C1814;--text:#3A3530;--text2:#5A5450;--muted:#7A7570;--muted2:#ABA8A4;
+  --sage:#5A9470;--sage-d:#2E6B48;--sage-l:#E8F4EC;--sage-m:#8FC4A2;--sage-b:rgba(90,148,112,.2);
+  --gold:#B8843A;--gold-l:#FBF4E6;--gold-d:#7A5618;--gold-w:#D4A860;--gold-b:rgba(184,132,58,.2);
+  --bdr:rgba(0,0,0,.07);--bdr2:rgba(0,0,0,.04);
+  --nav-bg:rgba(244,240,232,.92);
+  --btn-dark:#2C1A0E;--btn-dark-text:#FFFFFF;
+  --cream:var(--page-bg);--cream2:var(--page-bg2);
+  --sh:0 2px 16px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.05);
+  --sh2:0 16px 64px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.06);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--page-bg);color:var(--ink2);overflow-x:hidden;}
+::selection{background:var(--sage-l);color:var(--sage-d);}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--page-bg);}::-webkit-scrollbar-thumb{background:var(--sage-m);border-radius:2px;}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 48px;height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--nav-bg);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.nav-logo-svg{width:32px;height:32px;}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;letter-spacing:4px;color:var(--ink);
+  text-transform:uppercase;font-weight:400;
+}
+.nav-logo-text em{color:var(--sage-d);font-style:normal;}
+
+.nav-back{
+  font-size:13px;font-weight:500;color:var(--muted);
+  text-decoration:none;letter-spacing:.3px;
+  display:flex;align-items:center;gap:6px;
+  transition:color .18s;
+}
+.nav-back:hover{color:var(--sage-d);}
+.nav-back-arrow{font-size:16px;line-height:1;}
+
+/* ═══ PAGE LAYOUT ═══ */
+.book-page{
+  min-height:100vh;
+  padding-top:70px;
+  display:grid;
+  grid-template-columns:420px 1fr;
+}
+
+@media(max-width:900px){
+  .book-page{grid-template-columns:1fr;}
+  nav{padding:0 20px;}
+}
+
+/* ═══ LEFT PANEL ═══ */
+.book-left{
+  background:linear-gradient(160deg, var(--espresso) 0%, var(--walnut) 60%, #1E1208 100%);
+  padding:60px 48px 60px;
+  position:relative;
+  overflow:hidden;
+}
+
+.book-left-pattern{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.04) 1px, transparent 0);
+  background-size:28px 28px;
+  pointer-events:none;
+}
+
+.book-left-inner{position:relative;z-index:1;}
+
+.book-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(90,148,112,.15);border:1px solid rgba(90,148,112,.25);
+  border-radius:50px;padding:5px 14px;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--sage-m);margin-bottom:28px;
+  width:fit-content;
+}
+.book-eyebrow-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--sage-m);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
+
+.book-left h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,3.5vw,52px);
+  font-weight:300;line-height:1.08;
+  letter-spacing:-.5px;color:#fff;
+  margin-bottom:16px;
+}
+.book-left h1 em{color:var(--gold-w);font-style:italic;}
+
+.book-left-sub{
+  font-size:15px;color:rgba(255,255,255,.55);
+  font-weight:300;line-height:1.7;
+  margin-bottom:48px;
+}
+
+/* What to expect */
+.book-expect-title{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--sage-m);font-weight:700;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px;
+}
+.book-expect-title::after{content:'';flex:1;height:1px;background:rgba(143,196,162,.2);}
+
+.book-steps{display:flex;flex-direction:column;gap:0;margin-bottom:48px;}
+.book-step{
+  display:flex;gap:18px;
+  padding-left:20px;
+  border-left:1px solid rgba(143,196,162,.2);
+  padding-bottom:28px;
+  position:relative;
+  margin-left:12px;
+}
+.book-step::before{
+  content:'';position:absolute;left:-5px;top:6px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--sage-m);
+}
+.book-step:last-child{border-left-color:transparent;padding-bottom:0;}
+
+.book-step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;color:var(--sage-m);font-weight:400;
+  min-width:18px;padding-top:3px;opacity:.7;
+}
+
+.book-step-content{}
+.book-step-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:5px;}
+.book-step-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;}
+
+/* Call details */
+.book-meta{
+  display:flex;flex-direction:column;gap:12px;
+  padding-top:32px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.book-meta-item{
+  display:flex;align-items:center;gap:12px;
+  font-size:13px;color:rgba(255,255,255,.55);
+  font-weight:400;
+}
+.book-meta-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;
+}
+
+/* Trust badge at bottom */
+.book-trust{
+  margin-top:40px;
+  padding:18px 20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;
+  display:flex;align-items:center;gap:14px;
+}
+.book-trust-icon{font-size:22px;}
+.book-trust-text{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6;}
+.book-trust-text strong{color:rgba(255,255,255,.75);font-weight:600;}
+
+/* ═══ RIGHT PANEL (Calendly) ═══ */
+.book-right{
+  background:var(--white);
+  padding:60px 56px;
+  display:flex;
+  flex-direction:column;
+}
+
+@media(max-width:900px){
+  .book-left{padding:40px 24px;}
+  .book-right{padding:40px 20px;}
+}
+
+.book-right-header{
+  margin-bottom:32px;
+}
+.book-right-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:400;
+  color:var(--ink);margin-bottom:6px;
+}
+.book-right-header p{
+  font-size:14px;color:var(--muted);line-height:1.6;
+}
+
+.calendly-wrap{
+  flex:1;
+  min-height:650px;
+}
+
+/* Override Calendly iframe background to match */
+.calendly-inline-widget{
+  min-width:100% !important;
+  height:650px !important;
+}
+
+/* ═══ FOOTER ═══ */
+footer.book-footer{
+  background:var(--espresso);
+  padding:24px 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.bf-left{
+  font-size:12px;color:rgba(255,255,255,.35);
+}
+.bf-links{
+  display:flex;gap:20px;
+}
+.bf-links a{
+  font-size:12px;color:rgba(255,255,255,.35);
+  text-decoration:none;transition:color .18s;
+}
+.bf-links a:hover{color:rgba(255,255,255,.7);}
+
+@media(max-width:600px){
+  footer.book-footer{padding:20px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="/" class="nav-logo">
+    <svg class="nav-logo-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 30 Q18 27 24 30" stroke="#8FC4A2" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".5"/>
+      <line x1="14" y1="31" x2="11" y2="35" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+      <line x1="22" y1="31" x2="25" y2="35" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" opacity=".4"/>
+      <line x1="18" y1="30" x2="18" y2="14" stroke="#8FC4A2" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M18 22 C14 20 10 21 8 18" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <path d="M18 19 C22 17 25 18 27 15" stroke="#8FC4A2" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      <ellipse cx="18" cy="11" rx="4" ry="6" fill="#5A9470" opacity=".9" transform="rotate(-8 18 11)"/>
+      <ellipse cx="21" cy="10" rx="3" ry="5" fill="#8FC4A2" opacity=".7" transform="rotate(15 21 10)"/>
+      <ellipse cx="8.5" cy="17" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(30 8.5 17)"/>
+      <ellipse cx="27" cy="14" rx="3" ry="4.5" fill="#5A9470" opacity=".7" transform="rotate(-25 27 14)"/>
+    </svg>
+    <span class="nav-logo-text">Aura <em>AI</em></span>
+  </a>
+  <a href="/" class="nav-back">
+    <span class="nav-back-arrow">←</span> Back to site
+  </a>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<div class="book-page">
+
+  <!-- LEFT: Context panel -->
+  <div class="book-left">
+    <div class="book-left-pattern"></div>
+    <div class="book-left-inner">
+
+      <div class="book-eyebrow">
+        <span class="book-eyebrow-dot"></span>
+        Strategy Call
+      </div>
+
+      <h1>Let's see what<br><em>you're leaving</em><br>on the table.</h1>
+      <p class="book-left-sub">
+        45 minutes. No pitch deck. We pull up your actual numbers and show you exactly what Aura AI would recover.
+      </p>
+
+      <div class="book-expect-title">What happens on the call</div>
+
+      <div class="book-steps">
+        <div class="book-step">
+          <span class="book-step-num">01</span>
+          <div class="book-step-content">
+            <div class="book-step-title">We review your numbers</div>
+            <div class="book-step-desc">No-show rate, lapse patterns, membership gap — using your actual practice data, not industry averages.</div>
+          </div>
+        </div>
+        <div class="book-step">
+          <span class="book-step-num">02</span>
+          <div class="book-step-content">
+            <div class="book-step-title">We show you the platform live</div>
+            <div class="book-step-desc">Real interface, real automations. You see exactly how Aura AI runs inside your booking system.</div>
+          </div>
+        </div>
+        <div class="book-step">
+          <span class="book-step-num">03</span>
+          <div class="book-step-content">
+            <div class="book-step-title">You decide if it fits</div>
+            <div class="book-step-desc">No pressure. If it's not the right fit, we'll tell you. If it is, we can activate the same week.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-meta">
+        <div class="book-meta-item">
+          <div class="book-meta-icon">⏱</div>
+          45-minute session
+        </div>
+        <div class="book-meta-item">
+          <div class="book-meta-icon">📞</div>
+          Video or phone — your choice
+        </div>
+        <div class="book-meta-item">
+          <div class="book-meta-icon">✓</div>
+          No credit card, no commitment
+        </div>
+        <div class="book-meta-item">
+          <div class="book-meta-icon">🔒</div>
+          Founding rate locked if you join
+        </div>
+      </div>
+
+      <div class="book-trust">
+        <span class="book-trust-icon">💬</span>
+        <span class="book-trust-text">
+          <strong>Questions before you book?</strong><br>
+          Email Mike directly at <a href="mailto:hello@withaura.io" style="color:var(--sage-m);text-decoration:none;">hello@withaura.io</a>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT: Calendly embed -->
+  <div class="book-right">
+    <div class="book-right-header">
+      <h2>Pick a time that works</h2>
+      <p>Times shown in your local timezone.</p>
+    </div>
+    <div class="calendly-wrap">
+      <div id="calendly-embed" class="calendly-inline-widget"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="book-footer">
+  <span class="bf-left">© 2026 Aura AI · withaura.io</span>
+  <div class="bf-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="mailto:hello@withaura.io">Contact</a>
+  </div>
+</footer>
+
+<!-- Calendly embed script -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function() {
+  // Respect saved theme from main site
+  var AURA_THEMES = {
+    cream: {
+      vars: {
+        '--page-bg':'#F4F0E8','--page-bg2':'#F8F5EE',
+        '--espresso':'#2C1A0E','--walnut':'#3A2416',
+        '--sage':'#5A9470','--sage-d':'#2E6B48','--sage-l':'#E8F4EC','--sage-m':'#8FC4A2',
+        '--gold-w':'#D4A860',
+        '--nav-bg':'rgba(244,240,232,.92)',
+      }
+    },
+    obsidian: {
+      vars: {
+        '--page-bg':'#111110','--page-bg2':'#18171A',
+        '--espresso':'#1A1A16','--walnut':'#222220',
+        '--sage':'#5A9470','--sage-d':'#6BAD82','--sage-l':'rgba(90,148,112,.12)','--sage-m':'#8FC4A2',
+        '--gold-w':'#C8A060',
+        '--nav-bg':'rgba(17,17,16,.97)',
+        '--ink':'#F5F5EE','--ink2':'#E8E5DE','--text':'#C8C4BC','--text2':'#9A9590',
+        '--white':'#1C1C18',
+        '--btn-dark':'#111111','--btn-dark-text':'#FAFAF7',
+      }
+    }
+  };
+
+  function applyTheme(key) {
+    var t = AURA_THEMES[key];
+    if (!t) return;
+    Object.entries(t.vars).forEach(function([k, v]) {
+      document.documentElement.style.setProperty(k, v);
+    });
+  }
+
+  var saved = 'cream';
+  try { saved = localStorage.getItem('aura-theme') || 'cream'; } catch(e) {}
+  applyTheme(saved);
+
+  // Init Calendly once script loads
+  function initCalendly() {
+    if (!window.Calendly) { setTimeout(initCalendly, 150); return; }
+    window.Calendly.initInlineWidget({
+      url: 'https://calendly.com/contact-belmarconsulting',
+      parentElement: document.getElementById('calendly-embed'),
+      prefill: {},
+      utm: {}
+    });
+  }
+  initCalendly();
+})();
+</script>
+
+</body>
+</html>
