@@ -369,9 +369,19 @@
       var email      = (form.querySelector('input[name="email"]')    || {}).value || '';
       var phone      = (form.querySelector('input[name="phone"]')    || {}).value || '';
       var spaName    = (form.querySelector('input[name="spa-name"]') || {}).value || '';
-      var monthlyLoss = parseInt((document.getElementById('f-loss') || {}).value || '0', 10);
-      var weeklyAppts = parseInt((document.getElementById('f-appts') || {}).value || '60', 10);
-      var avgValue    = parseInt((document.getElementById('f-avgval') || {}).value || '220', 10);
+      var weeklyAppts = parseInt((document.getElementById('f-appts') || {}).value, 10);
+      var avgValue    = parseInt((document.getElementById('f-avgval') || {}).value, 10);
+      var monthlyLoss = parseInt((document.getElementById('f-loss') || {}).value, 10);
+
+      // Fallback: calculate directly from sliders if hidden fields aren't populated
+      if (isNaN(weeklyAppts)) weeklyAppts = parseInt((document.getElementById('ct-appts') || {}).value || '60', 10);
+      if (isNaN(avgValue))    avgValue    = parseInt((document.getElementById('ct-val')   || {}).value || '220', 10);
+      if (isNaN(monthlyLoss) || monthlyLoss === 0) {
+        var nsRate  = parseFloat((document.getElementById('ct-nsrate') || {}).value || '15');
+        monthlyLoss = Math.round(weeklyAppts * (nsRate / 100) * avgValue * 4);
+      }
+      // Final safety net
+      if (isNaN(monthlyLoss)) monthlyLoss = 0;
 
       // Post to Netlify first, then show booking UI
       submitToNetlify(form).then(function () {
