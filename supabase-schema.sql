@@ -83,7 +83,7 @@ order by 1 desc;
 -- 4. Add to Netlify: Site → Environment Variables
 --    SUPABASE_URL         = https://xxxx.supabase.co
 --    SUPABASE_SERVICE_KEY = eyJhbGc... (service_role key)
---    NOTIFY_EMAIL         = plexs7@gmail.com
+--    NOTIFY_EMAIL         = mike@withaura.io
 --    RESEND_API_KEY       = re_xxxx (get free at resend.com — BAA available)
 --
 -- 5. Upgrade to Supabase Pro ($25/mo) and request BAA:
