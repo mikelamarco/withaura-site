@@ -20,8 +20,8 @@
   'use strict';
 
   // ─── Config ──────────────────────────────────────────────────────────────────
-  var STANDARD_CALENDLY_URL  = 'https://calendly.com/contact-belmarconsulting';
-  var PRIORITY_CALENDLY_URL  = 'https://calendly.com/contact-belmarconsulting'; // swap when priority event is created
+  var STANDARD_CALENDLY_URL  = 'https://api.leadconnectorhq.com/widget/booking/797Mub0uwWPzozjYywJT';
+  var PRIORITY_CALENDLY_URL  = 'https://api.leadconnectorhq.com/widget/booking/797Mub0uwWPzozjYywJT';
   var HIGH_VALUE_THRESHOLD   = 5000; // monthly loss in USD
 
   // ─── Attribution capture ─────────────────────────────────────────────────────
