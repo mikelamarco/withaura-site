@@ -464,6 +464,32 @@ section{position:relative;}
 .pf-check-f{font-size:12px;color:var(--sage-m);flex-shrink:0;margin-top:2px;}
 .pricing-trial{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;}
 .pricing-trial-f{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:10px;}
+
+/* ── Pricing trust bar ── */
+.pricing-trust-bar{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:0;
+  margin:32px auto 0;
+  max-width:860px;
+  background:var(--white);
+  border:1px solid var(--bdr);
+  border-radius:14px;
+  padding:18px 28px;
+  box-shadow:var(--sh);
+}
+.ptb-item{
+  display:flex;align-items:center;gap:8px;
+  padding:6px 20px;
+}
+.ptb-icon{font-size:16px;line-height:1;}
+.ptb-text{font-size:13px;color:var(--text2);line-height:1.4;}
+.ptb-text strong{color:var(--ink2);font-weight:600;}
+.ptb-divider{width:1px;height:28px;background:var(--bdr);flex-shrink:0;}
+@media(max-width:680px){
+  .pricing-trust-bar{flex-direction:column;gap:4px;}
+  .ptb-divider{display:none;}
+  .ptb-item{padding:6px 12px;}
+}
 .btn-pricing-f{
   width:100%;padding:13px;background:var(--sage);color:#fff;border:none;
   border-radius:9px;font-family:'Jost',sans-serif;font-size:13px;font-weight:600;
@@ -2184,6 +2210,29 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
       </div>
     </div>
 
+    <!-- TRUST BADGES -->
+    <div class="pricing-trust-bar">
+      <div class="ptb-item">
+        <span class="ptb-icon">🔒</span>
+        <span class="ptb-text"><strong>HIPAA-Ready</strong> architecture</span>
+      </div>
+      <div class="ptb-divider"></div>
+      <div class="ptb-item">
+        <span class="ptb-icon">🛡️</span>
+        <span class="ptb-text"><strong>BAA available</strong> for covered entities</span>
+      </div>
+      <div class="ptb-divider"></div>
+      <div class="ptb-item">
+        <span class="ptb-icon">🔐</span>
+        <span class="ptb-text"><strong>AES-256 encrypted</strong> at rest &amp; in transit</span>
+      </div>
+      <div class="ptb-divider"></div>
+      <div class="ptb-item">
+        <span class="ptb-icon">✓</span>
+        <span class="ptb-text"><strong>No credit card</strong> to start</span>
+      </div>
+    </div>
+
     <!-- FOUNDING MEMBERS -->
     <div class="founding-wrap fade-in">
       <div class="founding-card">
@@ -2291,9 +2340,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);}
           </div>
         </div>
 
-        <!-- Netlify Form -->
-        <form name="calculator-leads" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="calc-form" onsubmit="handleCalcSubmit(event)">
-          <input type="hidden" name="form-name" value="calculator-leads"/>
+        <form id="calc-form" onsubmit="handleCalcSubmit(event)">
           <p style="display:none"><input name="bot-field"/></p>
           <input type="hidden" name="monthly-loss" id="f-loss" value=""/>
           <input type="hidden" name="weekly-appts" id="f-appts" value=""/>

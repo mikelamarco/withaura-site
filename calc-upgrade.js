@@ -224,10 +224,10 @@
     });
   }
 
-  // ─── Submit to Netlify via fetch ─────────────────────────────────────────────
+  // ─── Submit to Supabase via Netlify Function ─────────────────────────────────
   function submitToNetlify(form) {
     var data = new FormData(form);
-    return fetch('/', {
+    return fetch('/.netlify/functions/submit-lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(data).toString()
