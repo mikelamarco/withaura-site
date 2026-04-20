@@ -1559,6 +1559,15 @@ const APPTS=[
   {id:10,name:'Bella Torres',svc:'Chemical Peel',prov:'Lisa K.',date:'2024-04-09',time:'3:00 PM',dep:50,status:'confirmed',amt:160,col:'#C4857A'},
 ];
 
+const NS_MONTH=[
+  {name:'Rebecca Hart',svc:'Chemical Peel',prov:'Lisa K.',date:'Apr 6',time:'11:00 AM',dep:50,col:'#C4635A'},
+  {name:'Jordan Miles',svc:'Microneedling',prov:'Dr. Reyes',date:'Apr 3',time:'1:00 PM',dep:50,col:'#C4857A'},
+  {name:'Amanda Fox',svc:'Laser Hair Removal',prov:'Nina P.',date:'Apr 1',time:'11:30 AM',dep:80,col:'#7B9E87'},
+  {name:'Tanya Williams',svc:'Lip Filler — 1ml',prov:'Dr. Reyes',date:'Mar 31',time:'10:00 AM',dep:75,col:'#B8955A'},
+  {name:'Sarah Chen',svc:'Botox — Forehead',prov:'Dr. Reyes',date:'Mar 28',time:'9:00 AM',dep:50,col:'#7B9E87'},
+  {name:'Maria Lopez',svc:'Hydrafacial Deluxe',prov:'Lisa K.',date:'Mar 25',time:'2:00 PM',dep:50,col:'#B8955A'},
+];
+
 const CLIENTS=[
   {n:'Sarah Chen',ph:'(201)555-0182',svc:'Botox — Forehead',v:8,sp:1840,st:'active',mp:null},
   {n:'Maria Lopez',ph:'(201)555-0291',svc:'Hydrafacial Deluxe',v:5,sp:900,st:'active',mp:null},
@@ -2504,8 +2513,37 @@ function openStatModal(type){
       </table></div>`;
   }
 
-  // ── SHIELD: No-Shows ──
-  else if(type==='sh-noshows'){ openStatModal('sched-noshows'); return; }
+  // ── SHIELD: No-Shows This Month ──
+  else if(type==='sh-noshows'){
+    icon.style.background='var(--err-l)'; icon.textContent='⚠';
+    title.textContent='No-Shows This Month — 6';
+    sub.textContent='Deposits auto-collected · ↓ 4 fewer than last month';
+    action.textContent='View Shield Settings →'; action.onclick=()=>{closeM('m-stat');go('shield');};
+    const totalDep=NS_MONTH.reduce((s,a)=>s+a.dep,0);
+    body.innerHTML=`
+      <div style="background:var(--err-l);border:1px solid rgba(196,99,90,.2);border-radius:12px;padding:18px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:10px;color:var(--err);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;font-weight:600">Total Deposits Collected This Month</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:38px;color:var(--err)">$${totalDep}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">Automatically charged — no manual steps</div>
+        </div>
+        <div style="font-size:32px">🛡</div>
+      </div>
+      <div class="dt-wrap"><table class="dt" style="border:1px solid var(--bdr);border-radius:11px;overflow:hidden">
+        <thead><tr><th>Client</th><th>Service</th><th>Date</th><th>Provider</th><th>Deposit</th></tr></thead>
+        <tbody>${NS_MONTH.map(a=>`<tr>
+          <td><span class="clink" onclick="closeM('m-stat');openClientByName('${a.name}')">${a.name}</span></td>
+          <td style="color:var(--text);font-size:12px">${a.svc}</td>
+          <td style="color:var(--muted);font-size:12px">${a.date} · ${a.time}</td>
+          <td style="color:var(--muted);font-size:12px">${a.prov}</td>
+          <td style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)">$${a.dep}</td>
+        </tr>`).join('')}</tbody>
+      </table></div>
+      <div style="margin-top:14px;background:var(--sage-l);border:1px solid var(--sage-b);border-radius:10px;padding:14px;font-size:12px;color:var(--sage-d);display:flex;align-items:center;gap:10px">
+        <span style="font-size:18px">📉</span>
+        <span>Down from <strong>10 no-shows</strong> last month — No-Show Shield + 24hr reminders are working.</span>
+      </div>`;
+  }
 
   // ── SHIELD: Protected % ──
   else if(type==='sh-pct'){
