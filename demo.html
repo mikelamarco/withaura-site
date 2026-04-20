@@ -1041,7 +1041,7 @@ nav::-webkit-scrollbar{display:none}
               <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname pol-field">Send 24hr reminder text</div><div class="rtrig pol-field">Reduces no-shows by 60%</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
               <div class="rr" style="padding:10px 0;border-bottom:none"><div class="rinfo"><div class="rname pol-field">Free cancel within 24hrs</div><div class="rtrig pol-field">Full refund if cancelled in time</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
             </div>
-            <button class="add-row-btn" onclick="openAddRule('pol')">+ Add Setting</button>
+            <button class="add-row-btn" id="pol-add-btn" style="display:none" onclick="openAddRule('pol')">+ Add Setting</button>
             <button class="btn bns" style="width:100%;margin-top:10px" onclick="toast('✓','Policy <strong>saved</strong> — applied to all new bookings')">Save Policy</button>
           </div>
         </div>
@@ -3756,6 +3756,8 @@ function togglePolEdit(e){
     if(isActive) el.setAttribute('contenteditable','true');
     else el.removeAttribute('contenteditable');
   });
+  const addBtn = document.getElementById('pol-add-btn');
+  if(addBtn) addBtn.style.display = isActive ? '' : 'none';
   toast(isActive ? '✏️' : '🔒', isActive ? 'Policy settings <strong>unlocked</strong> — click any field to edit' : 'Policy settings <strong>locked</strong>');
 }
 function toggleRetEdit(e){
