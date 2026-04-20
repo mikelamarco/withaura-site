@@ -221,6 +221,29 @@ nav::-webkit-scrollbar{display:none}
 .rinfo{flex:1;}
 .rname{font-size:13px;color:var(--ink2);font-weight:500;}
 .rtrig{font-size:11px;color:var(--muted);margin-top:1px;}
+.rr-del{background:none;border:none;color:var(--muted2);font-size:14px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1;transition:color .15s,background .15s;flex-shrink:0;}
+.rr-del:hover{color:var(--err);background:var(--blush-l);}
+.pol-gear{background:none;border:none;cursor:pointer;font-size:15px;color:var(--muted2);padding:2px 6px;border-radius:6px;transition:color .15s,background .15s;line-height:1;}
+.pol-gear:hover{color:var(--ink2);background:rgba(0,0,0,.06);}
+.pol-gear.active{color:var(--sage-d);background:var(--sage-l);}
+[contenteditable="true"]{outline:none;border-radius:3px;padding:1px 4px;margin:-1px -4px;cursor:text;transition:background .15s;}
+[contenteditable="true"]:hover{background:rgba(0,0,0,.04);}
+[contenteditable="true"]:focus{background:var(--sage-l);box-shadow:0 0 0 1px var(--sage-b);}
+.add-row-btn{display:flex;align-items:center;gap:7px;padding:10px 16px;cursor:pointer;color:var(--sage-d);font-size:12px;font-weight:500;border-top:1px dashed var(--sage-b);transition:background .15s;background:none;width:100%;border-left:none;border-right:none;border-bottom:none;}
+.add-row-btn:hover{background:var(--sage-l);}
+/* add-rule modal */
+.arm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:900;align-items:center;justify-content:center;}
+.arm-overlay.open{display:flex;}
+.arm-box{background:#fff;border-radius:14px;padding:24px;width:340px;max-width:90vw;box-shadow:0 8px 40px rgba(0,0,0,.18);}
+.arm-title{font-size:15px;font-weight:600;color:var(--ink2);margin-bottom:16px;}
+.arm-label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:5px;}
+.arm-input{width:100%;border:1px solid var(--bdr);border-radius:7px;padding:8px 10px;font-size:13px;color:var(--ink2);font-family:'Jost',sans-serif;outline:none;margin-bottom:12px;}
+.arm-input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(90,148,112,.12);}
+.arm-icons{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.arm-icon{width:32px;height:32px;border-radius:7px;background:var(--page-bg2);border:2px solid transparent;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.arm-icon.sel{border-color:var(--sage);background:var(--sage-l);}
+.arm-btns{display:flex;gap:8px;margin-top:4px;}
+.arm-btns .btn{flex:1;}
 
 /* PLAN CARDS */
 .pc-w{display:grid;grid-template-columns:1fr;gap:9px;padding:13px;}
@@ -1009,14 +1032,17 @@ nav::-webkit-scrollbar{display:none}
       </div>
       <div>
         <div class="wid">
-          <div class="wh"><div class="wt">Policy Settings</div></div>
+          <div class="wh" style="display:flex;align-items:center;justify-content:space-between;"><div class="wt">Policy Settings</div><button class="pol-gear" id="pol-gear" title="Edit policy settings">⚙</button></div>
           <div style="padding:15px">
             <div style="margin-bottom:14px"><div class="fl">Default Deposit Amount</div><div class="aiw"><div class="aip">$</div><input class="ain" type="number" value="50" id="pol-dep"></div></div>
-            <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname">Require deposit on all bookings</div><div class="rtrig">Applied automatically at checkout</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-            <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname">Auto-charge on no-show</div><div class="rtrig">Collect deposit automatically</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-            <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname">Send 24hr reminder text</div><div class="rtrig">Reduces no-shows by 60%</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-            <div class="rr" style="padding:10px 0;border-bottom:none"><div class="rinfo"><div class="rname">Free cancel within 24hrs</div><div class="rtrig">Full refund if cancelled in time</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-            <button class="btn bns" style="width:100%;margin-top:14px" onclick="toast('✓','Policy <strong>saved</strong> — applied to all new bookings')">Save Policy</button>
+            <div id="pol-rules">
+              <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname pol-field">Require deposit on all bookings</div><div class="rtrig pol-field">Applied automatically at checkout</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname pol-field">Auto-charge on no-show</div><div class="rtrig pol-field">Collect deposit automatically</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="rr" style="padding:10px 0;border-bottom:1px solid var(--bdr2)"><div class="rinfo"><div class="rname pol-field">Send 24hr reminder text</div><div class="rtrig pol-field">Reduces no-shows by 60%</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+              <div class="rr" style="padding:10px 0;border-bottom:none"><div class="rinfo"><div class="rname pol-field">Free cancel within 24hrs</div><div class="rtrig pol-field">Full refund if cancelled in time</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+            </div>
+            <button class="add-row-btn" onclick="openAddRule('pol')">+ Add Setting</button>
+            <button class="btn bns" style="width:100%;margin-top:10px" onclick="toast('✓','Policy <strong>saved</strong> — applied to all new bookings')">Save Policy</button>
           </div>
         </div>
         <div class="wid">
@@ -1059,12 +1085,15 @@ nav::-webkit-scrollbar{display:none}
       </div>
       <div>
         <div class="wid">
-          <div class="wh"><div class="wt">Auto-Outreach Rules</div></div>
-          <div class="rr"><div class="ricon" style="background:var(--err-l)">⏰</div><div class="rinfo"><div class="rname">Service Due Reminder</div><div class="rtrig">3 days before rebook window</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="rr"><div class="ricon" style="background:var(--warn-l)">📅</div><div class="rinfo"><div class="rname">Lapsed Client Nudge</div><div class="rtrig">No visit in 45+ days</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="rr"><div class="ricon" style="background:var(--sage-l)">🎂</div><div class="rinfo"><div class="rname">Birthday Offer</div><div class="rtrig">7 days before birthday</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="rr"><div class="ricon" style="background:var(--ok-l)">⭐</div><div class="rinfo"><div class="rname">Post-Visit Follow-Up</div><div class="rtrig">48hrs after appointment</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="rr"><div class="ricon" style="background:var(--purple-l)">🎯</div><div class="rinfo"><div class="rname">Win-Back Campaign</div><div class="rtrig">No visit in 90+ days</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="wh" style="display:flex;align-items:center;justify-content:space-between;"><div class="wt">Auto-Outreach Rules</div><button class="pol-gear" id="ret-gear" title="Edit outreach rules">⚙</button></div>
+          <div id="ret-rules">
+            <div class="rr"><div class="ricon" style="background:var(--err-l)">⏰</div><div class="rinfo"><div class="rname ret-field">Service Due Reminder</div><div class="rtrig ret-field">3 days before rebook window</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="rr"><div class="ricon" style="background:var(--warn-l)">📅</div><div class="rinfo"><div class="rname ret-field">Lapsed Client Nudge</div><div class="rtrig ret-field">No visit in 45+ days</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="rr"><div class="ricon" style="background:var(--sage-l)">🎂</div><div class="rinfo"><div class="rname ret-field">Birthday Offer</div><div class="rtrig ret-field">7 days before birthday</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="rr"><div class="ricon" style="background:var(--ok-l)">⭐</div><div class="rinfo"><div class="rname ret-field">Post-Visit Follow-Up</div><div class="rtrig ret-field">48hrs after appointment</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="rr"><div class="ricon" style="background:var(--purple-l)">🎯</div><div class="rinfo"><div class="rname ret-field">Win-Back Campaign</div><div class="rtrig ret-field">No visit in 90+ days</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
+          </div>
+          <button class="add-row-btn" onclick="openAddRule('ret')">+ Add Rule</button>
           <div style="padding:11px 14px"><button class="btn bns" style="width:100%" onclick="toast('⚡','Auto-outreach rules <strong>saved</strong> and running 24/7')">Save Rules</button></div>
         </div>
         <div class="wid">
@@ -1187,7 +1216,7 @@ nav::-webkit-scrollbar{display:none}
             <div><label class="fl">Spa Name</label><input class="fi" id="s-name" value="Radiance Med Spa"></div>
             <div><label class="fl">Owner Name</label><input class="fi" id="s-owner" value="Mike Thompson"></div>
             <div><label class="fl">Phone</label><input class="fi" id="s-phone" value="(908) 555-0182"></div>
-            <div><label class="fl">Email</label><input class="fi" id="s-email" value="hello@withaura.io"></div>
+            <div><label class="fl">Email</label><input class="fi" id="s-email" value="contact@belmarconsulting.info"></div>
             <div><label class="fl">Address</label><input class="fi" id="s-addr" value="88 Summit Ave, Summit NJ"></div>
             <button class="btn bns" onclick="saveSettings()">Save Business Info</button>
           </div>
@@ -1197,7 +1226,7 @@ nav::-webkit-scrollbar{display:none}
           <div style="padding:16px">
             <div style="background:var(--sage-l);border:1px solid var(--sage-b);border-radius:10px;padding:13px;margin-bottom:13px">
               <div style="font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px">Share with clients</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--sage)" id="s-link">aura.app/book/radiance-med-spa</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--sage)" id="s-link">withaura.io/book</div>
             </div>
             <button class="btn bno" style="width:100%" onclick="copyBookingLink()">📋 Copy Link</button>
           </div>
@@ -1217,9 +1246,9 @@ nav::-webkit-scrollbar{display:none}
         <div class="panel">
           <div class="ph"><div class="ptit">Integrations</div></div>
           <div style="padding:14px;display:flex;flex-direction:column;gap:9px">
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px;background:var(--bg);border:1px solid var(--bdr);border-radius:9px"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:19px">💳</span><div><div style="font-size:13px;font-weight:500;color:var(--ink2)">Stripe Payments</div><div style="font-size:11px;color:var(--muted)">Real deposit collection</div></div></div><button class="btn bno sm" onclick="toast('💳','Visit stripe.com/connect — takes 10 minutes to connect')">Connect</button></div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px;background:var(--bg);border:1px solid var(--bdr);border-radius:9px"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:19px">💬</span><div><div style="font-size:13px;font-weight:500;color:var(--ink2)">Twilio SMS</div><div style="font-size:11px;color:var(--muted)">Real text message sending</div></div></div><button class="btn bno sm" onclick="toast('💬','Visit twilio.com — takes 15 minutes to connect')">Connect</button></div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px;background:var(--bg);border:1px solid var(--bdr);border-radius:9px"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:19px">📊</span><div><div style="font-size:13px;font-weight:500;color:var(--ink2)">Google Analytics</div><div style="font-size:11px;color:var(--muted)">Track booking conversions</div></div></div><button class="btn bno sm" onclick="toast('📊','Google Analytics integration — coming soon')">Connect</button></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px;background:var(--bg);border:1px solid var(--bdr);border-radius:9px"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:19px">💳</span><div><div style="font-size:13px;font-weight:500;color:var(--ink2)">Stripe Payments</div><div style="font-size:11px;color:var(--muted)">Real deposit collection</div></div></div><button class="btn bno sm" onclick="openM('m-int-stripe')">Connect</button></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px;background:var(--bg);border:1px solid var(--bdr);border-radius:9px"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:19px">💬</span><div><div style="font-size:13px;font-weight:500;color:var(--ink2)">Twilio SMS</div><div style="font-size:11px;color:var(--muted)">Real text message sending</div></div></div><button class="btn bno sm" onclick="openM('m-int-twilio')">Connect</button></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:11px;background:var(--bg);border:1px solid var(--bdr);border-radius:9px"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:19px">📊</span><div><div style="font-size:13px;font-weight:500;color:var(--ink2)">Google Analytics</div><div style="font-size:11px;color:var(--muted)">Track booking conversions</div></div></div><button class="btn bno sm" onclick="openM('m-int-ga')">Connect</button></div>
           </div>
         </div>
         <div class="panel">
@@ -1391,7 +1420,12 @@ nav::-webkit-scrollbar{display:none}
         <label class="fl">Message <span style="background:var(--sage-l);color:var(--sage);padding:2px 7px;border-radius:5px;border:1px solid var(--sage-b);font-size:9px;letter-spacing:1px">SMS</span></label>
         <textarea class="fta" id="msg-txt" style="min-height:88px"></textarea>
       </div>
-      <div style="font-size:11px;color:var(--muted)">Variables: <span style="color:var(--sage)">{name}</span> · <span style="color:var(--sage)">{service}</span> · <span style="color:var(--sage)">{link}</span></div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.8">
+        Variables you can use in your message:<br>
+        <span style="color:var(--sage)">{name}</span> — client's first name &nbsp;·&nbsp;
+        <span style="color:var(--sage)">{service}</span> — their last service &nbsp;·&nbsp;
+        <span style="color:var(--sage)">{link}</span> — your booking link <span style="color:var(--muted2)">(withaura.io/book)</span>
+      </div>
     </div>
     <div class="mf"><button class="btn bnh" onclick="closeM('m-msg')">Cancel</button><button class="btn bns" onclick="confirmMsg()">Send Message →</button></div>
   </div>
@@ -1529,13 +1563,13 @@ const CLIENTS=[
   {n:'Sarah Chen',ph:'(201)555-0182',svc:'Botox — Forehead',v:8,sp:1840,st:'active',mp:null},
   {n:'Maria Lopez',ph:'(201)555-0291',svc:'Hydrafacial Deluxe',v:5,sp:900,st:'active',mp:null},
   {n:'Tanya Williams',ph:'(201)555-0374',svc:'Lip Filler',v:7,sp:2100,st:'active',mp:null},
-  {n:'Rebecca Hart',ph:'(201)555-0445',svc:'Chemical Peel',v:4,sp:720,st:'lapsed',mp:null},
+  {n:'Rebecca Hart',ph:'(201)555-0445',svc:'Chemical Peel',v:4,sp:720,st:'member',mp:'Glow Essentials'},
   {n:'Amanda Fox',ph:'(201)555-0512',svc:'Laser Hair Removal',v:4,sp:680,st:'active',mp:null},
   {n:'Jordan Miles',ph:'(201)555-0634',svc:'Microneedling',v:3,sp:520,st:'lapsed',mp:null},
   {n:'Priya Shah',ph:'(201)555-0723',svc:'Sculptra 2-vial',v:5,sp:1240,st:'member',mp:'Radiance Club'},
-  {n:'Diana Moore',ph:'(201)555-0856',svc:'Botox — Forehead',v:6,sp:1320,st:'lapsed',mp:null},
+  {n:'Diana Moore',ph:'(201)555-0856',svc:'Botox — Forehead',v:6,sp:1320,st:'member',mp:'Glow Essentials'},
   {n:'Lisa Nguyen',ph:'(201)555-0321',svc:'Botox — Forehead',v:9,sp:2450,st:'member',mp:'Radiance Club'},
-  {n:'Bella Torres',ph:'(201)555-0789',svc:'Chemical Peel',v:2,sp:320,st:'active',mp:null},
+  {n:'Bella Torres',ph:'(201)555-0789',svc:'Chemical Peel',v:2,sp:320,st:'member',mp:'Elite Aesthetics'},
 ];
 
 const RET=[
@@ -1561,7 +1595,7 @@ const MEMBERS=[
   {n:'Priya Shah',plan:'Radiance Club',price:249,col:'#7B6EA8'},
   {n:'Lisa Nguyen',plan:'Radiance Club',price:249,col:'#B8955A'},
   {n:'Diana Moore',plan:'Glow Essentials',price:149,col:'#5A82B8'},
-  {n:'Rebecca Hart',plan:'Glow Essentials',price:149,col:'#7B9E87'},
+  {n:'Rebecca Hart',plan:'Glow Essentials',price:149,col:'#5A82B8'},
   {n:'Bella Torres',plan:'Elite Aesthetics',price:449,col:'#B8955A'},
 ];
 
@@ -1724,7 +1758,7 @@ function renderClients(q=''){
       <td style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink)">${c.v}</td>
       <td style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold)">$${c.sp.toLocaleString()}</td>
       <td>${sb}</td>
-      <td><div style="display:flex;gap:5px" onclick="event.stopPropagation()"><button class="btn bns sm" onclick="openM('m-book')">Book</button><button class="btn bnh sm" onclick="openMsg('${c.n}','${c.svc}',30)">Text</button></div></td>
+      <td><div style="display:flex;gap:5px" onclick="event.stopPropagation()"><button class="btn bns sm" onclick="openBookForClient('${c.n}','${c.ph||''}')">Book</button><button class="btn bnh sm" onclick="openMsg('${c.n}','${c.svc}',30)">Text</button></div></td>
     </tr>`;
   }).join('');
 }
@@ -1820,12 +1854,15 @@ function renderMem(){
     </div>`;
   }).join('');
 
-  document.getElementById('m-alist').innerHTML=MEMBERS.map((m,i)=>`
-    <div class="ri" style="cursor:pointer" onclick="openClientByName('${m.n}')">
-      <div class="av av2" style="background:${m.col}18;color:${m.col};border:1px solid ${m.col}35">${m.n.split(' ').map(w=>w[0]).join('')}</div>
-      <div class="rii"><div class="rn clink">${m.n}</div><div class="rd">${m.plan}</div></div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold)">$${m.price}</div>
-    </div>`).join('');
+  document.getElementById('m-alist').innerHTML=MEMBERS.map((m,i)=>{
+    const pd=PLANS.find(p=>p.n===m.plan);
+    const col=pd?pd.col:m.col;
+    return `<div class="ri" style="cursor:pointer" onclick="openClientByName('${m.n}')">
+      <div class="av av2" style="background:${col}18;color:${col};border:1px solid ${col}35">${m.n.split(' ').map(w=>w[0]).join('')}</div>
+      <div class="rii"><div class="rn clink">${m.n}</div><div class="rd">${m.plan} · $${pd?pd.price:m.price}/mo</div></div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold)">$${pd?pd.price:m.price}</div>
+    </div>`;
+  }).join('');
 
   document.getElementById('m-plans').innerHTML=PLANS.map(p=>`
     <div class="pc ${p.id===selPlan?'sel':''}" onclick="selP(${p.id})">
@@ -1945,6 +1982,15 @@ function buildChart(id,labs,vals,big=false){
 // ══════════════════════════════════════════
 let currentNS=null, currentOffer=null, currentMsg=null;
 
+function openBookForClient(name, phone){
+  const parts=(name||'').split(' ');
+  document.getElementById('b-fn').value=parts[0]||'';
+  document.getElementById('b-ln').value=parts.slice(1).join(' ')||'';
+  document.getElementById('b-ph').value=phone||'';
+  document.getElementById('b-dt').value=new Date().toISOString().split('T')[0];
+  document.getElementById('m-book').classList.add('open');
+}
+
 function openM(id){
   if(id==='m-book') document.getElementById('b-dt').value=new Date().toISOString().split('T')[0];
   document.getElementById(id).classList.add('open');
@@ -1997,16 +2043,18 @@ function openMsg(name,svc,days){
   document.getElementById('msg-t').textContent=`Message — ${name}`;
   const in2=name.split(' ').map(w=>w[0]).join('');
   document.getElementById('msg-cr').innerHTML=`<div class="av av2" style="background:#7B9E8718;color:#7B9E87;border:1px solid #7B9E8735">${in2}</div><div><div class="cpn">${name}</div><div class="cpd">${svc} · ${days} days since last visit</div></div>`;
-  document.getElementById('msg-txt').value=`Hi ${name.split(' ')[0]}! 💆‍♀️ Your ${svc} results are at their best right now — it's the perfect time to book your next session. Reply BOOK or tap: aura.app/book ✨`;
+  const firstName=name.split(' ')[0];
+  document.getElementById('msg-txt').value=`Hi ${firstName}! 💆‍♀️ Your ${svc} results are at their best right now — it's the perfect time to book your next session. Reply BOOK or tap: withaura.io/book ✨`;
   openM('m-msg');
 }
 
 function confirmMsg(){
   const n=currentMsg?currentMsg.name:'Client';
+  const msg=document.getElementById('msg-txt').value;
   const ri=RET.find(r=>r.n===n);if(ri)ri.sent=true;
   closeM('m-msg');
   renderRet('all');
-  toast('💬',`Message sent to <strong>${n}</strong>`);
+  toast('💬',`Message sent to <strong>${n}</strong>: "${msg.slice(0,70)}${msg.length>70?'…':''}"`)
 }
 
 function openMsgByIdx(idx){
@@ -3064,10 +3112,22 @@ function openClientDetail(idx){
         <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">Last Service</div>
         <div style="font-size:14px;font-weight:500;color:var(--ink2)">${c.svc}</div>
       </div>
-      <div style="background:var(--bg);border:1px solid var(--bdr);border-radius:10px;padding:12px">
-        <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">Membership</div>
-        <div style="font-size:14px;font-weight:500;color:var(--ink2)">${c.mp||'Not a member'}</div>
-      </div>
+      ${(()=>{
+        const plan=c.mp?PLANS.find(p=>p.n===c.mp):null;
+        if(plan){
+          return `<div style="background:var(--bg);border:2px solid ${plan.col}55;border-radius:10px;padding:12px;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${plan.col}"></div>
+            <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">Membership</div>
+            <div style="font-size:14px;font-weight:600;color:${plan.col};margin-bottom:4px">${plan.n}</div>
+            <div style="font-size:12px;color:var(--muted);margin-bottom:6px">$${plan.price}/mo</div>
+            ${plan.perks.map(pk=>`<div style="font-size:11px;color:var(--ink2);display:flex;align-items:center;gap:5px;margin-bottom:2px"><span style="color:${plan.col};font-size:10px">✓</span>${pk}</div>`).join('')}
+          </div>`;
+        }
+        return `<div style="background:var(--bg);border:1px solid var(--bdr);border-radius:10px;padding:12px">
+          <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">Membership</div>
+          <div style="font-size:13px;color:var(--muted);font-style:italic">Not enrolled</div>
+        </div>`;
+      })()}
     </div>
 
     ${c.notes?`<div style="background:var(--sage-l);border:1px solid var(--sage-b);border-radius:10px;padding:12px 14px;margin-bottom:18px"><div style="font-size:10px;color:var(--sage-d);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px">Notes</div><div style="font-size:13px;color:var(--ink2)">${c.notes}</div></div>`:''}
@@ -3095,7 +3155,7 @@ function openClientDetail(idx){
   document.getElementById('cd-footer').innerHTML=`
     <button class="btn bnh" onclick="closeM('m-client-detail')">Close</button>
     <button class="btn bnh" onclick="closeM('m-client-detail');openMsgByIdx(${idx})">💬 Send Text</button>
-    <button class="btn bns" onclick="closeM('m-client-detail');openM('m-book')">+ New Booking</button>`;
+    <button class="btn bns" onclick="closeM('m-client-detail');openBookForClient('${c.n}','${c.ph||''}')">+ New Booking</button>`;
 
   openM('m-client-detail');
 }
@@ -3226,7 +3286,7 @@ function confirmPlanChange(){
 
 function saveSettings(){
   const n=document.getElementById('s-name').value.trim();
-  if(n) document.getElementById('s-link').textContent=`aura.app/book/${n.toLowerCase().replace(/[^a-z0-9]/g,'-')}`;
+  document.getElementById('s-link').textContent=`withaura.io/book`;
   toast('✓','Business info <strong>saved</strong>');
 }
 
@@ -3630,6 +3690,169 @@ if (document.readyState === 'loading') {
   auraLoadTheme();
 }
 
+// ── ADD / REMOVE RULES ─────────────────────────────────────
+let _armTarget = null; // 'pol' or 'ret'
+const ARM_ICONS = ['⏰','📅','🎂','⭐','🎯','💬','🔔','💡','🏷️','🎁','📣','🔁','💰','✅'];
+const ARM_COLORS = ['var(--err-l)','var(--warn-l)','var(--sage-l)','var(--ok-l)','var(--purple-l)','var(--blush-l)','var(--gold-l)'];
+let _armIconSel = 0, _armColorSel = 0;
+
+function openAddRule(target){
+  _armTarget = target;
+  _armIconSel = 0; _armColorSel = 0;
+  document.getElementById('arm-name').value = '';
+  document.getElementById('arm-trig').value = '';
+  // render icon picker
+  const ic = document.getElementById('arm-icon-row');
+  ic.innerHTML = ARM_ICONS.map((e,i)=>`<div class="arm-icon${i===0?' sel':''}" onclick="armSelIcon(this,${i})">${e}</div>`).join('');
+  document.getElementById('arm-overlay').classList.add('open');
+  document.getElementById('arm-name').focus();
+}
+function closeAddRule(){ document.getElementById('arm-overlay').classList.remove('open'); }
+
+function togglePolEdit(e){
+  e && e.stopPropagation();
+  const gear = document.getElementById('pol-gear');
+  const isActive = gear.classList.toggle('active');
+  const fields = document.querySelectorAll('#pol-rules .pol-field');
+  fields.forEach(el => {
+    if(isActive) el.setAttribute('contenteditable','true');
+    else el.removeAttribute('contenteditable');
+  });
+  toast(isActive ? '✏️' : '🔒', isActive ? 'Policy settings <strong>unlocked</strong> — click any field to edit' : 'Policy settings <strong>locked</strong>');
+}
+function toggleRetEdit(e){
+  e && e.stopPropagation();
+  const gear = document.getElementById('ret-gear');
+  const isActive = gear.classList.toggle('active');
+  const fields = document.querySelectorAll('#ret-rules .ret-field');
+  fields.forEach(el => {
+    if(isActive) el.setAttribute('contenteditable','true');
+    else el.removeAttribute('contenteditable');
+  });
+  toast(isActive ? '✏️' : '🔒', isActive ? 'Outreach rules <strong>unlocked</strong> — click any field to edit' : 'Outreach rules <strong>locked</strong>');
+}
+document.addEventListener('DOMContentLoaded', function(){
+  const gear = document.getElementById('pol-gear');
+  if(gear) gear.addEventListener('click', togglePolEdit);
+  const retGear = document.getElementById('ret-gear');
+  if(retGear) retGear.addEventListener('click', toggleRetEdit);
+});
+function armSelIcon(el,idx){ _armIconSel=idx; document.querySelectorAll('.arm-icon').forEach(x=>x.classList.remove('sel')); el.classList.add('sel'); }
+
+function confirmAddRule(){
+  const name = document.getElementById('arm-name').value.trim();
+  const trig = document.getElementById('arm-trig').value.trim();
+  if(!name){ document.getElementById('arm-name').focus(); return; }
+  const icon = ARM_ICONS[_armIconSel];
+  const color = ARM_COLORS[_armColorSel % ARM_COLORS.length];
+  const row = document.createElement('div');
+  row.className = 'rr';
+  if(_armTarget === 'ret'){
+    row.innerHTML = `<div class="ricon" style="background:${color}">${icon}</div><div class="rinfo"><div class="rname">${name}</div><div class="rtrig">${trig||'Custom rule'}</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div><button class="rr-del" onclick="deleteRuleRow(this)" title="Remove">✕</button>`;
+    document.getElementById('ret-rules').appendChild(row);
+    _armColorSel++;
+  } else {
+    row.style.cssText = 'padding:10px 0;border-bottom:1px solid var(--bdr2)';
+    row.innerHTML = `<div class="rinfo"><div class="rname">${name}</div><div class="rtrig">${trig||'Applied automatically'}</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div><button class="rr-del" onclick="deleteRuleRow(this)" title="Remove">✕</button>`;
+    document.getElementById('pol-rules').appendChild(row);
+  }
+  closeAddRule();
+  toast('✓', `<strong>${name}</strong> added`);
+}
+
+function deleteRuleRow(btn){
+  const row = btn.closest('.rr');
+  row.style.transition = 'opacity .2s';
+  row.style.opacity = '0';
+  setTimeout(()=>row.remove(), 200);
+}
+
+// close modal on overlay click
+document.addEventListener('click', e => {
+  const overlay = document.getElementById('arm-overlay');
+  if(e.target === overlay) closeAddRule();
+});
 </script>
+
+<!-- Add Rule Modal -->
+<div class="arm-overlay" id="arm-overlay">
+  <div class="arm-box">
+    <div class="arm-title">Add Rule</div>
+    <div class="arm-label">Rule Name</div>
+    <input class="arm-input" id="arm-name" placeholder="e.g. Post-Visit Review Request" maxlength="60" onkeydown="if(event.key==='Enter')confirmAddRule()">
+    <div class="arm-label">Trigger / Timing</div>
+    <input class="arm-input" id="arm-trig" placeholder="e.g. 24hrs after appointment" maxlength="60" onkeydown="if(event.key==='Enter')confirmAddRule()">
+    <div class="arm-label">Icon</div>
+    <div class="arm-icons" id="arm-icon-row"></div>
+    <div class="arm-btns">
+      <button class="btn bno sm" onclick="closeAddRule()">Cancel</button>
+      <button class="btn bns sm" onclick="confirmAddRule()">Add Rule</button>
+    </div>
+  </div>
+</div>
+
+<!-- STRIPE INTEGRATION MODAL -->
+<div class="mo" id="m-int-stripe">
+  <div class="modal">
+    <div class="mh"><div class="mt">💳 Connect Stripe</div><div class="mx" onclick="closeM('m-int-stripe')">✕</div></div>
+    <div class="mb">
+      <div style="background:var(--sage-l);border:1px solid var(--sage-b);border-radius:10px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:4px">What this does</div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.7">Connecting Stripe lets Aura automatically collect deposits when a client books and charge them if they no-show — without you lifting a finger. Every deposit goes directly into your Stripe account.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Deposits collected automatically at booking</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">No-show charges applied with zero manual steps</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Funds land in your account within 2 business days</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Standard Stripe rate: 2.9% + $0.30 per transaction</div></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);background:var(--bg2);border-radius:7px;padding:10px 12px;line-height:1.6">Takes about 10 minutes. You'll be redirected to Stripe to authorize the connection. If you don't have a Stripe account yet, you can create one for free at stripe.com.</div>
+    </div>
+    <div class="mf"><button class="btn bnh" onclick="closeM('m-int-stripe')">Cancel</button><button class="btn bns" onclick="closeM('m-int-stripe');toast('💳','Stripe connected — deposits are now live')">Connect Stripe →</button></div>
+  </div>
+</div>
+
+<!-- TWILIO INTEGRATION MODAL -->
+<div class="mo" id="m-int-twilio">
+  <div class="modal">
+    <div class="mh"><div class="mt">💬 Connect Twilio SMS</div><div class="mx" onclick="closeM('m-int-twilio')">✕</div></div>
+    <div class="mb">
+      <div style="background:var(--sage-l);border:1px solid var(--sage-b);border-radius:10px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:4px">What this does</div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.7">Twilio is what sends the actual text messages to your clients — appointment reminders, no-show follow-ups, win-back campaigns, and birthday offers. Without it, Aura queues the messages but can't deliver them.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">24-hour appointment reminders sent automatically</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">No-show and lapsed client follow-ups delivered in real time</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Texts come from your own dedicated number</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Cost: approx. $0.01 per text — about $5–10/month for a busy practice</div></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);background:var(--bg2);border-radius:7px;padding:10px 12px;line-height:1.6">Takes about 15 minutes. You'll need a free Twilio account at twilio.com. Aura handles all the automation logic — Twilio just moves the messages.</div>
+    </div>
+    <div class="mf"><button class="btn bnh" onclick="closeM('m-int-twilio')">Cancel</button><button class="btn bns" onclick="closeM('m-int-twilio');toast('💬','Twilio connected — SMS automations are live')">Connect Twilio →</button></div>
+  </div>
+</div>
+
+<!-- GOOGLE ANALYTICS INTEGRATION MODAL -->
+<div class="mo" id="m-int-ga">
+  <div class="modal">
+    <div class="mh"><div class="mt">📊 Connect Google Analytics</div><div class="mx" onclick="closeM('m-int-ga')">✕</div></div>
+    <div class="mb">
+      <div style="background:var(--sage-l);border:1px solid var(--sage-b);border-radius:10px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:4px">What this does</div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.7">Connecting Google Analytics lets you see exactly how many website visitors are converting into bookings — and where they drop off. Useful once you're running paid ads or want to track which campaigns are driving clients.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:16px">
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Track which pages lead to bookings</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">See where visitors drop off before booking</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">✅</span><div style="font-size:12px;color:var(--ink2);line-height:1.6">Measure ROI on any paid ads you run</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px">⏭️</span><div style="font-size:12px;color:var(--muted);line-height:1.6">Optional — not required for core Aura features to work</div></div>
+      </div>
+      <div style="font-size:11px;color:var(--muted);background:var(--bg2);border-radius:7px;padding:10px 12px;line-height:1.6">Free to use. You'll need a Google Analytics 4 property set up at analytics.google.com. Most practices connect this once they start running Google or Meta ads.</div>
+    </div>
+    <div class="mf"><button class="btn bnh" onclick="closeM('m-int-ga')">Cancel</button><button class="btn bns" onclick="closeM('m-int-ga');toast('📊','Google Analytics connected — conversion tracking active')">Connect Analytics →</button></div>
+  </div>
+</div>
+
 </body>
 </html>
