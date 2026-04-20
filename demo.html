@@ -1093,7 +1093,7 @@ nav::-webkit-scrollbar{display:none}
             <div class="rr"><div class="ricon" style="background:var(--ok-l)">⭐</div><div class="rinfo"><div class="rname ret-field">Post-Visit Follow-Up</div><div class="rtrig ret-field">48hrs after appointment</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
             <div class="rr"><div class="ricon" style="background:var(--purple-l)">🎯</div><div class="rinfo"><div class="rname ret-field">Win-Back Campaign</div><div class="rtrig ret-field">No visit in 90+ days</div></div><div class="tg on" onclick="this.classList.toggle('on')"></div></div>
           </div>
-          <button class="add-row-btn" onclick="openAddRule('ret')">+ Add Rule</button>
+          <button class="add-row-btn" id="ret-add-btn" style="display:none" onclick="openAddRule('ret')">+ Add Rule</button>
           <div style="padding:11px 14px"><button class="btn bns" style="width:100%" onclick="toast('⚡','Auto-outreach rules <strong>saved</strong> and running 24/7')">Save Rules</button></div>
         </div>
         <div class="wid">
@@ -3769,6 +3769,8 @@ function toggleRetEdit(e){
     if(isActive) el.setAttribute('contenteditable','true');
     else el.removeAttribute('contenteditable');
   });
+  const addBtn = document.getElementById('ret-add-btn');
+  if(addBtn) addBtn.style.display = isActive ? '' : 'none';
   toast(isActive ? '✏️' : '🔒', isActive ? 'Outreach rules <strong>unlocked</strong> — click any field to edit' : 'Outreach rules <strong>locked</strong>');
 }
 document.addEventListener('DOMContentLoaded', function(){
